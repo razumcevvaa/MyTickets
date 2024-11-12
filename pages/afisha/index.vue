@@ -6,8 +6,11 @@
 </template>
 
 <script setup>
-
+definePageMeta({
+  layout: 'customers'
+})
 </script>
+
 <style scoped>
 .header-afisha {
   text-align: center;

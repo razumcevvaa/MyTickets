@@ -1,8 +1,8 @@
 <template>
-  <div v-for="event in events" :key="event.id" class="event-card border-r" @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false" @click="showModalForEvent(event)">
-    <button v-if="isHovered" class="btn-buy">Купить</button>
-    <img :class="{ 'dimmed': isHovered }" :src="event.photo" alt="Event Photo" class="event-photo" />
+  <div v-for="event in events" :key="event.id" class="event-card border-r" @mouseenter="event.isHovered = true"
+    @mouseleave="event.isHovered = false" @click="showModalForEvent(event)">
+    <button v-if="event.isHovered" class="btn-buy">Купить</button>
+    <img :class="{ 'dimmed': event.isHovered }" :src="event.photo" alt="Event Photo" class="event-photo" />
     <h2 class="title-event">{{ event.title }}</h2>
     <div class="box-price">
       <p class="format-event">{{ event.format }}</p>
@@ -21,22 +21,22 @@
       <div class="modal-content">
         <h1>{{ selectedEvent.title }}</h1>
         <div class="event-info">
-          <p class="event-date place-date-text">{{ formatDate(selectedEvent.date) }}</p>
+          <!-- <p class="event-date place-date-text">{{ formatDate(selectedEvent.date) }}</p> -->
           <span class="event-info__name-block">
             <p class="place-date-text">{{ selectedEvent.location }}</p>
             <span class="age">{{ selectedEvent.age }}</span>
           </span>
         </div>
         <div class="center_area">
-          <img :class="{ 'dimmed': isHovered }" :src="selectedEvent.photo" alt="Event Photo" class="event-photo" />
+          <img :src="selectedEvent.photo" alt="Event Photo" class="event-photo" />
           <div class="description-text">
             {{ selectedEvent.description }}
           </div>
-          <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
+          <!-- <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
             <label for="ticket-quantity">Количество билетов:</label>
             <input type="number" id="ticket-quantity" v-model.number="ticketQuantity" min="1" required />
             <button type="submit">Купить билеты</button>
-          </form>
+          </form> -->
         </div>
         <div class="bottom_area">
           <h2>{{ selectedEvent.location }}</h2>
@@ -81,9 +81,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const isHovered = ref(false)
 const showModal = ref(false)
-const selectedEvent = ref(null)
+const selectedEvent = ref(null as null|Event)
 
 interface Event {
   id: number;
@@ -93,12 +92,13 @@ interface Event {
   price: string;
   date: Date;
   location: string;
+  isHovered?: boolean;
   age?: number,
   description?: string,
 }
 
 // const event = ref({
-//   id: 1,
+  //   id: 1,
 //   photo: 'top-event.jpg',
 //   title: 'Code80',
 //   format: 'вечеринка',
@@ -312,12 +312,12 @@ p::first-letter {
 }
 
 .modal-mask {
-  position: fixed;
+  position: absolute;
   z-index: 9998;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 500px;
-  height: 200px;
+  right: 0;
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
