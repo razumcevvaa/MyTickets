@@ -1,0 +1,139 @@
+
+@font-face {
+  font-family: 'TT Norms Pro Thin';
+  src: url('/font/TTNormsPro-Thin.eot');
+  src: local('/font/TT Norms Pro Thin'), local('/font/TTNormsPro-Thin'),
+    url('/font/TTNormsPro-Thin.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-Thin.woff2') format('woff2'),
+    url('/font/TTNormsPro-Thin.woff') format('woff'),
+    url('/font/TTNormsPro-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'TT Norms Pro Regular';
+  src: url('/font/TTNormsPro-Regular.eot');
+  src: local('/font/TT Norms Pro Regular'), local('/font/TTNormsPro-Regular'),
+    url('/font/TTNormsPro-Regular.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-Regular.woff2') format('woff2'),
+    url('/font/TTNormsPro-Regular.woff') format('woff'),
+    url('/font/TTNormsPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro ThinItalic';
+  src: url('/font/TTNormsPro-ThinItalic.eot');
+  src: local('/font/TT Norms Pro Thin Italic'), local('/font/TTNormsPro-ThinItalic'),
+    url('/font/TTNormsPro-ThinItalic.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-ThinItalic.woff2') format('woff2'),
+    url('/font/TTNormsPro-ThinItalic.woff') format('woff'),
+    url('/font/TTNormsPro-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TTNormsPro-ExtraLight.eot');
+  src: local('/font/TT Norms Pro ExtraLight'), local('//font/TTNormsPro-ExtraLight'),
+    url('/font/TTNormsPro-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-ExtraLight.woff2') format('woff2'),
+    url('/font/TTNormsPro-ExtraLight.woff') format('woff'),
+    url('/font/TTNormsPro-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro Medium';
+  src: url('/font/TTNormsPro-Medium.eot');
+  src: local('/font/TT Norms Pro Medium'), local('/font/TTNormsPro-Medium'),
+    url('/font/TTNormsPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-Medium.woff2') format('woff2'),
+    url('/font/TTNormsPro-Medium.woff') format('woff'),
+    url('/font/TTNormsPro-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro ExtraBlack';
+  src: url('/font/TTNormsPro-ExtraBlack.eot');
+  src: local('//font/TT Norms Pro ExtraBlack'), local('/font/TTNormsPro-ExtraBlack'),
+    url('/font/TTNormsPro-ExtraBlack.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-ExtraBlack.woff2') format('woff2'),
+    url('/font/TTNormsPro-ExtraBlack.woff') format('woff'),
+    url('/font/TTNormsPro-ExtraBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms Pro Black';
+  src: url('/font/TTNormsPro-Black.eot');
+  src: local('//font/TT Norms Pro Black'), local('/font/TTNormsPro-Black'),
+    url('/font/TTNormsPro-Black.eot?#iefix') format('embedded-opentype'),
+    url('/font/TTNormsPro-Black.woff2') format('woff2'),
+    url('/font/TTNormsPro-Black.woff') format('woff'),
+    url('/font/TTNormsPro-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: whitesmoke;
+  font-family: 'TT Norms Pro';
+  font-weight: 200;
+  font-style: normal;
+}
+
+body {
+  padding: 20px 50px 30px 50px;
+  background-color: rgb(22, 22, 22);
+}
+
+.text-decor {
+  text-decoration: underline;
+}
+h2 {
+  font-family: 'TT Norms Pro Medium';
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-button {
+  font-family: 'TT Norms Pro Medium';
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.border-r {
+  border-radius: 20px;
+  background-color: rgb(31, 31, 31);
+}
+
+// .border-r {
+//   border: 1px solid rgb(237,242,24);
+// }
+
+.box-text {
+  font-size: 18px;
+}
+
+.sliders {
+  margin-top: 20px;
+  display: flex;
+  height: 80vh;
+  justify-content: space-between;
+}
+
+.operating-princ {
+  margin-top: 20px;
+}
