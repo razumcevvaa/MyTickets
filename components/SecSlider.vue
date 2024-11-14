@@ -1,6 +1,4 @@
 <template>
-
-
   <div class="div-slider border-r">
     <div class="text-slider">
       <h1 class="slider-title">Сервис продажи <br> билетов</h1>
@@ -14,8 +12,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { register } from 'swiper/element/bundle'
-register()
+
 </script>
 <style scoped>
 .div-slider {

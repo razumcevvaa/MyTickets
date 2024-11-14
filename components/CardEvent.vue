@@ -19,18 +19,22 @@
   <teleport to="body">
     <div v-if="selectedEvent && showModal" class="modal-mask" @click.self="showModal = false">
       <div class="modal-content">
+        <div class="modal-close" @click="showModal = false"><span></span></div>
         <h1>{{ selectedEvent.title }}</h1>
         <div class="event-info">
           <!-- <p class="event-date place-date-text">{{ formatDate(selectedEvent.date) }}</p> -->
           <span class="event-info__name-block">
-            <p class="place-date-text">{{ selectedEvent.location }}</p>
-            <span class="age">{{ selectedEvent.age }}</span>
+            <p class="place-date-text-modal">{{ selectedEvent.location }}</p>
+            <span class="age">{{ selectedEvent.age }}+</span>
           </span>
         </div>
         <div class="center_area">
           <img :src="selectedEvent.photo" alt="Event Photo" class="event-photo" />
-          <div class="description-text">
-            {{ selectedEvent.description }}
+          <div class="area-descrip-and-btn">
+            <p class="description-text">
+              {{ selectedEvent.description }}
+            </p>
+            <a href="/" class="buy-tickets">Купить от {{ selectedEvent.price }}₽</a>
           </div>
           <!-- <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
             <label for="ticket-quantity">Количество билетов:</label>
@@ -43,7 +47,6 @@
           <!-- <div class="adress"></div>
           <div class="for-map"></div> -->
         </div>
-        <button @click="showModal = false">Закрыть</button>
       </div>
     </div>
   </teleport>
@@ -76,13 +79,12 @@
       </div>
     </div>
   </teleport> -->
-
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
 const showModal = ref(false)
-const selectedEvent = ref(null as null|Event)
+const selectedEvent = ref(null as null | Event)
 
 interface Event {
   id: number;
@@ -98,7 +100,7 @@ interface Event {
 }
 
 // const event = ref({
-  //   id: 1,
+//   id: 1,
 //   photo: 'top-event.jpg',
 //   title: 'Code80',
 //   format: 'вечеринка',
@@ -118,6 +120,7 @@ const events = ref<Event[]>([
     date: new Date('2023-12-16T17:00:00'),
     location: 'nebar',
     age: 16,
+    description: 'Официальная страница https://t.me/traphouserussia',
   },
   {
     id: 2,
@@ -326,17 +329,77 @@ p::first-letter {
 }
 
 .modal-content {
-  width: 400px;
+  width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 4px;
+  padding: 40px;
+  background-color: #3a3a3a;
+  border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
+  position: relative;
+}
+
+.modal-content h1 {
+  text-transform: uppercase;
+}
+
+.event-info__name-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 10px 0 0 0;
+}
+
+.place-date-text-modal {
+  color: rgb(165, 165, 165);
 }
 
 .modal-content button {
   float: right;
   margin-top: 15px;
 }
+
+.center_area {
+  padding: 30px 0;
+  display: flex;
+  gap: 50px;
+  align-items: start;
+}
+
+.buy-tickets {
+  background-color: #bab9ff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: 'TT Norms Pro Black';
+  text-transform: uppercase
+}
+
+.area-descrip-and-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+.modal-close{
+  position: absolute;
+    right: 35px;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.modal-close::after,.modal-close::before{
+  position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 3px;
+    background: #bab9ff;
+}
+.modal-close:before {transform: rotate(45deg);}
+.modal-close:after {transform: rotate(-45deg);}
 </style>

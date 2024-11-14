@@ -7,10 +7,11 @@
           <Transition>
             <ul v-if="isMenuOpen === 'menu'" class="dropdown-list">
               <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" to="/" rel="nofollow">Регистрация</NuxtLink>
+                <NuxtLink class="dropdown-list__link" to="/registration" rel="nofollow">Регистрация
+                </NuxtLink>
               </li>
               <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" to="/" rel="nofollow">Личный кабинет</NuxtLink>
+                <NuxtLink class="dropdown-list__link" to="/" target="_blank" rel="nofollow">Личный кабинет</NuxtLink>
               </li>
               <li class="dropdown-list__item header__info">
                 <hr>
@@ -32,10 +33,10 @@
                 <NuxtLink class="dropdown-list__link" to="/afisha" target="_blank" rel="nofollow">Афиша</NuxtLink>
               </li>
               <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" to="/my-tickets">Мои билеты</NuxtLink>
+                <NuxtLink class="dropdown-list__link" target="_blank" to="/my-tickets" rel="nofollow" >Мои билеты</NuxtLink>
               </li>
               <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" to="/refund">Возврат билетов</NuxtLink>
+                <NuxtLink class="dropdown-list__link" target="_blank" to="/refund" rel="nofollow">Возврат билетов</NuxtLink>
               </li>
               <li class="dropdown-list__item header__info">
                 <hr>
@@ -68,11 +69,21 @@ const closeMenuOnClickOutside = (event) => {
   if (!event.target.closest('.to-customers')) {
     isMenuOpen.value = null
   }
-};
+}
+
+//! при переходе закрывался дропдаун
+// onMounted(() => {
+//   const menu = document.querySelector('.dropdown-list')
+//   const toggle = document.getElementById('to-customers__link')
+//   menu?.addEventListener('click', () => {
+//     toggle?.click()
+//   })
+// })
 
 onMounted(() => {
-  document.addEventListener('click', closeMenuOnClickOutside);
+  document.addEventListener('click', closeMenuOnClickOutside)
 })
+
 </script>
 
 <style scoped>

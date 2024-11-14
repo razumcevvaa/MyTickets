@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import DropDown from './DropDown.vue';
-
 
 </script>
 
@@ -56,37 +54,4 @@ nav {
   margin-right: 30px;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  transition: 0.5s ease-in-out;
-  margin-top: 15px;
-  border-radius: 20px;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 15px 13px;
-  display: block;
-  transition: 0.5s ease-in-out;
-  text-decoration: #bab9ff;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  text-decoration: underline #bab9ff;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 </style>

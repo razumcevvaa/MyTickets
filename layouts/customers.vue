@@ -1,6 +1,5 @@
 <template>
-    <NavBar/>
-    <p>customers</p>
+    <NavBarCustomers/>
     <slot/>
     <MainFooter/>
 </template>

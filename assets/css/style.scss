@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'TT Norms Pro Thin';
   src: url('/font/TTNormsPro-Thin.eot');
@@ -102,6 +101,7 @@ body {
 .text-decor {
   text-decoration: underline;
 }
+
 h2 {
   font-family: 'TT Norms Pro Medium';
   font-weight: 500;
@@ -119,10 +119,6 @@ h2 {
   background-color: rgb(31, 31, 31);
 }
 
-// .border-r {
-//   border: 1px solid rgb(237,242,24);
-// }
-
 .box-text {
   font-size: 18px;
 }
@@ -138,8 +134,8 @@ h2 {
   margin-top: 20px;
 }
 
-.swiper-slide{
+.swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
