@@ -140,11 +140,48 @@ h2 {
   align-items: center;
 }
 
-.hover-text-b{
+.hover-text-b {
   margin-bottom: 2px;
   -webkit-transition: 0.3s;
-    transition: 0.3s;
+  transition: 0.3s;
 }
+
 .hover-text-b:hover {
   border-bottom: 1px solid #bab9ff;
+}
+
+.header-page {
+  font-size: 30px;
+  text-align: center;
+  padding: 10px 0 20px 0;
+  text-transform: uppercase;
+}
+
+.form-block-input {
+  width: 300px;
+  background-color: #3a3a3a;
+  border: none;
+  border-bottom: 1px solid #bab9ff;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px 15px;
+}
+
+.form-block-label {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-family: 'TT Norms Pro Medium';
+}
+
+.main-button {
+  padding: 10px 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.color {
+  background-color: #bab9ff;
 }

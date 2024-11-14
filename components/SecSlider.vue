@@ -52,17 +52,5 @@
   gap: 30px;
 }
 
-.main-button {
-  padding: 10px 30px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  color: black;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.color {
-  background-color: #bab9ff;
-}
 
 </style>
