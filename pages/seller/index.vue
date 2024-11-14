@@ -18,39 +18,16 @@
       <div class="box-button">
         <a class="main-button font-button" href="/">Продавать</a>
         <NuxtLink to="/afisha" class="main-button font-button color">Купить билет</NuxtLink>
-        <NuxtLink to="/seller" class="main-button font-button color">seller</NuxtLink>
       </div>
     </div>
   </AutoSlider>
 </template>
 
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-import { Autoplay } from 'swiper/modules'
 
-const modules = [Autoplay]
-</script>
-
-<script lang="ts">
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  }
-}
 </script>
 
 <style scoped>
-.div-slider {
-  width: 75%;
-  display: flex;
-  align-items: end;
-  background-image: url(/mainSlider.jpg);
-  background-size: cover;
-}
 
 .text-slider {
   display: block;

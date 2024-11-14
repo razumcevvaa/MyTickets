@@ -9,7 +9,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// переделать фото в ссылку на евент конкретный
+</script>
 
 <style scoped>
 .box-top {

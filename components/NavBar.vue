@@ -9,10 +9,10 @@
       <DropDown/>
     </div>
     <div class="menu-login">
-      <NuxtLink class="hover-text-d" to="/">Возможности</NuxtLink>
-      <NuxtLink class="hover-text-d" to="/">Стоимость</NuxtLink>
-      <NuxtLink class="hover-text-d" to="/">Помощь</NuxtLink>
-      <NuxtLink class="hover-text-d" to="/">Обучение</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/">Возможности</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/">Стоимость</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/">Помощь</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/">Обучение</NuxtLink>
       <NuxtLink href="/"><img class="login-nav-mini" src="/login.png" alt="login"></NuxtLink>
       <!-- cтраница с регистрацией -->
       <!--переключатель -->
@@ -37,9 +37,6 @@ nav {
   align-items: center;
 }
 
-.hover-text-d:hover {
-  text-decoration: underline #bab9ff;
-}
 
 /* background-color: #d0d0d0; */
 

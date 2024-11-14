@@ -2,7 +2,7 @@
   <div class="box-principle border-r ">
     <div class="principle-item">
       <img class="img-login" src="/login.png" alt="login">
-      <p>Зарегистрироваться</p>
+      <p>Зарегистрируйся</p>
     </div>
     <div class="line"></div>
     <div class="principle-item">

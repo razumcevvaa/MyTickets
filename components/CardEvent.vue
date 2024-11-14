@@ -51,36 +51,9 @@
     </div>
   </teleport>
 
-
-  <!-- <teleport to="body">
-    <div v-if="showModal" class="modal-mask" @click.self="showModal = false" :key="event.id">
-      id или key чтобы связаать модал окно и открывать по отдельности-->
-  <!-- <div class="modal-content">
-        <h1>{{ event.title }}</h1>
-        <div class="event-info">
-          <p class="event-date place-date-text">{{ event.date }}</p>
-          <span class="event-info__name-block">
-            <p class="place-date-text">{{ event.location }}</p>
-            <span class="age">{{ event.age }}</span>
-          </span>
-        </div>
-        <div class="center_area">
-          <img :class="{ 'dimmed': isHovered }" :src="event.photo" alt="Event Photo" class="event-photo" />
-          <div class="description-text">
-            {{ event.description}}
-          </div>
-        </div>
-        <div class="bottom_area">
-          <h2>{{ event.location }}</h2>
-          <div class="adress"></div>
-          <div class="for-map"></div>
-        </div>
-        <button @click="showModal = false">Закрыть</button>
-      </div>
-    </div>
-  </teleport> -->
 </template>
 <script setup lang="ts">
+import { watch } from 'vue';
 import { ref, onMounted } from 'vue'
 
 const showModal = ref(false)
@@ -98,6 +71,14 @@ interface Event {
   age?: number,
   description?: string,
 }
+
+watch(()=>showModal.value, ()=>{
+  if (showModal.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+})
 
 // const event = ref({
 //   id: 1,
@@ -315,6 +296,7 @@ p::first-letter {
 }
 
 .modal-mask {
+  padding: 100px;
   position: absolute;
   z-index: 9998;
   top: 0;
@@ -324,8 +306,9 @@ p::first-letter {
   background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
   transition: opacity .3s ease;
+  overflow-y: scroll;
+    overflow-x: auto;
 }
 
 .modal-content {

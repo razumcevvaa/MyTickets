@@ -139,3 +139,12 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+.hover-text-b{
+  margin-bottom: 2px;
+  -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+.hover-text-b:hover {
+  border-bottom: 1px solid #bab9ff;
+}

@@ -54,8 +54,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 const isMenuOpen = ref(null)
+
+const route = useRoute()
 
 const toggleMenu = (menu) => {
   if (isMenuOpen.value === menu) {
@@ -71,14 +74,9 @@ const closeMenuOnClickOutside = (event) => {
   }
 }
 
-//! при переходе закрывался дропдаун
-// onMounted(() => {
-//   const menu = document.querySelector('.dropdown-list')
-//   const toggle = document.getElementById('to-customers__link')
-//   menu?.addEventListener('click', () => {
-//     toggle?.click()
-//   })
-// })
+watch(()=>route.path,(newPath)=>{
+  isMenuOpen.value = null
+})
 
 onMounted(() => {
   document.addEventListener('click', closeMenuOnClickOutside)
