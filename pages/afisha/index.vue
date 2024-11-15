@@ -1,11 +1,16 @@
 <template>
   <h1 class="header-page">Мероприятия в <span>Сочи</span></h1>
   <div class="box-event">
-  <CardEvent/>
+    <CardEvent  v-for="event in eventsStore.events" :event="event" :key="event.id"/>
   </div>
+
+  <EventModal/>
 </template>
 
 <script setup>
+import {useEvents} from '~/stores/events'
+const eventsStore = useEvents()
+
 definePageMeta({
   layout: 'customers'
 })

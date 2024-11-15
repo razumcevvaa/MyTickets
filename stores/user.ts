@@ -30,7 +30,7 @@ export const useUser = defineStore('user', () => {
   const logIn = (login: string, pass: string) => {
     const tempUser = users.find((el) => el.login == login)
     if (tempUser && tempUser.password == pass) {
-      user.value = { login, email: tempUser.email, name: tempUser.name, login: tempUser.login, city: tempUser.city, eventType: tempUser.eventType, avgVisitors: tempUser.avgVisitors }
+      // users.value = { login, email: tempUser.email, name: tempUser.name, login: tempUser.login, city: tempUser.city, eventType: tempUser.eventType, avgVisitors: tempUser.avgVisitors }
       localStorage.user = JSON.stringify(user.value)
       return ''
     } else {

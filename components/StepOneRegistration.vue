@@ -4,7 +4,7 @@
     <h2>Шаг 1</h2>
     <form class="form-email" @submit.prevent="nextStep">
       <div class="form-block">
-        <label class="form-block-label" for="email">email:</label>
+        <label class="form-block-label" for="email">Email:</label>
         <input v-model="email" class="form-block-input" type="email" name="email" id="email"
           placeholder="Введите ваш email" autofocus required>
         <input type="submit" value="Далее" class="main-button color">

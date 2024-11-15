@@ -19,8 +19,8 @@
         <div class="form-block">
           <label class="form-block-label" for="password">Пароль<span>*</span></label>
           <div style="position: relative">
-            <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input"
-              name="password" placeholder="Придумайте себе пароль" required>
+            <!-- <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input"
+              name="password" placeholder="Придумайте себе пароль" required> -->
             <!-- <span class="fa fa-fw fa-eye field-icon toggle-password" @click="showPassword = !showPassword"></span> -->
           </div>
         </div>
