@@ -246,6 +246,7 @@ p::first-letter {
   font-size: 20px;
   background-color: #bab9ff;
   padding: 6px;
+  color: black;
   font-family: 'TT Norms Pro Black';
 }
 
@@ -261,7 +262,7 @@ p::first-letter {
 }
 
 .btn-buy {
-  background-color: black;
+  color: black;
   padding: 10px 30px;
   border-radius: 20px;
   position: absolute;
