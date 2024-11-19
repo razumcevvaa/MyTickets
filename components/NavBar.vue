@@ -13,7 +13,7 @@
       <NuxtLink class="hover-text-b" to="/">Стоимость</NuxtLink>
       <NuxtLink class="hover-text-b" to="/">Помощь</NuxtLink>
       <NuxtLink class="hover-text-b" to="/">Обучение</NuxtLink>
-      <NuxtLink href="/"><img class="login-nav-mini" src="/login.png" alt="login"></NuxtLink>
+      <NuxtLink to="/lk" rel="nofollow"><img class="login-nav-mini" src="/login.png" alt="login"></NuxtLink>
       <!-- cтраница с регистрацией -->
       <!--переключатель -->
     </div>

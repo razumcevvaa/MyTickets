@@ -3,7 +3,7 @@
     delay: 5000,
     disableOnInteraction: false,
   }" :modules="modules" class="mySwiper">
-      <SwiperSlide class="carusel-img1"></SwiperSlide>
+    <SwiperSlide class="carusel-img1"></SwiperSlide>
     <SwiperSlide class="carusel-img2"></SwiperSlide>
     <SwiperSlide class="carusel-img1"></SwiperSlide>
     <SwiperSlide class="carusel-img2"></SwiperSlide>
@@ -32,13 +32,18 @@ export default {
 
 <style scoped>
 .mySwiper{
-width: 1000px;
-height: 600px;
+width: 100%;
+height: 100%;
+border-radius: 20px;
 }
 .carusel-img1 {
  background-image: url(/carusel1.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 .carusel-img2 {
  background-image: url(/carusel2.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 </style>

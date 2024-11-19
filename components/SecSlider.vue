@@ -1,14 +1,18 @@
 <template>
   <div class="div-slider border-r">
-    <div class="text-slider">
-      <h1 class="slider-title">Сервис продажи <br> билетов</h1>
-      <strong class="slider-strong">С самой маленькой комиссией для продавцов</strong>
-      <div class="box-button">
-        <a class="main-button font-button" href="/">Продавать</a>
-        <NuxtLink to="/afisha" class="main-button font-button color" >Купить билет</NuxtLink>
-        <NuxtLink to="/seller" class="main-button font-button color" >seller</NuxtLink>
+    <div style="position: relative;">
+      <div class="text-slider">
+        <h1 class="slider-title">Сервис продажи <br> билетов</h1>
+        <strong class="slider-strong">С самой маленькой комиссией для продавцов</strong>
+        <div class="box-button">
+          <NuxtLink class="main-button font-button" to="/registration" rel="nofollow">Продавать
+          </NuxtLink>
+          <NuxtLink to="/afisha" class="main-button font-button color">Купить билет</NuxtLink>
+        </div>
       </div>
     </div>
+    <AutoSlider>
+    </AutoSlider>
   </div>
 </template>
 <script setup lang="ts">
@@ -19,16 +23,20 @@
   width: 75%;
   display: flex;
   align-items: end;
-  background-image: url(/mainSlider.jpg);
-  background-size: cover;
 }
 
 .text-slider {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 800px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: end;
   gap: 10px;
+  z-index: 100;
 }
 
 .slider-title {
@@ -51,6 +59,4 @@
   display: flex;
   gap: 30px;
 }
-
-
 </style>

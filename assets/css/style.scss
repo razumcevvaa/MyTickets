@@ -93,6 +93,13 @@
   font-style: normal;
 }
 
+body { 
+  -ms-user-select: none; 
+  -moz-user-select: none; 
+  -webkit-user-select: none; 
+  user-select: none; 
+}
+
 body {
   padding: 20px 50px 30px 50px;
   background-color: rgb(22, 22, 22);

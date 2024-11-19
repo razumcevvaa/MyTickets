@@ -11,7 +11,7 @@
                 </NuxtLink>
               </li>
               <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" to="/" target="_blank" rel="nofollow">Личный кабинет</NuxtLink>
+                <NuxtLink class="dropdown-list__link" to="/lk" rel="nofollow">Личный кабинет</NuxtLink>
               </li>
               <li class="dropdown-list__item header__info">
                 <hr>

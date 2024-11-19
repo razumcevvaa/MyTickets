@@ -56,7 +56,7 @@ watch(()=>eventsStore.showModal, ()=>{
 <style scoped>
 .modal-mask {
   padding: 100px;
-  position: absolute;
+  position: fixed;
   z-index: 9998;
   top: 0;
   bottom: 0;
@@ -114,7 +114,8 @@ watch(()=>eventsStore.showModal, ()=>{
   padding: 10px 20px;
   border-radius: 20px;
   font-family: 'TT Norms Pro Black';
-  text-transform: uppercase
+  text-transform: uppercase;
+  color: black;
 }
 
 .area-descrip-and-btn {

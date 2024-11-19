@@ -19,8 +19,8 @@
     <h2>Работай с любого устройства</h2>
     <h3>в любое время вместе с нами</h3>
   </div>
-   <NuxtLink class="start-buttton font-button" to="/">Начать</NuxtLink>
-   <!-- cтраница с регистрацией -->
+   <NuxtLink class="start-buttton font-button" to="/registration" rel="nofollow">Начать
+          </NuxtLink>
 </div>
 </template>
 
