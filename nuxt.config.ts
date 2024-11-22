@@ -12,10 +12,17 @@ export default defineNuxtConfig({
         // { name: 'favicon', content: '/logo.svg' }
       ],
       link: [
-        { rel: 'icon', href:'http://localhost:3000/MyTickets' }
+        { rel: 'icon', href: 'http://localhost:3000/MyTickets' }
       ],
       titleTemplate: '%s - Site Title',
     }
+  },
+  css: ['~/assets/css/style.scss'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
 
   nitro: {
@@ -45,5 +52,16 @@ export default defineNuxtConfig({
     autoSetupPrisma: true
   },
 
-  modules: ['@pinia/nuxt', '@prisma/nuxt']
+  modules: ['@pinia/nuxt', '@prisma/nuxt', '@nuxtjs/tailwindcss', 'shadcn-nuxt'],
+  shadcn: {
+    /**
+     * Prefix for all the imported component
+     */
+    prefix: '',
+    /**
+     * Directory that the component lives in.
+     * @default "./components/ui"
+     */
+    componentDir: './components/ui'
+  }
 })

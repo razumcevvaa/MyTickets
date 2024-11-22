@@ -19,9 +19,11 @@
         <div class="form-block">
           <label class="form-block-label" for="password">Пароль<span>*</span></label>
           <div style="position: relative">
-            <!-- <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input"
-              name="password" placeholder="Придумайте себе пароль" required> -->
-            <!-- <span class="fa fa-fw fa-eye field-icon toggle-password" @click="showPassword = !showPassword"></span> -->
+            <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
+              name="password" placeholder="Придумайте себе пароль" required autocomplete="off">
+            <span class="fa-fw" @click="showPassword = !showPassword"><img
+                :src="showPassword ? '/open-eye.png' : '/close-eye.png'" alt="">
+            </span>
           </div>
         </div>
       </div>
@@ -50,7 +52,8 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs, computed } from 'vue'
 
-// const showPassword = ref(false)
+const showPassword = ref(false)
+
 const emit = defineEmits(['next'])
 const name = ref('')
 const login = ref('')
@@ -71,7 +74,6 @@ interface FormData {
   },
 }
 const state = reactive({
-  step: 1 as number,
   showPassword: false as boolean,
   name: '' as string,
   login: '' as string,
@@ -85,7 +87,6 @@ const state = reactive({
 
 
 // defineEmits(['next'])
-
 // const nextStep = () => {
 //   if (email.value !== '') {
 //     emit('next', { step: 3, data: { email: email.value } });
@@ -94,6 +95,12 @@ const state = reactive({
 </script>
 
 <style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -107,9 +114,19 @@ const state = reactive({
   gap: 50px;
 }
 
+.psw-inp {
+  position: relative;
+}
+
+.fa-fw {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
 span {
   color: red;
-  font-size: 20px;
 }
 
 .form-block {
@@ -127,4 +144,5 @@ span {
   font-size: 16px;
   cursor: pointer;
   margin: 30px 0 20px 0;
-}</style>
+}
+</style>

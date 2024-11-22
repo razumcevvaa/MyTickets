@@ -122,6 +122,7 @@ onMounted(() => {
   content: "";
   position: absolute;
   right: -19%;
+  bottom: 11px;
   width: 10px;
   height: 10px;
   border: solid #bab9ff;

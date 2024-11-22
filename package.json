@@ -10,19 +10,30 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
     "@pinia/nuxt": "^0.5.5",
     "@prisma/nuxt": "^0.0.35",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.460.0",
     "md5": "^2.3.0",
     "nuxt": "^3.13.0",
+    "radix-vue": "^1.9.10",
     "sass": "1.78",
+    "shadcn-nuxt": "^0.11.3",
     "swiper": "^11.1.14",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@prisma/client": "^5.22.0",
     "@types/md5": "^2.3.5",
-    "prisma": "^5.22.0"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.15"
   },
   "overrides": {
     "vue": "latest"

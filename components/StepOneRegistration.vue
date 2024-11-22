@@ -1,7 +1,8 @@
 
 <template>
-    <h1 class="header-page">Регистрация</h1>
-    <h2>Шаг 1</h2>
+  <div class="box-step border-r">
+  <h1 class="header-page">Регистрация</h1>
+    <h2 class="text-center">Шаг 1</h2>
     <form class="form-email" @submit.prevent="nextStep">
       <div class="form-block">
         <label class="form-block-label" for="email">Email:</label>
@@ -10,6 +11,7 @@
         <input type="submit" value="Далее" class="main-button color">
       </div>
     </form>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -26,7 +28,10 @@ const nextStep = () => {
 </script>
 
 <style scoped>
-
+.box-step {
+  padding: 20px;
+  background-color: rgb(31, 31, 31);
+}
 .form-block {
   padding: 30px;
   display: flex;
