@@ -24,7 +24,7 @@
       <PinInput id="pin-input" v-model="value" placeholder="○" @complete="handleComplete">
         <PinInputGroup class="gap-1">
           <template v-for="(id, index) in 6" :key="id">
-            <PinInputInput class="rounded-md border" :index="index" />
+            <PinInputInput style="color: black;" class="rounded-md border" :index="index" />
             <template v-if="index !== 5">
               <PinInputSeparator />
             </template>
@@ -36,13 +36,13 @@
 </template>
 
 <script setup lang="ts">
-import {
-  PinInput,
-  PinInputGroup,
-  PinInputInput,
-  PinInputSeparator,
-} from '@/components/ui/pin-input'
-import { ref } from 'vue'
+// import {
+//   PinInput,
+//   PinInputGroup,
+//   PinInputInput,
+//   PinInputSeparator,
+// } from '@/components/ui/pin-input'
+// import { ref } from 'vue'
 
 const value = ref<string[]>([])
 const handleComplete = (e: string[]) => alert(e.join(''))

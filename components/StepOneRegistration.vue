@@ -3,7 +3,7 @@
   <div class="box-step border-r">
   <h1 class="header-page">Регистрация</h1>
     <h2 class="text-center">Шаг 1</h2>
-    <form class="form-email" @submit.prevent="nextStep">
+    <form class="form-email" method="post" @submit.prevent="nextStep">
       <div class="form-block">
         <label class="form-block-label" for="email">Email:</label>
         <input v-model="email" class="form-block-input" type="email" name="email" id="email"
@@ -20,7 +20,8 @@ import { ref, defineEmits} from 'vue'
 const emit = defineEmits(['next'])
 const email = ref('')
 
-const nextStep = () => {
+const nextStep = (e:Event) => {
+  e.preventDefault()
   if (email.value !== '') {
     emit('next', { data: { username: email.value } });
   }
