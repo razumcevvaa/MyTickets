@@ -1,7 +1,7 @@
 <template>
   <div class="container border-r">
     <h1 class="header-page">Подтверждение</h1>
-    <form class="form-email" @submit.prevent="nextStep">
+    <!-- <form class="form-email" @submit.prevent="nextStep">
           <div class="form-block">
             <label class="form-block-label" for="email"></label>
             <div>
@@ -16,14 +16,36 @@
             </div>
             <input type="submit" value="Подтвердить" class="main-button color">
           </div>
-        </form>
+        </form> -->
+
+
+
+    <div>
+      <PinInput id="pin-input" v-model="value" placeholder="○" @complete="handleComplete">
+        <PinInputGroup class="gap-1">
+          <template v-for="(id, index) in 6" :key="id">
+            <PinInputInput class="rounded-md border" :index="index" />
+            <template v-if="index !== 5">
+              <PinInputSeparator />
+            </template>
+          </template>
+        </PinInputGroup>
+      </PinInput>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const code = ref(['','','','','',''])
-const inputs = ref([])
+import {
+  PinInput,
+  PinInputGroup,
+  PinInputInput,
+  PinInputSeparator,
+} from '@/components/ui/pin-input'
+import { ref } from 'vue'
 
+const value = ref<string[]>([])
+const handleComplete = (e: string[]) => alert(e.join(''))
 </script>
 
 <style scoped>
@@ -32,12 +54,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-}
+} 
+
 .confirm {
   background-color: transparent;
   border-radius: 10px;
@@ -47,8 +71,9 @@ input::-webkit-inner-spin-button {
   color: white;
   font-size: 20px;
   text-align: center;
-border: 1px solid #bab9ff;
+  border: 1px solid #bab9ff;
 }
+
 .main-button {
   border: none;
   text-transform: uppercase;
@@ -57,11 +82,11 @@ border: 1px solid #bab9ff;
   cursor: pointer;
   margin: 20px 0 20px 0;
 }
+
 .form-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
-
 </style>

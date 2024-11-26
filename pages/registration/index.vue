@@ -2,8 +2,8 @@
 <template>
   <section class="registration">
     <StepOneRegistration v-if="step===1" @next="handleNextStep"/>
-    <!-- <EmailConfirmation v-else-if="step === 2"/> -->
-    <StepTwoRegistration v-else-if="step === 2"/>
+    <EmailConfirmation v-else-if="step === 2"/>
+    <!-- <StepTwoRegistration v-else-if="step === 2"/> -->
     <h3 v-show="error">{{ error }}</h3>
   </section>
 </template>

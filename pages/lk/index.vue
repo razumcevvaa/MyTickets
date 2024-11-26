@@ -2,10 +2,8 @@
   <div>
     <h1>Личный кабинетттт</h1>
     <h2>неужелимиии</h2>
-    <div>
-    <Button>Click me</Button>
   </div>
-  </div>
+  <PinInput></PinInput>
 </template>
 
 <script setup lang="ts">

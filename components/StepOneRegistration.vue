@@ -47,4 +47,7 @@ const nextStep = () => {
   font-size: 16px;
   cursor: pointer;
 }
+.text-center {
+  text-align: center;
+}
 </style>

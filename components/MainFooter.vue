@@ -38,7 +38,7 @@
               <a class="mail-a hover-text-d" href="/">support@passtickets.ru</a>
             </div>
           </div>
-          <div class="flex" style="margin: 20px 0 0 80px;">
+          <div style="margin: 20px 0 0 80px;display: flex;">
             <a href="/"><img class="socialnet" src="/vk.png" alt="vk"></a>
             <a href="/"><img class="socialnet" src="/telegram.png" alt="tg"></a>
           </div>
