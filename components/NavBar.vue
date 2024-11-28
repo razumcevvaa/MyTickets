@@ -6,10 +6,10 @@
         <!-- <div class="for-mobile"><img src="" alt="tickets"></div> -->
         PASSTICKETS
       </NuxtLink>
-      <DropDown/>
+      <DropDown />
     </div>
     <div class="menu-login">
-      <NuxtLink class="hover-text-b" to="/">Возможности</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/info/possibilities">Возможности</NuxtLink>
       <NuxtLink class="hover-text-b" to="/">Стоимость</NuxtLink>
       <NuxtLink class="hover-text-b" to="/">Помощь</NuxtLink>
       <NuxtLink class="hover-text-b" to="/">Обучение</NuxtLink>
@@ -50,5 +50,4 @@ nav {
 .logo {
   margin-right: 30px;
 }
-
 </style>

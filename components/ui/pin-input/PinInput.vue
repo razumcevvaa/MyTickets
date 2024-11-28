@@ -17,7 +17,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
-  <PinInputRoot v-bind="forwarded" :class="cn('tailwind.config.jsflex tailwind.config.jsgap-2 tailwind.config.jsitems-center', props.class)">
+  <PinInputRoot v-bind="forwarded" :class="cn('flex gap-2 items-center', props.class)">
     <slot />
   </PinInputRoot>
 </template>

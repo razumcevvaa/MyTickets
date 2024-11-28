@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       titleTemplate: '%s - Site Title',
     }
   },
-  css: ['~/assets/css/style.scss'],
+  css: ['~/assets/css/tailwind.css'],
   postcss: {
     plugins: {
       tailwindcss: {},

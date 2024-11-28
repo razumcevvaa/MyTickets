@@ -93,16 +93,16 @@
   font-style: normal;
 }
 
-body { 
-  -ms-user-select: none; 
-  -moz-user-select: none; 
-  -webkit-user-select: none; 
-  user-select: none; 
+body {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 body {
   padding: 20px 50px 30px 50px;
-  background-color: rgb(22, 22, 22);
+  background-color: hsl(0, 0%, 9%);
 }
 
 .text-decor {
@@ -169,7 +169,7 @@ h2 {
   width: 300px;
   background-color: #3a3a3a;
   border: none;
-  border-bottom: 1px solid #bab9ff;
+  // border-bottom: 1px solid #bab9ff;
   border-radius: 20px;
   font-size: 18px;
   padding: 10px 15px;
@@ -191,4 +191,30 @@ h2 {
 
 .color {
   background-color: #bab9ff;
+}
+
+.psw-inp {
+  position: relative;
+}
+
+.fa-fw {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.padd-lk {
+  padding: 20px;
+}
+
+.padd-lk-2 {
+  padding: 0;
+}
+
+.container-link {
+  height: 100vh;
+  background-color: #6a6a6a;
+  width: 300px;
+  position: absolute;
 }

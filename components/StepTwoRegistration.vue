@@ -114,17 +114,6 @@ input::-webkit-inner-spin-button {
   gap: 50px;
 }
 
-.psw-inp {
-  position: relative;
-}
-
-.fa-fw {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  cursor: pointer;
-}
-
 span {
   color: red;
 }

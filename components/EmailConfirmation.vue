@@ -1,5 +1,5 @@
 <template>
-  <div class="container border-r">
+  <div class="container-m border-r">
     <h1 class="header-page">Подтверждение</h1>
     <!-- <form class="form-email" @submit.prevent="nextStep">
           <div class="form-block">
@@ -55,7 +55,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.container {
+.container-m {
   display: flex;
   flex-direction: column;
   align-items: center;

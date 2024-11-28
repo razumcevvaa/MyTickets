@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0, 0%, 9%;
     --foreground: 222.2 84% 4.9%;
 
     --muted: 210 40% 96.1%;
@@ -70,9 +70,10 @@
 
 @layer base {
   * {
-    @apply tailwind.config.jsborder-border;
-  }
-  body {
-    @apply tailwind.config.jsbg-background tailwind.config.jstext-foreground;
-  }
+    @apply border-border;
+   }
+   body {
+    @apply bg-background text-foreground;
+   }
+  
 }
