@@ -1,8 +1,8 @@
 <template>
   <div class="container-display">
     <h1>Личный кабинетттт</h1>
+    <NuxtLink to="/lk/lkLogin">Войти в личный кабинет</NuxtLink>
   </div>
-  <NuxtLink to="/lk/lkLogin">Войти в личный кабинет</NuxtLink>
 </template>
 
 <script setup lang="ts">
