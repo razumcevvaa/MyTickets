@@ -10,9 +10,9 @@
     </div>
     <div class="menu-login">
       <NuxtLink class="hover-text-b" to="/info/possibilities">Возможности</NuxtLink>
-      <NuxtLink class="hover-text-b" to="/">Стоимость</NuxtLink>
-      <NuxtLink class="hover-text-b" to="/">Помощь</NuxtLink>
-      <NuxtLink class="hover-text-b" to="/">Обучение</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/info/price">Стоимость</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/info/support">Помощь</NuxtLink>
+      <NuxtLink class="hover-text-b" to="/info/education">Обучение</NuxtLink>
       <NuxtLink to="/lk" rel="nofollow"><img class="login-nav-mini" src="/login.png" alt="login"></NuxtLink>
       <!-- cтраница с регистрацией -->
       <!--переключатель -->

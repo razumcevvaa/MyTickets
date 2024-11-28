@@ -14,14 +14,22 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  posts Post[]
+  posts Event[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id])
+model Event {
+  id          Int     @id @default(autoincrement())
+  photo       String
+  title       String
+  format      String
+  price       String
+  date        Date
+  location    String
+  isHovered   Boolean
+  age         number
+  description String
+  content     String
+  published   Boolean @default(false)
+  authorId    Int
+  author      User    @relation(fields: [authorId], references: [id])
 }

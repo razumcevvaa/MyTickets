@@ -4,7 +4,7 @@
       <div>
         <h3>Основное</h3>
       </div>
-      <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Мероприятия</NuxtLink>
+      <NuxtLink class="n-link flex box-link" to="/lk/myEvents"><img src="/buyers.png" alt="icon">Мероприятия</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Заказы</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Покупатели</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Статистика</NuxtLink>
