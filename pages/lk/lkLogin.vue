@@ -30,7 +30,7 @@
 const showPassword = ref(false)
 const password = ref('')
 definePageMeta({
-  layout: 'lk'
+  layout: 'login'
 })
 useHead({
   bodyAttrs: {

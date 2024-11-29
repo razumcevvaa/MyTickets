@@ -4,7 +4,7 @@
       <div>
         <h3>Основное</h3>
       </div>
-      <NuxtLink class="n-link flex box-link" to="/lk/myEvents"><img src="/buyers.png" alt="icon">Мероприятия</NuxtLink>
+      <NuxtLink class="n-link flex box-link" :class="route.path=='/lk/myEvents'?'activeTab':''" to="/lk/myEvents"><img src="/buyers.png" alt="icon">Мероприятия</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Заказы</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Покупатели</NuxtLink>
       <NuxtLink class="n-link flex box-link" to="/"><img src="/buyers.png" alt="icon">Статистика</NuxtLink>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-
+const route = useRoute()
 </script>
 
 <style scoped>
@@ -49,7 +49,10 @@ h3 {
   font-size: 25px;
   padding-left: 20px;
 }
-
+.activeTab {
+  border-left: #ac3333 10px solid;
+  transition: border 1s ease-in;
+}
 .n-link {
   /* padding: 10px 140px 10px 15px; */
   font-size: 25px;

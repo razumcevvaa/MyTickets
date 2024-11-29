@@ -8,7 +8,14 @@
 </template>
 
 <script setap lang="ts">
-
+definePageMeta({
+  layout: 'lk'
+})
+useHead({
+  bodyAttrs: {
+    class: 'padd-lk-2'
+  }
+})
 </script>
 
 <style scoped>

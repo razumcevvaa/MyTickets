@@ -20,8 +20,5 @@ useHead({
 // })
 </script>
 <style scoped>
-.container-display {
-  position: absolute;
-  left: 300px;
-}
+
 </style>
