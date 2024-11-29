@@ -1,12 +1,11 @@
 <template>
   <div class="container-display">
     <h1>Личный кабинетттт</h1>
-    <NuxtLink to="/lk/lkLogin">Войти в личный кабинет</NuxtLink>
+    <NuxtLink to="/lk/lk_login">Войти в личный кабинет</NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
-
 definePageMeta({
   layout: 'lk'
 })
