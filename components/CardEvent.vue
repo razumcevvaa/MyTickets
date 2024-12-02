@@ -18,10 +18,7 @@
 </template>
 <script setup lang="ts">
 import {useEvents, type Event} from '~/stores/events'
-
-
 defineProps<{event: Event}>()
-
 const eventsStore = useEvents()
 
 // function formatDate(date: Date) {
@@ -166,7 +163,4 @@ p::first-letter {
   background-color: #bab9ff;
 } */
 
-.dimmed {
-  filter: brightness(50%);
-}
 </style>

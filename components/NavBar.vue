@@ -37,9 +37,7 @@ nav {
   align-items: center;
 }
 
-
 /* background-color: #d0d0d0; */
-
 .menu-login,
 .menu {
   display: flex;

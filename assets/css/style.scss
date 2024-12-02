@@ -213,11 +213,14 @@ h2 {
 }
 
 .container-link {
-  height: 100vh;
   background-color: #6a6a6a;
   width: 300px;
 }
 
 .container-link a {
   transition: all 0.3s ease-in;
+}
+
+.dimmed {
+  filter: brightness(50%);
 }
