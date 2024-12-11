@@ -20,21 +20,20 @@
     </div>
     <h1 class="text-center text-4xl uppercase">Все мероприятия</h1>
     <div class="all-event">
-      <NuxtLink  @mouseenter="event.isHovered = true"
-      @mouseleave="event.isHovered = false" v-for="event in eventsStore.events" :event="event" :key="event.id" to="/" class="event"><img
-          :src="'/' + event.photo" :class="{ 'dimmed': event.isHovered }"  alt="Event Photo" class="event border-r"></NuxtLink>
-         <!-- <button v-if="event.isHovered" class="btn-buy">Редактировать</button> -->
+      <NuxtLink  @mouseenter="hoveredEvent = event"
+      @mouseleave="hoveredEvent = null" v-for="event in eventsStore.events" :event="event" :key="event.id" to="/" class="event"><img
+          :src="'/' + event.photo" :class="{ 'dimmed': hoveredEvent == event }"  alt="Event Photo" class="event border-r">
+          <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
+        </NuxtLink>
       <NuxtLink to="/lk/my_event_create" class="event e-create border-r"><span class="text-7xl">+</span></NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// import {useEvents, type Event} from '~/stores/events'
-// defineProps<{event: Event}>()
-// const eventsStore = useEvents()
-import { useEvents } from '~/stores/events'
+import {useEvents, type Event} from '~/stores/events'
 const eventsStore = useEvents()
+const hoveredEvent = ref(null as null|Event)
 
 definePageMeta({
   layout: 'lk'

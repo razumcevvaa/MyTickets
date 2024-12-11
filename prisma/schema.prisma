@@ -7,14 +7,14 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
-  posts Event[]
+  events Event[]
 }
 
 model Event {
@@ -23,10 +23,9 @@ model Event {
   title       String
   format      String
   price       String
-  date        Date
+  date        DateTime
   location    String
-  isHovered   Boolean
-  age         number
+  age         Int
   description String
   content     String
   published   Boolean @default(false)
