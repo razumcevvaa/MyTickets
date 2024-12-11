@@ -2,8 +2,8 @@
 <template>
   <section class="registration">
     <StepOneRegistration v-if="step===1" @next="handleNextStep"/>
-    <EmailConfirmation v-else-if="step === 2"/>
-    <!-- <StepTwoRegistration v-else-if="step === 2"/> -->
+    <EmailConfirmation v-else-if="step === 2" @next="handleNextStep"/>
+    <StepTwoRegistration v-else-if="step === 3" @next="handleNextStep"/>
     <h3 v-show="error">{{ error }}</h3>
   </section>
 </template>
@@ -14,7 +14,9 @@ import { ref } from 'vue'
 const step = ref(1)
 const error = ref('')
 const handleNextStep = () => {
-  step.value = 2
+  if (step.value < 3) {
+    step.value++
+  }
 }
 
 </script>

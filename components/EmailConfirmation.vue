@@ -1,25 +1,6 @@
 <template>
   <div class="container-m border-r">
     <h1 class="header-page">Подтверждение</h1>
-    <!-- <form class="form-email" @submit.prevent="nextStep">
-          <div class="form-block">
-            <label class="form-block-label" for="email"></label>
-            <div>
-              <input class="confirm"
-          v-for="n in 6"
-          :key="n"
-          type="number"
-          maxlength="1"
-          min="0"
-          max="9"
-        />
-            </div>
-            <input type="submit" value="Подтвердить" class="main-button color">
-          </div>
-        </form> -->
-
-
-
     <div>
       <PinInput id="pin-input" v-model="value" placeholder="○" @complete="handleComplete">
         <PinInputGroup class="gap-1">
@@ -36,16 +17,16 @@
 </template>
 
 <script setup lang="ts">
-// import {
-//   PinInput,
-//   PinInputGroup,
-//   PinInputInput,
-//   PinInputSeparator,
-// } from '@/components/ui/pin-input'
-// import { ref } from 'vue'
-
+import { ref, defineEmits } from 'vue'
+const emit = defineEmits(['next'])
 const value = ref<string[]>([])
-const handleComplete = (e: string[]) => alert(e.join(''))
+
+const handleComplete = (e: string[]) => {
+  emit('next', { step: 2, data: { code: value } })
+}
+
+//написать код только после которого можно пройти дальше и ошибку кот будет выводиться
+
 </script>
 
 <style scoped>
@@ -59,8 +40,8 @@ input::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-} 
+  padding: 100px 50px;
+}
 
 .confirm {
   background-color: transparent;

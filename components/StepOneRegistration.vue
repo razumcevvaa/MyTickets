@@ -30,7 +30,7 @@ const nextStep = (e:Event) => {
 
 <style scoped>
 .box-step {
-  padding: 20px;
+  padding: 100px 50px;
   background-color: rgb(31, 31, 31);
 }
 .form-block {

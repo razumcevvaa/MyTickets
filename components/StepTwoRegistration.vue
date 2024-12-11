@@ -1,4 +1,3 @@
-
 <template>
   <div class="container border-r">
     <h1 class="header-page">Регистрация</h1>
