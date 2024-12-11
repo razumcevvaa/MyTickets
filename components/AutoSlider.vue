@@ -31,19 +31,21 @@ export default {
 </script>
 
 <style scoped>
-.mySwiper{
-width: 100%;
-height: 100%;
-border-radius: 20px;
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
 }
+
 .carusel-img1 {
- background-image: url(/carusel1.jpg);
- background-repeat: no-repeat;
- background-size: cover;
+  background-image: url(/carusel1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .carusel-img2 {
- background-image: url(/carusel2.jpg);
- background-repeat: no-repeat;
- background-size: cover;
+  background-image: url(/carusel2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

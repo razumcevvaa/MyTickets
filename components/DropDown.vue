@@ -32,12 +32,6 @@
               <li class="dropdown-list__item">
                 <NuxtLink class="dropdown-list__link" to="/afisha" target="_blank" rel="nofollow">Афиша</NuxtLink>
               </li>
-              <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" target="_blank" to="/my-tickets" rel="nofollow" >Мои билеты</NuxtLink>
-              </li>
-              <li class="dropdown-list__item">
-                <NuxtLink class="dropdown-list__link" target="_blank" to="/refund" rel="nofollow">Возврат билетов</NuxtLink>
-              </li>
               <li class="dropdown-list__item header__info">
                 <hr>
                 <p class="header__support">

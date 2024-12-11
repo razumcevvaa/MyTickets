@@ -23,7 +23,7 @@
       <NuxtLink  @mouseenter="event.isHovered = true"
       @mouseleave="event.isHovered = false" v-for="event in eventsStore.events" :event="event" :key="event.id" to="/" class="event"><img
           :src="'/' + event.photo" :class="{ 'dimmed': event.isHovered }"  alt="Event Photo" class="event border-r"></NuxtLink>
-         <!-- <button v-if="event.isHovered" class="btn-buy">Купить</button> -->
+         <!-- <button v-if="event.isHovered" class="btn-buy">Редактировать</button> -->
       <NuxtLink to="/lk/my_event_create" class="event e-create border-r"><span class="text-7xl">+</span></NuxtLink>
     </div>
   </div>
@@ -125,7 +125,9 @@ span {
   width: 80px;
   height: 80px;
   justify-content: center;
-  align-items:  center;
   display: flex;
+}
+span:hover {
+opacity: 0.5;
 }
 </style>
