@@ -2,8 +2,8 @@
   <div class="layout-row">
     <div class="flex">
       <div>
-        <label for="text">Название</label>
-        <input class="form-block-input" type="text" name="text" v-model="eventsStore.newEvent.title" required>
+        <label for="text">Название @@@@@@</label>
+        <input class="form-block-input" type="text" name="text" v-model="eventsStore.newEvent.description" required>
       </div>
       <div>
         <label for="event-type">Выберите тип мероприятия:</label>

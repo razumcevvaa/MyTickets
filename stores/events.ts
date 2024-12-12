@@ -68,11 +68,12 @@ export const useEvents = defineStore('events', () => {
             age: 16,
         },
     ])
+    const newEvent = ref({} as Event)
     const showModal = ref(false)
     const selectedEvent = ref(null as null | Event)
     function showModalForEvent(event: Event) {
         selectedEvent.value = event
         showModal.value = true
     }
-    return {events, showModal, selectedEvent, showModalForEvent}
+    return {events, showModal, selectedEvent, showModalForEvent, newEvent}
 })

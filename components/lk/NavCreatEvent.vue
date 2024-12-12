@@ -1,14 +1,15 @@
 <template>
 <div class="nav-create">
-  <button>Основное</button>
-  <button>Дата</button>
+  <button @click="model='LkBasicCE'">Основное</button>
+  <button @click="model='LkBasicCE2'">Дата</button>
   <button>Билеты</button>
   <button>Инфо</button>
 </div>
 </template>
 
 <script setup lang="ts">
-
+const model = defineModel()
+model.value = 'LkBasicCE'
 </script>
 
 <style scoped>

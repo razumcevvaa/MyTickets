@@ -5,12 +5,23 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent/>
-    <LkBasicCE/>
+    <lkNavCreatEvent v-model="compName"/>
+    <component :is="comp"></component>
   </div>
+
+  {{ eventsStore.newEvent }}
 </template>
 
 <script setup lang="ts">
+import LkBasicCE from '~~/components/lk/BasicCE.vue'
+import LkBasicCE2 from '~~/components/lk/BasicCE2.vue'
+const eventsStore = useEvents()
+const compName=ref('LkBasicCE')
+const comp=shallowRef(LkBasicCE)
+const compObj = {
+  LkBasicCE, LkBasicCE2
+} as Record<string, any>
+
 definePageMeta({
   layout: 'lk'
 })
@@ -19,6 +30,10 @@ useHead({
     class: 'padd-lk-2'
   }
 })
+watchEffect(()=>{
+  comp.value = compObj[compName.value]
+})
+
 </script>
 
 <style scoped>
