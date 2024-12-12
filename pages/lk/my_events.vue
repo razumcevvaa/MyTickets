@@ -46,12 +46,6 @@ useHead({
 </script>
 
 <style scoped>
-.control-toolbar {
-  padding: 10px 50px;
-  background-color: #3a3a3a;
-  display: flex;
-  gap: 30px;
-}
 
 .all-event {
   display: flex;

@@ -124,6 +124,7 @@ nav {
 .city_selector:after {
   content: "";
   position: absolute;
+  bottom: 6px;
   right: -20px;
   width: 10px;
   height: 10px;

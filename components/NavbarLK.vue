@@ -2,7 +2,7 @@
   <div class="container-link">
     <div class="group">
       <div>
-        <h3>Основное</h3>
+        <h3 class="padd-5">Основное</h3>
       </div>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/my_events' ? 'activeTab' : ''"
         to="/lk/my_events"><img src="/events.png" alt="icon">Мероприятия</NuxtLink>
@@ -15,11 +15,12 @@
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/promocodes' ? 'activeTab' : ''"
         to="/lk/promocodes"><img src="/promo.png" alt="icon">Промокоды</NuxtLink>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/balance' ? 'activeTab' : ''" to="/lk/balance">
-        <img src="/balance.png" alt="icon">Баланс</NuxtLink>
+        <img src="/balance.png" alt="icon">Баланс
+      </NuxtLink>
     </div>
     <div class="group">
       <div>
-        <h3>Заказы</h3>
+        <h3 class="padd-5">Заказы</h3>
       </div>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/add_order.png" alt="icon">Добавить заказ</NuxtLink>
@@ -30,7 +31,7 @@
     </div>
     <div class="group">
       <div>
-        <h3>Название аккаунта</h3>
+        <h3 class="padd-5">Название аккаунта</h3>
       </div>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/seting.png" alt="icon">Настройки</NuxtLink>
@@ -54,7 +55,7 @@ const route = useRoute()
 h3,
 .box-link {
   border-bottom: 1px solid gray;
-  padding: 5px 10px;
+  padding: 6px 10px;
 }
 
 h3 {
@@ -66,9 +67,12 @@ h3 {
 
 
 .n-link {
-  /* padding: 10px 140px 10px 15px; */
   font-size: 25px;
   color: rgba(255, 255, 255, 0.70);
+}
+
+.n-link:hover {
+  background-color: #949494;
 }
 
 .activeTab {
@@ -90,5 +94,9 @@ img {
 h4 {
   padding: 10px 20px;
   text-align: right;
+}
+
+.padd-5 {
+  padding: 10px 20px;
 }
 </style>

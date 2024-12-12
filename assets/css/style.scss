@@ -224,3 +224,18 @@ h2 {
 .dimmed {
   filter: brightness(50%);
 }
+
+img {
+  pointer-events: none;
+}
+
+.control-toolbar {
+  padding: 10px 50px;
+  background-color: #3a3a3a;
+  display: flex;
+  gap: 30px;
+}
+
+.layout-row{
+  padding: 10px 50px;
+}

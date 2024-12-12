@@ -1,6 +1,6 @@
 <template>
   <div class="box-top border-r">
-    <h2>Топ 1 сегодня</h2>
+    <h2 class="uppercase">Топ 1 сегодня</h2>
     <div class="top-event">
       <div class="top1"><img class="afisha-top" src="/top-event.jpg" alt="top"></div>
       <div class="top2"><img class="afisha-top" src="/top-event.jpg" alt="top"></div>
@@ -26,7 +26,7 @@
 /* поменять размер картинки */
 /* написать логику для смены картинки */
 .afisha-top {
-  width: 250px;
+  width: 260px;
   margin: 10px 0;
   border-radius: 10px;
 }
