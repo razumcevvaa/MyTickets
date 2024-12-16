@@ -5,6 +5,7 @@ export interface Event {
     id: number;
     photo: string;
     title: string;
+    city?: string,
     format: string;
     price: string;
     date: Date;
@@ -75,5 +76,5 @@ export const useEvents = defineStore('events', () => {
         selectedEvent.value = event
         showModal.value = true
     }
-    return {events, showModal, selectedEvent, showModalForEvent, newEvent}
+    return { events, showModal, selectedEvent, showModalForEvent, newEvent }
 })

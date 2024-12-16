@@ -1,9 +1,9 @@
 <template>
 <div class="nav-create">
   <button @click="model='LkBasicCE'">Основное</button>
-  <button @click="model='LkBasicCE2'">Дата</button>
-  <button>Билеты</button>
-  <button>Инфо</button>
+  <button @click="model='LkDateCE'">Дата</button>
+  <button @click="model='LkTicketsCE'">Билеты</button>
+  <button @click="model='LkInfoCE'">Инфо</button>
 </div>
 </template>
 

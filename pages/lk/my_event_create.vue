@@ -5,7 +5,7 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName"/>
+    <lkNavCreatEvent v-model="compName" />
     <component :is="comp"></component>
   </div>
 
@@ -14,12 +14,15 @@
 
 <script setup lang="ts">
 import LkBasicCE from '~~/components/lk/BasicCE.vue'
-import LkBasicCE2 from '~~/components/lk/BasicCE2.vue'
+import LkDateCE from '~/components/lk/DateCE.vue'
+import LkTicketsCE from '~/components/lk/TicketsCE.vue'
+import LkInfoCE from '~/components/lk/InfoCE.vue'
+
 const eventsStore = useEvents()
-const compName=ref('LkBasicCE')
-const comp=shallowRef(LkBasicCE)
+const compName = ref('LkBasicCE')
+const comp = shallowRef(LkBasicCE)
 const compObj = {
-  LkBasicCE, LkBasicCE2
+  LkBasicCE, LkDateCE, LkTicketsCE, LkInfoCE
 } as Record<string, any>
 
 definePageMeta({
@@ -30,7 +33,7 @@ useHead({
     class: 'padd-lk-2'
   }
 })
-watchEffect(()=>{
+watchEffect(() => {
   comp.value = compObj[compName.value]
 })
 

@@ -60,7 +60,13 @@ export default defineNuxtConfig({
     autoSetupPrisma: true
   },
 
-  modules: ['@pinia/nuxt', '@prisma/nuxt', '@nuxtjs/tailwindcss', 'shadcn-nuxt'],
+  modules: [
+    '@pinia/nuxt',
+    '@prisma/nuxt',
+    '@nuxtjs/tailwindcss',
+    'shadcn-nuxt',
+    '@nuxtjs/color-mode'
+  ],
   shadcn: {
     /**
      * Prefix for all the imported component

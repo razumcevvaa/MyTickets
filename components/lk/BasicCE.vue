@@ -7,7 +7,7 @@
       </div>
       <div>
         <label for="event-type">Выберите тип мероприятия:</label>
-        <select class="form-block-input" name="event-type" id="event-type" required>
+        <select class="form-block-input" name="event-type" id="event-type" v-model="eventsStore.newEvent.format" required>
           <option value="">--Выберите тип мероприятия--</option>
           <option value="concert">Концерт</option>
           <option value="party">Вечеринка</option>
@@ -20,7 +20,7 @@
     <div class="flex">
       <div>
         <label for="city">Город</label>
-        <select class="form-block-input" name="city" id="city" required>
+        <select class="form-block-input" name="city" id="city" v-model="eventsStore.newEvent.city" required>
           <option value="">--Выберите--</option>
           <option value="Sochi">Сочи</option>
           <option value="Moscow">Москва</option>
@@ -30,7 +30,7 @@
       </div>
       <div>
         <label for="age">Возрастное ограничение</label>
-        <select class="form-block-input" name="age" id="age" required>
+        <select class="form-block-input" name="age" id="age" v-model="eventsStore.newEvent.age" required>
           <option value="">--Выберите--</option>
           <option value="0">0+</option>
           <option value="6">6+</option>
@@ -49,8 +49,6 @@ const eventsStore = useEvents()
 </script>
 
 <style scoped>
-.layout-row {}
-
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -68,7 +66,14 @@ select {
 }
 
 label {
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 10px;
+}
+
+.form-block-input{
+  width: 500px;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 30px;
 }
 </style>

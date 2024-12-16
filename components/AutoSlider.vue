@@ -5,9 +5,9 @@
   }" :modules="modules" class="mySwiper">
     <SwiperSlide class="carusel-img1"></SwiperSlide>
     <SwiperSlide class="carusel-img2"></SwiperSlide>
-    <SwiperSlide class="carusel-img1"></SwiperSlide>
-    <SwiperSlide class="carusel-img2"></SwiperSlide>
-    <SwiperSlide class="carusel-img1"></SwiperSlide>
+    <SwiperSlide class="carusel-img3"></SwiperSlide>
+    <SwiperSlide class="carusel-img4"></SwiperSlide>
+    <SwiperSlide class="carusel-img5"></SwiperSlide>
   </Swiper>
 </template>
 
@@ -41,11 +41,41 @@ export default {
   background-image: url(/carusel1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0.4;
 }
 
 .carusel-img2 {
   background-image: url(/carusel2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  opacity: 0.4;
+}
+
+.carusel-img3 {
+  background-image: url(/carusel3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.carusel-img4 {
+  background-image: url(/carusel4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.carusel-img5 {
+  background-image: url(/carusel5.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.carusel-img6 {
+  background-image: url(/carusel6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
 }
 </style>
