@@ -36,7 +36,8 @@ const eventsStore = useEvents()
 const hoveredEvent = ref(null as null|Event)
 
 definePageMeta({
-  layout: 'lk'
+  layout: 'lk',
+  middleware: 'auth'
 })
 useHead({
   bodyAttrs: {

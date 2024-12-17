@@ -9,7 +9,8 @@
 <script setup lang="ts">
 
 definePageMeta({
-  layout: 'lk'
+  layout: 'lk',
+  middleware: 'auth'
 })
 useHead({
   bodyAttrs: {

@@ -39,8 +39,8 @@
         to="/lk/in_development"><img src="/personal.png" alt="icon">Сотрудники</NuxtLink>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/account.png" alt="icon">Мой аккаунт</NuxtLink>
-      <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''" to="/"><img
-          src="/exit.png" alt="icon">Выход</NuxtLink>
+      <button class="n-link flex box-link" @click="userStore.logOut" ><img
+          src="/exit.png" alt="icon">Выход</button>
       <!-- потом сделать выход из лк -->
     </div>
     <h4>скачать приложение для сканирования билетов</h4>
@@ -49,6 +49,7 @@
 
 <script setup lang="ts">
 const route = useRoute()
+const userStore = useUser()
 </script>
 
 <style scoped>

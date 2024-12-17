@@ -26,7 +26,8 @@ const compObj = {
 } as Record<string, any>
 
 definePageMeta({
-  layout: 'lk'
+  layout: 'lk',
+  middleware: 'auth'
 })
 useHead({
   bodyAttrs: {

@@ -55,24 +55,24 @@ const onSubmit = handleSubmit((values) => {
     <FormField name="dob">
       <FormItem class="flex flex-col">
         <FormLabel>Дата закрытия регистрации</FormLabel>
+        <div >
         <Popover>
           <PopoverTrigger as-child>
-
-            <FormControl>
-              <Button variant="outline" :class="cn(
-                'w-[240px] ps-3 text-start font-normal',
+            
+              <FormControl>
+                <Button variant="outline" :class="cn(
+                  'w-[240px] ps-3 text-start font-normal',
                 !value && 'text-muted-foreground',
               )">
+                <!-- <CalendarIcon class="ms-auto h-4 w-4 opacity-50" /> -->
                 <span>{{ value ? df.format(toDate(value)) : today(getLocalTimeZone()) }}</span>
-                <CalendarIcon class="ms-auto h-4 w-4 opacity-50" />
               </Button>
               <input hidden>
             </FormControl>
-            <input type="time" id="time" name="time" required class="input-time">
           </PopoverTrigger>
           <PopoverContent class="w-auto p-0">
-            <Calendar v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
-              :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
+            <Calendar class="myCalendar" v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
+            :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
                 if (v) {
                   setFieldValue('dob', v.toString())
                 }
@@ -82,6 +82,9 @@ const onSubmit = handleSubmit((values) => {
               }" />
           </PopoverContent>
         </Popover>
+        <input type="time" id="time" name="time" required class="input-time">
+
+        </div>
         <FormDescription>С этого момента покупатели не смогут забронировать и приобрести билет.</FormDescription>
         <FormMessage />
       </FormItem>

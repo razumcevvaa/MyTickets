@@ -6,9 +6,9 @@
     <div class="right-box border-r">
       <h1 class="logo">passtickets</h1>
       <h2 class="uppercase">Вход в личный кабинет</h2>
-      <form>
+      <form @submit.prevent="logIn">
         <div class="flex">
-          <input class="form-block-input" type="text" name="login" placeholder="Введите логин" required>
+          <input class="form-block-input" type="text" name="login" v-model="login" placeholder="Введите логин" required>
           <div style="position: relative">
             <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
               name="password" placeholder="Введите пароль" required autocomplete="off">
@@ -19,6 +19,7 @@
         </div>
         <input type="submit" value="Войти" class="main-button color">
       </form>
+      <p class="text-red-400" v-if="error">{{ error }}</p>
       <p class="underline underline-offset-4">Не помню пароль</p>
       <p class="text-center absolute">Нет аккаунта? <br> Можно <NuxtLink to="/registration"
           class="underline underline-offset-4">зарегистрироваться здесь</NuxtLink></p>
@@ -27,8 +28,14 @@
 </template>
 
 <script setup lang="ts">
+import md5 from 'md5'
 const showPassword = ref(false)
+const userStore= useUser()
 const password = ref('')
+const login = ref('')
+const error = ref('')
+
+
 definePageMeta({
   layout: 'login'
 })
@@ -37,6 +44,23 @@ useHead({
     class: 'padd-lk'
   }
 })
+
+onMounted(()=>{
+  if (userStore.user) {
+    navigateTo('/lk')
+  }
+})
+
+const logIn = async () =>{
+  if (login.value && password.value){
+    error.value=await userStore.logIn(login.value, md5(password.value))
+    if (!error.value) {
+      navigateTo('/lk')
+    }
+  } else{
+    error.value = 'Не введен логин или пароль'
+  }
+}
 </script>
 
 <style scoped>
