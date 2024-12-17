@@ -1,7 +1,8 @@
 <template>
   <div class="control-toolbar">
     <div>
-      <h1>Баланс</h1>
+      <h1>ДЕНЯК НЕТ</h1>
+      <h2>И не будет</h2>
     </div>
   </div>
 </template>
