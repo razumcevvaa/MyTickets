@@ -76,3 +76,9 @@ const value = ref('')
     </PopoverContent>
   </Popover>
 </template>
+
+<style scoped>
+button{
+  border-radius: 20px;
+}
+</style>
