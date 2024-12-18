@@ -32,7 +32,7 @@ const value = ref('')
 
 <template>
   <Popover v-model:open="open">
-    <PopoverTrigger as-child>
+    <PopoverTrigger as-chilвввd>
       <Button
         variant="outline"
         role="combobox"
