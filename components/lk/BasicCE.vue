@@ -3,12 +3,12 @@
     <div class="flex">
       <div>
         <label for="text">Название</label>
-        <input class="form-block-input" type="text" name="text" v-model="eventsStore.newEvent.title" required>
+        <input class="form-block-input" type="text" id="text" name="text" v-model="eventsStore.newEvent.title" required>
       </div>
       <div>
         <label for="event-type">Выберите тип мероприятия:</label>
         <select class="form-block-input" name="event-type" id="event-type" v-model="eventsStore.newEvent.format" required>
-          <option value="">--Выберите тип мероприятия--</option>
+          <option :value="undefined">--Выберите тип мероприятия--</option>
           <option value="concert">Концерт</option>
           <option value="party">Вечеринка</option>
           <option value="festival">Фестиваль</option>

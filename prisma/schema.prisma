@@ -15,6 +15,7 @@ model User {
   email     String  @unique
   name      String?
   events    Event[]
+  ticket_types Ticket_type[]
 }
 
 model Event {
@@ -23,12 +24,25 @@ model Event {
   title       String
   format      String
   price       String
-  date        DateTime
+  date_event  DateTime
+  date_close  String
+  date_open   String
+  date_end    String
   location    String
   age         Int
   description String
   content     String
   published   Boolean @default(false)
-  authorId    Int
-  author      User    @relation(fields: [authorId], references: [id])
+  user_id     Int
+  user        User    @relation(fields: [user_id], references: [id])
+}
+
+model Ticket_type {
+  id          Int     @id @default(autoincrement())
+  name        String
+  price       Int
+  description String
+  user_id     Int
+  event       User    @relation(fields: [user_id], references: [id])
+
 }

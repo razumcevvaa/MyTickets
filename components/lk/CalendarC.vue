@@ -20,7 +20,7 @@ import { toDate } from 'radix-vue/date'
 import { useForm } from 'vee-validate'
 import { computed, h, ref } from 'vue'
 import { z } from 'zod'
-
+defineProps(['label', 'description'])
 const df = new DateFormatter('en-US', {
   dateStyle: 'long',
 })
@@ -42,23 +42,28 @@ const value = computed({
   set: val => val,
 })
 
-const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
+const time=ref('')
+
+const model = defineModel('')
+
+watchEffect(()=>{
+  if (value.value) {
+    model.value = `${value.value}T${time.value}`
+
+    }
+  // console.log(`${value.value}T${time.value}`)
 })
+
 </script>
 
 <template>
-  <form class="space-y-8" @submit="onSubmit">
+
     <FormField name="dob">
       <FormItem class="flex flex-col">
-        <FormLabel>Дата закрытия регистрации</FormLabel>
+        <FormLabel>{{label}}</FormLabel>
         <div>
         <Popover>
           <PopoverTrigger as-child>
-            
               <FormControl>
                 <Button variant="outline" :class="cn(
                   'w-[240px] ps-3 text-start font-normal',
@@ -82,125 +87,14 @@ const onSubmit = handleSubmit((values) => {
               }" />
           </PopoverContent>
         </Popover>
-        <input type="time" id="time" name="time" required class="input-time">
+        <input type="time" id="time" name="time" required class="input-time" v-model="time">
 
         </div>
-        <FormDescription>С этого момента покупатели не смогут забронировать и приобрести билет.</FormDescription>
+        <FormDescription>{{description}}</FormDescription>
         <FormMessage />
       </FormItem>
     </FormField>
-    <FormField name="dob">
-      <FormItem class="flex flex-col">
-        <FormLabel>Дата открытия дверей</FormLabel>
-        <div>
-          <Popover>
-            <PopoverTrigger as-child>
-              <FormControl>
-                <Button variant="outline" :class="cn(
-                  'w-[240px] ps-3 text-start font-normal',
-                  !value && 'text-muted-foreground',
-                )">
-                  <span>{{ value ? df.format(toDate(value)) : today(getLocalTimeZone()) }}</span>
-                  <CalendarIcon class="ms-auto h-4 w-4 opacity-50" />
-                </Button>
-                <input hidden>
-              </FormControl>
-              <input type="time" id="time" name="time" required class="input-time">
-            </PopoverTrigger>
-            <PopoverContent class="w-auto p-0">
-              <Calendar v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
-                :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
-                  if (v) {
-                    setFieldValue('dob', v.toString())
-                  }
-                  else {
-                    setFieldValue('dob', undefined)
-                  }
-                }" />
-            </PopoverContent>
-          </Popover>
-        </div>
-        <FormDescription>С этого момента начинает работать сканирование билетов нашим приложением.</FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
-    <FormField name="dob">
-      <FormItem class="flex flex-col">
-        <FormLabel>Дата начала события</FormLabel>
-        <div>
-          <Popover>
-            <PopoverTrigger as-child>
-              <FormControl v-model="eventsStore.newEvent.date">
-                <Button variant="outline" :class="cn(
-                  'w-[240px] ps-3 text-start font-normal',
-                  !value && 'text-muted-foreground',
-                )">
-                  <span>{{ value ? df.format(toDate(value)) : today(getLocalTimeZone()) }}</span>
-                  <CalendarIcon class="ms-auto h-4 w-4 opacity-50" />
-                </Button>
-                <input hidden>
-              </FormControl>
-              <input type="time" id="time" name="time" required class="input-time">
-  
-            </PopoverTrigger>
-            <PopoverContent class="w-auto p-0">
-              <Calendar v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
-                :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
-                  if (v) {
-                    setFieldValue('dob', v.toString())
-                  }
-                  else {
-                    setFieldValue('dob', undefined)
-                  }
-                }" />
-            </PopoverContent>
-          </Popover>
-        </div>
-        <FormDescription>Фигурирует во всех публичных материалах как дата и время события.</FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
-    <FormField name="dob">
-      <FormItem class="flex flex-col">
-        <FormLabel>Дата окончания события</FormLabel>
-        <div>
-          <Popover>
-            <PopoverTrigger as-child>
-  
-              <FormControl>
-                <Button variant="outline" :class="cn(
-                  'w-[240px] ps-3 text-start font-normal',
-                  !value && 'text-muted-foreground',
-                )">
-                  <span>{{ value ? df.format(toDate(value)) : today(getLocalTimeZone()) }}</span>
-                  <CalendarIcon class="ms-auto h-4 w-4 opacity-50" />
-                </Button>
-                <input hidden>
-              </FormControl>
-              <input type="time" id="time" name="time" required class="input-time">
-  
-            </PopoverTrigger>
-            <PopoverContent class="w-auto p-0">
-              <Calendar v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
-                :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
-                  if (v) {
-                    setFieldValue('dob', v.toString())
-                  }
-                  else {
-                    setFieldValue('dob', undefined)
-                  }
-                }" />
-            </PopoverContent>
-          </Popover>
-        </div>
-        <FormDescription>Если дата и время не известны заранее, то укажите приблизительное значение.</FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
-    <Button class="main-button color" type="submit">
-      Cохранить
-    </Button>
-  </Form>
+
 </template>
 
 <style scoped>

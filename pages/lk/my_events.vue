@@ -13,10 +13,9 @@
         <option value="Новосибирск">Санкт-Петербург</option>
       </select>
       <label class="text-lg" for="date">Дата проведения:</label>
-      <select class="text-lg" id="city" required>
+      <select class="text-lg" id="date" required>
         <option value="">Все</option>
       </select>
-      <!-- <LkCalendarC/> -->
     </div>
     <h1 class="text-center text-4xl uppercase">Все мероприятия</h1>
     <div class="all-event">
