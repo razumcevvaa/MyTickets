@@ -169,10 +169,16 @@ h2 {
   width: 300px;
   background-color: #3a3a3a;
   border: none;
-  // border-bottom: 1px solid #bab9ff;
   border-radius: 20px;
   font-size: 18px;
   padding: 10px 15px;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 20px;
+  color: white;
 }
 
 .form-block-label {
@@ -236,6 +242,6 @@ img {
   gap: 30px;
 }
 
-.layout-row{
+.layout-row {
   padding: 10px 50px;
 }

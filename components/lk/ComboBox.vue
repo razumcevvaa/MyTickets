@@ -19,11 +19,12 @@ import { cn } from '@/lib/utils'
 import { ref } from 'vue'
 
 const typeTickets = [
-  { value: 'standart', label: 'standart' },
+  { value: 'currentCategory', label: 'standart' },
   { value: 'sveltekit', label: 'SvelteKit' },
   { value: 'nuxt', label: 'Nuxt' },
   { value: 'remix', label: 'Remix' },
   { value: 'astro', label: 'Astro' },
+  //cюда должны передаваться названия сохраненных категорий а ниже выводиться сами категории
 ]
 
 const open = ref(false)
@@ -37,7 +38,7 @@ const value = ref('')
         variant="outline"
         role="combobox"
         :aria-expanded="open"
-        class="w-[200px] justify-between"
+        class="w-[200px] justify-between form-block-input transparent"
       >
         {{ value
           ? typeTickets.find((typeTickets) => typeTickets.value === value)?.label
@@ -48,7 +49,7 @@ const value = ref('')
     <PopoverContent class="w-[200px] p-0">
       <Command>
         <CommandInput class="h-9" placeholder="Выберите схему продаж" />
-        <CommandEmpty>No framework found.</CommandEmpty>
+        <CommandEmpty>Не найдено</CommandEmpty>
         <CommandList>
           <CommandGroup>
             <CommandItem
@@ -80,5 +81,9 @@ const value = ref('')
 <style scoped>
 button{
   border-radius: 20px;
+}
+.transparent {
+  width: 200px;
+  font-size: 14px;
 }
 </style>

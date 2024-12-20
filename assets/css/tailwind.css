@@ -14,19 +14,19 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 241 100%, 86%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 0 0% 9%;
 
-    --primary: 0 0% 29%;
-    --primary-foreground: 210 40% 98%;
-
+    --primary: 241 100%, 86%;
+    --primary-foreground: 0 0% 9% ;
+    
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --accent: 241, 100%, 86%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -71,9 +71,10 @@
 @layer base {
   * {
     @apply border-border;
-   }
-   body {
+  }
+
+  body {
     @apply bg-background text-foreground;
-   }
-  
+  }
+
 }

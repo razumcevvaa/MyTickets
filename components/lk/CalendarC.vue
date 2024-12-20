@@ -11,7 +11,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { toast } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 import { CalendarDate, DateFormatter, getLocalTimeZone, parseDate, today } from '@internationalized/date'
 // import { CalendarIcon } from '@radix-icons/vue'
@@ -28,12 +27,12 @@ const df = new DateFormatter('en-US', {
 const formSchema = toTypedSchema(z.object({
   dob: z
     .string()
-    .refine(v => v, { message: 'A date of birth is required.' }),
+    .refine(v => v, { message: 'Дата обязательна' }),
 }))
 
 const placeholder = ref()
 
-const { handleSubmit, setFieldValue, values } = useForm({
+const { setFieldValue, values } = useForm({
   validationSchema: formSchema,
 })
 
@@ -42,15 +41,15 @@ const value = computed({
   set: val => val,
 })
 
-const time=ref('')
+const time = ref('')
 
 const model = defineModel('')
 
-watchEffect(()=>{
+watchEffect(() => {
   if (value.value) {
     model.value = `${value.value}T${time.value}`
 
-    }
+  }
   // console.log(`${value.value}T${time.value}`)
 })
 
@@ -58,26 +57,27 @@ watchEffect(()=>{
 
 <template>
 
-    <FormField name="dob">
-      <FormItem class="flex flex-col">
-        <FormLabel>{{label}}</FormLabel>
-        <div>
+  <FormField name="dob">
+    <FormItem class="flex flex-col">
+      <FormLabel>{{ label }}</FormLabel>
+      <div>
         <Popover>
           <PopoverTrigger as-child>
-              <FormControl>
-                <Button variant="outline" :class="cn(
-                  'w-[240px] ps-3 text-start font-normal',
+            <FormControl>
+              <Button variant="outline" :class="cn(
+                'w-[240px] ps-3 text-start font-normal',
                 !value && 'text-muted-foreground',
               )">
-                <span>{{ value ? df.format(toDate(value)) : today(getLocalTimeZone()) }}</span>
+                <span>{{ value ? df.format(toDate(value)) : 'Выберите дату' }}</span>
                 <CalendarIcon class="ms-auto h-4 w-4 opacity-50" />
               </Button>
               <input hidden>
             </FormControl>
           </PopoverTrigger>
           <PopoverContent class="w-auto p-0">
-            <Calendar class="myCalendar" v-model:placeholder="placeholder" v-model="value" calendar-label="Date of birth" initial-focus
-            :min-value="new CalendarDate(1900, 1, 1)" @update:model-value="(v) => {
+            <Calendar class="myCalendar" v-model:placeholder="placeholder" v-model="value"
+              calendar-label="Date of birth" initial-focus :min-value="new CalendarDate(1900, 1, 1)"
+              @update:model-value="(v) => {
                 if (v) {
                   setFieldValue('dob', v.toString())
                 }
@@ -88,12 +88,10 @@ watchEffect(()=>{
           </PopoverContent>
         </Popover>
         <input type="time" id="time" name="time" required class="input-time" v-model="time">
-
-        </div>
-        <FormDescription>{{description}}</FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
+      </div>
+      <FormDescription>{{ description }}</FormDescription>
+    </FormItem>
+  </FormField>
 
 </template>
 
@@ -121,15 +119,19 @@ p {
   border: 1px solid white;
   margin-left: 20px;
 }
-.flex{
+
+.flex {
   display: flex;
 }
-.hover\:bg-accent:hover{
+
+.hover\:bg-accent:hover {
   background-color: hsl(0deg 0% 22.02%);
 }
-td:focus{
+
+td:focus {
   background-color: #bab9ff;
 }
+
 .main-button:hover {
   color: white;
 }

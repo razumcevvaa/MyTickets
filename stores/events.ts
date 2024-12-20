@@ -8,7 +8,10 @@ export interface Event {
     city?: string,
     format: string;
     price: string;
-    date: Date;
+    dateEvent: Date;
+    dateClose: String;
+    dateOpen: String;
+    dateEnd: String;
     location: string;
     isHovered?: boolean;
     age?: number,
@@ -23,30 +26,13 @@ export const useEvents = defineStore('events', () => {
             title: 'Code80',
             format: 'вечеринка',
             price: '400',
-            date: new Date('2023-12-16T17:00:00'),
+            dateEvent: new Date('2023-12-16T17:00:00'),
+            dateClose: '12.12.12',
+            dateOpen: '12.12.12',
+            dateEnd: '12.12.12',
             location: 'nebar',
             age: 16,
             description: 'Официальная страница https://t.me/traphouserussia',
-        },
-        {
-            id: 2,
-            photo: 'top-event.jpg',
-            title: 'Hackathon',
-            format: 'конференция',
-            price: '800',
-            date: new Date('2023-12-16T17:00:00'),
-            location: 'IT Park',
-            age: 16,
-        },
-        {
-            id: 2,
-            photo: 'top-event.jpg',
-            title: 'Hackathon',
-            format: 'конференция',
-            price: '800',
-            date: new Date('2023-12-16T17:00:00'),
-            location: 'IT Park',
-            age: 16,
         },
         {
             id: 3,
@@ -54,7 +40,10 @@ export const useEvents = defineStore('events', () => {
             title: 'Hackathon',
             format: 'конференция',
             price: '800',
-            date: new Date('2023-12-16T17:00:00'),
+            dateEvent: new Date('2023-12-16T17:00:00'),
+            dateClose: '12.12.12',
+            dateOpen: '12.12.12',
+            dateEnd: '12.12.12',
             location: 'IT Park',
             age: 16,
         },
@@ -64,7 +53,23 @@ export const useEvents = defineStore('events', () => {
             title: 'Hackathon',
             format: 'конференция',
             price: '800',
-            date: new Date('2023-12-16T17:00:00'),
+            dateEvent: new Date('2023-12-16T17:00:00'),
+            dateClose: '12.12.12',
+            dateOpen:'12.12.12',
+            dateEnd:'12.12.12',
+            location: 'IT Park',
+            age: 16,
+        },
+        {
+            id: 3,
+            photo: 'top-event.jpg',
+            title: 'Hackathon',
+            format: 'конференция',
+            price: '800',
+            dateEvent: new Date('2023-12-16T17:00:00'),
+            dateClose: '12.12.12',
+            dateOpen:'12.12.12',
+            dateEnd:'12.12.12',
             location: 'IT Park',
             age: 16,
         },

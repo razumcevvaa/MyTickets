@@ -21,7 +21,7 @@
       <div>
         <label for="city">Город</label>
         <select class="form-block-input" name="city" id="city" v-model="eventsStore.newEvent.city" required>
-          <option value="">--Выберите--</option>
+          <option :value="undefined">--Выберите--</option>
           <option value="Sochi">Сочи</option>
           <option value="Moscow">Москва</option>
           <option value="Saint-Peter">Cанкт-Петербург</option>
@@ -31,7 +31,7 @@
       <div>
         <label for="age">Возрастное ограничение</label>
         <select class="form-block-input" name="age" id="age" v-model="eventsStore.newEvent.age" required>
-          <option value="">--Выберите--</option>
+          <option :value="undefined">--Выберите--</option>
           <option value="0">0+</option>
           <option value="6">6+</option>
           <option value="14">14+</option>
