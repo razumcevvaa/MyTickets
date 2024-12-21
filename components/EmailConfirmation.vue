@@ -13,6 +13,7 @@
         </PinInputGroup>
       </PinInput>
     </div>
+    <p class="error-text">{{ error }}</p>
   </div>
 </template>
 
@@ -20,12 +21,15 @@
 import { ref, defineEmits } from 'vue'
 const emit = defineEmits(['next'])
 const value = ref<string[]>([])
+const error = ref('')
 
 const handleComplete = (e: string[]) => {
-  emit('next', { step: 2, data: { code: value } })
+  if (value.value.join('')=='666999') {
+    emit('next')
+  } else {
+    error.value = 'Неправильно введен код'
+  }
 }
-
-//написать код только после которого можно пройти дальше и ошибку кот будет выводиться
 
 </script>
 

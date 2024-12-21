@@ -11,11 +11,17 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  name      String?
-  events    Event[]
-  ticket_types Ticket_type[]
+  id            Int     @id @default(autoincrement())
+  email         String  @unique
+  name          String
+  login         String  @unique
+  pass          String
+  city          String
+  event_type    String
+  token         String  @unique @default(uuid())
+  avg_visitors  Int?
+  events        Event[]
+  ticket_types  Ticket_type[]
 }
 
 model Event {
@@ -43,6 +49,6 @@ model Ticket_type {
   price       Int
   description String
   user_id     Int
-  event       User    @relation(fields: [user_id], references: [id])
+  user        User    @relation(fields: [user_id], references: [id])
 
 }

@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
 const userStore = useUser()
-onMounted(()=>{
-   userStore.autoLogin()
+onMounted(async()=>{
+   await userStore.autoLogin()
 })
 </script>
 <style lang="scss">

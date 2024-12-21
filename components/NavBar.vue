@@ -14,8 +14,6 @@
       <NuxtLink class="hover-text-b" to="/info/support">Помощь</NuxtLink>
       <NuxtLink class="hover-text-b" to="/info/education">Обучение</NuxtLink>
       <NuxtLink to="/lk" rel="nofollow"><img class="login-nav-mini" src="/login.png" alt="login"></NuxtLink>
-      <!-- cтраница с регистрацией -->
-      <!--переключатель -->
     </div>
   </nav>
 </template>
@@ -37,7 +35,6 @@ nav {
   align-items: center;
 }
 
-/* background-color: #d0d0d0; */
 .menu-login,
 .menu {
   display: flex;

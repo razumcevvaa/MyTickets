@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-
+// не понятно для чего страница
 </script>
 
 <style scoped>

@@ -2,23 +2,23 @@
   <div class="container border-r">
     <h1 class="header-page">Регистрация</h1>
     <h2>Шаг 2</h2>
-    <!-- @submit.prevent="nextStep" -->
     <form class="form-email">
+      {{ userStore.regUser.email }}
       <div class="form-left">
         <div class="form-block">
           <label class="form-block-label" for="name">Название аккаунта<span>*</span></label>
-          <input v-model.trim="name" class="form-block-input" type="text" name="name"
+          <input v-model.trim="userStore.regUser.name" class="form-block-input" type="text" name="name"
             placeholder="Название компании или бренда" autocomplete="off" autofocus required>
         </div>
         <div class="form-block">
           <label class="form-block-label" for="login">Логин<span>*</span></label>
-          <input v-model.trim="login" class="form-block-input" type="text" name="login"
-            placeholder="Придумайте себе логин" required>
+          <input v-model.trim="userStore.regUser.login" class="form-block-input" type="text" name="login"
+            placeholder="Придумайте себе логин" required autocomplete="off">
         </div>
         <div class="form-block">
           <label class="form-block-label" for="password">Пароль<span>*</span></label>
           <div style="position: relative">
-            <input v-model.trim="password" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
+            <input v-model.trim="userStore.regUser.password" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
               name="password" placeholder="Придумайте себе пароль" required autocomplete="off">
             <span class="fa-fw" @click="showPassword = !showPassword"><img
                 :src="showPassword ? '/open-eye.png' : '/close-eye.png'" alt="">
@@ -29,68 +29,43 @@
       <div class="form-right">
         <div class="form-block">
           <label class="form-block-label" for="city">Город<span>*</span></label>
-          <input v-model.trim="city" type="text" name="city" placeholder="Где проводите мероприятия"
+          <input v-model.trim="userStore.regUser.city" type="text" name="city" placeholder="Где проводите мероприятия"
             class="form-block-input">
         </div>
         <div class="form-block">
           <label class="form-block-label" for="event_type">Вы организовываете<span>*</span></label>
-          <input v-model.trim="eventType" type="text" name="event_type" placeholder="Формат мероприятий"
+          <input v-model.trim="userStore.regUser.event_type" type="text" name="event_type" placeholder="Формат мероприятий"
             class="form-block-input" required>
         </div>
         <div class="form-block">
           <label class="form-block-label" for="avg_visitors">Количество посетителей:</label>
-          <input v-model.number="avgVisitors" class="form-block-input" type="number" name="avg_visitors"
+          <input v-model.number="userStore.regUser.avg_visitors" class="form-block-input" type="number" name="avg_visitors"
             placeholder="Ваших мероприятий">
         </div>
       </div>
     </form>
-    <input type="submit" value="Войти в личный кабинет" class="main-button color">
+    <input type="submit"  @click="userStore.regIn" value="Войти в личный кабинет" class="main-button color">
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, toRefs, computed } from 'vue'
-
 const showPassword = ref(false)
-
 const emit = defineEmits(['next'])
-const name = ref('')
-const login = ref('')
-const password = ref('')
-const city = ref('')
-const eventType = ref('')
-const avgVisitors = ref()
 
+const userStore = useUser()
 
-interface FormData {
-  data: {
-    name: string,
-    login: string,
-    password: string,
-    city: string,
-    eventType: string,
-    avgVisitors?: number,
-  },
-}
-const state = reactive({
-  showPassword: false as boolean,
-  name: '' as string,
-  login: '' as string,
-  password: undefined as string | undefined,
-  city: '' as string,
-  eventType: '' as string,
-  avgVisitors: undefined as number | undefined,
-  errors: {} as Record<string, string>,
-})
+// const state = reactive({
+//   showPassword: false as boolean,
+//   name: '' as string,
+//   login: '' as string,
+//   password: undefined as string | undefined,
+//   city: '' as string,
+//   eventType: '' as string,
+//   avgVisitors: undefined as number | undefined,
+//   errors: {} as Record<string, string>,
+// })
 
-
-
-// defineEmits(['next'])
-// const nextStep = () => {
-//   if (email.value !== '') {
-//     emit('next', { step: 3, data: { email: email.value } });
-//   }
-// }
 </script>
 
 <style scoped>

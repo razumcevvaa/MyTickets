@@ -4,7 +4,7 @@
       <div>
         <h3 class="padd-5">Основное</h3>
       </div>
-      <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/my_events' ? 'activeTab' : ''"
+      <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/my_events' || route.path == '/lk/my_event_create' ? 'activeTab' : ''"
         to="/lk/my_events"><img src="/events.png" alt="icon">Мероприятия</NuxtLink>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/reservation' ? 'activeTab' : ''"
         to="/lk/reservation"><img src="/reservation.png" alt="icon">Заказы</NuxtLink>
@@ -31,7 +31,7 @@
     </div>
     <div class="group">
       <div>
-        <h3 class="padd-5">Название аккаунта</h3>
+        <h3 class="padd-5 uppercase">{{ userStore.regUser.name }}</h3>
       </div>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/seting.png" alt="icon">Настройки</NuxtLink>
@@ -39,9 +39,8 @@
         to="/lk/in_development"><img src="/personal.png" alt="icon">Сотрудники</NuxtLink>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/account.png" alt="icon">Мой аккаунт</NuxtLink>
-      <button class="n-link flex box-link" @click="userStore.logOut" ><img
+      <button class="exit-b n-link flex box-link" @click="userStore.logOut" ><img
           src="/exit.png" alt="icon">Выход</button>
-      <!-- потом сделать выход из лк -->
     </div>
     <h4>скачать приложение для сканирования билетов</h4>
   </div>
@@ -99,5 +98,8 @@ h4 {
 
 .padd-5 {
   padding: 10px 20px;
+}
+.exit-b{
+  width: 300px;
 }
 </style>

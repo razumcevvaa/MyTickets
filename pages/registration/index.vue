@@ -14,6 +14,7 @@ import { ref } from 'vue'
 const step = ref(1)
 const error = ref('')
 const handleNextStep = () => {
+  console.log('event')
   if (step.value < 3) {
     step.value++
   }

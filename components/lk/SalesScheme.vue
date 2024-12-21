@@ -36,6 +36,7 @@ const currentCategory = reactive({
   name: '',
   description: ''
 })
+
 const categories: Ref<Category[]> = ref([])
 
 const addCategory = () => {
@@ -52,10 +53,9 @@ const clearCurrentCategory = () => {
   currentCategory.description = ''
 }
 const submitForm = () => {
-//логика для передачи данных 
+//логика для передачи данных и закрытие окна
   console.log('Отправленные данные:', categories.value)
 }
-
 
 const clearForm = () => {
   categories.value = []

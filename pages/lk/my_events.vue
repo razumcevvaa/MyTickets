@@ -19,20 +19,20 @@
     </div>
     <h1 class="text-center text-4xl uppercase">Все мероприятия</h1>
     <div class="all-event">
-      <NuxtLink  @mouseenter="hoveredEvent = event"
-      @mouseleave="hoveredEvent = null" v-for="event in eventsStore.events" :event="event" :key="event.id" to="/" class="event"><img
-          :src="'/' + event.photo" :class="{ 'dimmed': hoveredEvent == event }"  alt="Event Photo" class="event border-r">
-          <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
-        </NuxtLink>
+      <NuxtLink @mouseenter="hoveredEvent = event" @mouseleave="hoveredEvent = null" v-for="event in eventsStore.events"
+        :event="event" :key="event.id" to="/" class="event"><img :src="'/' + event.photo"
+          :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
+        <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
+      </NuxtLink>
       <NuxtLink to="/lk/my_event_create" class="event e-create border-r"><span class="text-7xl">+</span></NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {useEvents, type Event} from '~/stores/events'
+import { useEvents, type Event } from '~/stores/events'
 const eventsStore = useEvents()
-const hoveredEvent = ref(null as null|Event)
+const hoveredEvent = ref(null as null | Event)
 
 definePageMeta({
   layout: 'lk',
@@ -46,7 +46,6 @@ useHead({
 </script>
 
 <style scoped>
-
 .all-event {
   display: flex;
   max-width: 1800px;
@@ -70,10 +69,12 @@ useHead({
   flex-direction: column;
   background-color: #3a3a3a;
 }
+
 .sorting-control {
   padding: 3px 50px;
   margin-bottom: 20px;
 }
+
 .btn-c {
   padding: 5px 20px;
   background-color: #bab9ff;
@@ -81,9 +82,11 @@ useHead({
   border-radius: 20px;
   color: black;
 }
+
 .text-lg {
   padding: 3px;
 }
+
 select,
 input {
   -moz-appearance: none;
@@ -93,9 +96,11 @@ input {
   background-color: transparent;
   cursor: pointer;
 }
+
 .event {
   position: relative;
 }
+
 .btn-buy {
   color: black;
   padding: 10px 30px;
@@ -112,6 +117,7 @@ input {
   z-index: 100;
   border: none;
 }
+
 span {
   background-color: #bab9ff;
   border-radius: 50%;
@@ -120,7 +126,8 @@ span {
   justify-content: center;
   display: flex;
 }
+
 span:hover {
-opacity: 0.5;
+  opacity: 0.5;
 }
 </style>
