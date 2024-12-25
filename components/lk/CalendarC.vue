@@ -20,7 +20,7 @@ import { useForm } from 'vee-validate'
 import { computed, h, ref } from 'vue'
 import { z } from 'zod'
 defineProps(['label', 'description'])
-const df = new DateFormatter('en-US', {
+const df = new DateFormatter('ru-US', {
   dateStyle: 'long',
 })
 
@@ -47,10 +47,9 @@ const model = defineModel('')
 
 watchEffect(() => {
   if (value.value) {
-    model.value = `${value.value}T${time.value}`
-
+    model.value = `${value.value} T${time.value}`
   }
-  // console.log(`${value.value}T${time.value}`)
+  // console.log(`${value.value} T${time.value}`)
 })
 
 </script>
@@ -134,5 +133,8 @@ td:focus {
 
 .main-button:hover {
   color: white;
+}
+input{
+  cursor: pointer;
 }
 </style>

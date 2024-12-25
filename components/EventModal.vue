@@ -1,7 +1,8 @@
 <template>
 
-<teleport to="body">
-    <div v-if="eventsStore.selectedEvent && eventsStore.showModal" class="modal-mask" @click.self="eventsStore.showModal = false">
+  <teleport to="body">
+    <div v-if="eventsStore.selectedEvent && eventsStore.showModal" class="modal-mask"
+      @click.self="eventsStore.showModal = false">
       <div class="modal-content">
         <div class="modal-close" @click="eventsStore.showModal = false"><span></span></div>
         <h1>{{ eventsStore.selectedEvent.title }}</h1>
@@ -43,12 +44,12 @@ import { useEvents } from '~/stores/events'
 
 const eventsStore = useEvents()
 
-watch(()=>eventsStore.showModal, ()=>{
-    if (eventsStore.showModal) {
-        document.body.style.overflow = 'hidden'
-    } else {
-        document.body.style.overflow = ''
-    }
+watch(() => eventsStore.showModal, () => {
+  if (eventsStore.showModal) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
 })
 
 </script>
@@ -67,11 +68,12 @@ watch(()=>eventsStore.showModal, ()=>{
   justify-content: center;
   transition: opacity .3s ease;
   overflow-y: scroll;
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .modal-content {
-  width: 600px;
+  min-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 40px;
   background-color: #3a3a3a;
@@ -124,29 +126,42 @@ watch(()=>eventsStore.showModal, ()=>{
   align-items: flex-start;
   gap: 30px;
 }
-.modal-close{
+
+.modal-close {
   position: absolute;
-    right: 35px;
-    top: 20px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    overflow: hidden;
+  right: 35px;
+  top: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.modal-close::after,.modal-close::before{
+.modal-close::after,
+.modal-close::before {
   position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
-    width: 25px;
-    height: 3px;
-    background: #bab9ff;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 25px;
+  height: 3px;
+  background: #bab9ff;
 }
+
 .event-photo {
   width: 300px;
   border-radius: 20px;
 }
-.modal-close:before {transform: rotate(45deg);}
-.modal-close:after {transform: rotate(-45deg);}
+
+.modal-close:before {
+  transform: rotate(45deg);
+}
+
+.modal-close:after {
+  transform: rotate(-45deg);
+}
+
+.description-text {
+  text-align: justify;
+}
 </style>

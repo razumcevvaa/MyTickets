@@ -1,9 +1,9 @@
 <template>
 <div class="nav-create">
-  <button @click="model='LkBasicCE'">Основное</button>
-  <button @click="model='LkDateCE'">Дата</button>
-  <button @click="model='LkTicketsCE'">Билеты</button>
-  <button @click="model='LkInfoCE'">Инфо</button>
+  <Button @click="model='LkBasicCE'">Основное</Button>
+  <Button @click="model='LkDateCE'">Дата</Button>
+  <Button @click="model='LkTicketsCE'">Билеты</Button>
+  <Button @click="model='LkInfoCE'">Инфо</Button>
 </div>
 </template>
 
@@ -15,12 +15,13 @@ model.value = 'LkBasicCE'
 <style scoped>
 .nav-create {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   padding: 10px 50px;
 }
 button{
-  background-color: gray;
+  background-color: #5b5b5b;
   padding: 10px 20px;
   border-radius: 20px;
+  text-transform: uppercase;
 }
 </style>

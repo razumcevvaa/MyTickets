@@ -5,10 +5,12 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName" />
+    <lkNavCreatEvent v-model="compName"/>
     <component :is="comp"></component>
+    <button class="main-button color" type="submit">
+      Cохранить
+    </button>
   </div>
-
   {{ eventsStore.newEvent }}
 </template>
 
@@ -92,5 +94,8 @@ h1 {
     opacity: 0;
     transform: translate(0, 10px) rotate(-45deg);
   }
+}
+.main-button {
+  margin-left: 50px;
 }
 </style>

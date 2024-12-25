@@ -219,8 +219,9 @@ h2 {
 }
 
 .container-link {
-  background-color: #6a6a6a;
+  background-color: #1e1e1e;
   width: 300px;
+  min-height: 100vh;
 }
 
 .container-link a {
@@ -244,6 +245,7 @@ img {
 
 .layout-row {
   padding: 10px 50px;
+  height: 600px;
 }
 .error-text {
   color:  red;

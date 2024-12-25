@@ -9,9 +9,8 @@
       <div class="event-price"> от {{ event.price }} ₽</div>
     </div>
     <div class="border-top-box">
-      <!-- <p class="event-date place-date-text">{{ formattedDate }}</p> -->
+      <p class="event-date place-date-text">{{ event.dateEvent }}</p>
       <!-- ! добавить время через запятую -->
-      <p class="event-date place-date-text">{{ event.date }}</p>
       <p class="place-date-text">{{ event.location }}</p>
     </div>
   </div>
@@ -20,6 +19,11 @@
 import {useEvents, type Event} from '~/stores/events'
 defineProps<{event: Event}>()
 const eventsStore = useEvents()
+
+// import { CalendarDate, DateFormatter, getLocalTimeZone, parseDate, today } from '@internationalized/date'
+// const df = new DateFormatter('ru-US', {
+//   dateStyle: 'long',
+// })
 
 // function formatDate(date: Date) {
 //   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }
@@ -148,19 +152,4 @@ p::first-letter {
   z-index: 100;
   border: none;
 }
-
-
-/* button {
-  display: none;
-  position: absolute;
-  top: 150px;
-  left: 60px;
-  transform: translate(-50%, -50%);
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #bab9ff;
-} */
-
 </style>

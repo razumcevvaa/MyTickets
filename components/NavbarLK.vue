@@ -72,7 +72,7 @@ h3 {
 }
 
 .n-link:hover {
-  background-color: #949494;
+  background-color: #3a3a3a;
 }
 
 .activeTab {

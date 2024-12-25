@@ -18,17 +18,6 @@ type User = {
   avgVisitors?: number,
 }
 
-// const users = [{
-//   email: 'kateraz@gmail.com',
-//   name: 'Kate',
-//   login: 'razumcevvaa',
-//   password: 'ea56ee12a3fdcea765bf35c9c36c6404',
-//   // password: 'razdva3',
-//   city: 'Сочи',
-//   eventType: 'Концерты',
-//   avgVisitors: 1000,
-// }]
-
 export const useUser = defineStore('user', () => {
   const user = ref(undefined as undefined | User)
   const logOut = () => {

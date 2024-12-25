@@ -10,9 +10,6 @@
           description="Фигурирует во всех публичных материалах как дата и время события." />
         <LkCalendarC v-model="eventsStore.newEvent.dateEnd" label="Дата окончания события"
           description="Если дата и время не известны заранее, то укажите приблизительное значение." />
-        <Button class="main-button color" type="submit">
-          Cохранить
-        </Button>
       </form>
     </div>
   </div>

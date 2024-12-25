@@ -2,8 +2,8 @@
   <div class="box-top border-r">
     <h2 class="uppercase">Топ 1 сегодня</h2>
     <div class="top-event">
-      <div class="top1"><img class="afisha-top" src="/top-event.jpg" alt="top"></div>
-      <div class="top2"><img class="afisha-top" src="/top-event.jpg" alt="top"></div>
+      <div class="top1"><img class="afisha-top" src="/newY.jpg" alt="top"></div>
+      <div class="top2"><img class="afisha-top" src="/code.jpg" alt="top"></div>
     </div>
     <NuxtLink class="text-decor" to="/afisha">Смотреть все</NuxtLink>
   </div>
@@ -20,14 +20,16 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 0;
+  padding: 15px 0;
 }
-
+.top-event{
+  display: flex;flex-direction: column;
+  gap: 15px;
+}
 /* поменять размер картинки */
 /* написать логику для смены картинки */
 .afisha-top {
   width: 260px;
-  margin: 10px 0;
   border-radius: 10px;
 }
 </style>

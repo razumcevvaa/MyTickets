@@ -50,5 +50,4 @@ model Ticket_type {
   description String
   user_id     Int
   user        User    @relation(fields: [user_id], references: [id])
-
 }

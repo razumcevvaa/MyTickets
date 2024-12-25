@@ -3,7 +3,7 @@
     <h1 class="header-page">Регистрация</h1>
     <h2>Шаг 2</h2>
     <form class="form-email">
-      {{ userStore.regUser.email }}
+      <!-- {{ userStore.regUser.email }} -->
       <div class="form-left">
         <div class="form-block">
           <label class="form-block-label" for="name">Название аккаунта<span>*</span></label>
