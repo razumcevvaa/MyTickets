@@ -9,7 +9,7 @@
       <div class="event-price"> от {{ event.price }} ₽</div>
     </div>
     <div class="border-top-box">
-      <p class="event-date place-date-text">{{ event.dateEvent }}</p>
+      <p class="event-date place-date-text">{{ formatDate(event.dateEvent)}}</p>
       <!-- ! добавить время через запятую -->
       <p class="place-date-text">{{ event.location }}</p>
     </div>
@@ -20,22 +20,11 @@ import {useEvents, type Event} from '~/stores/events'
 defineProps<{event: Event}>()
 const eventsStore = useEvents()
 
-// import { CalendarDate, DateFormatter, getLocalTimeZone, parseDate, today } from '@internationalized/date'
-// const df = new DateFormatter('ru-US', {
-//   dateStyle: 'long',
-// })
-
-// function formatDate(date: Date) {
-//   const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }
-//   return new Intl.DateTimeFormat('ru-RU', options).format(date)
-// }
-
-
-// function formatDate(date) {
-//   const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-//   return new Intl.DateTimeFormat('ru-RU', options).format(date)
-// }
-// const formattedDate = formatDate(events.date)
+// !ошибки
+function formatDate(date) {
+  const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  return new Intl.DateTimeFormat('ru-RU', options).format(date)
+}
 
 // import axios from 'axios';
 
@@ -44,17 +33,6 @@ const eventsStore = useEvents()
 //   setup() {
 //     const event = ref({}); // Хранит информацию о событии
 //     const apiURL = 'https://example.com/api/events/1'; // Замените на ваш URL API
-
-// const formattedDate = computed(() => {
-//   if (event.value.date) {
-//     return new Date(event.value.date).toLocaleDateString('ru-RU', {
-//       year: 'numeric',
-//       month: 'long',
-//       day: 'numeric',
-//     });
-//   }
-//   return ''
-// })
 
 //     const fetchEventData = async () => {
 //       try {

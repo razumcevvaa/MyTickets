@@ -17,6 +17,7 @@
 <script setup lang="ts">
 const categories: Ref<Category[]> = ref([])
 const create = ref(false)
+
 </script>
 
 <style scoped>
