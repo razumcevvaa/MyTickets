@@ -6,8 +6,9 @@
 
 <script setup lang="ts">
 const userStore = useUser()
+const route = useRoute()
 onMounted(async()=>{
-   await userStore.autoLogin()
+   await userStore.autoLogin(route.path)
 })
 </script>
 <style lang="scss">

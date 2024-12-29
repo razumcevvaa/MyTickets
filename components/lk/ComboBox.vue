@@ -20,15 +20,13 @@ import { ref } from 'vue'
 
 const typeTickets = [
   { value: 'currentCategory', label: 'standart' },
-  { value: 'sveltekit', label: 'SvelteKit' },
-  { value: 'nuxt', label: 'Nuxt' },
-  { value: 'remix', label: 'Remix' },
-  { value: 'astro', label: 'Astro' },
+  { value: 'sveltekit', label: 'vip' },
   //cюда должны передаваться названия сохраненных категорий а ниже выводиться сами категории
 ]
 
 const open = ref(false)
 const value = ref('')
+//куда повесить v-model
 </script>
 
 <template>
@@ -83,7 +81,7 @@ button{
   border-radius: 20px;
 }
 .transparent {
-  width: 200px;
+  width: 210px;
   font-size: 14px;
 }
 </style>

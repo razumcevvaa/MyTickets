@@ -49,13 +49,13 @@ export const useUser = defineStore('user', () => {
     }
   }
 
-  const autoLogin = async () => {
+  const autoLogin = async (route:string) => {
     if (localStorage.user) {
       const tempUser = <User>JSON.parse(localStorage.user)
       const data = await $fetch('/api/auth/auto', { method: 'POST', body: { token: tempUser.token } })
       if (data.user) {
         user.value = data.user
-        navigateTo('/lk')
+        if (route.includes('/lk')) navigateTo('/lk')
       }
     }
   }

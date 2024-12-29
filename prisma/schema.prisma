@@ -29,15 +29,16 @@ model Event {
   photo       String
   title       String
   format      String
+  city        String
   price       String
   date_event  DateTime
-  date_close  String
-  date_open   String
-  date_end    String
+  date_close  DateTime
+  date_open   DateTime
+  date_end    DateTime
   location    String
   age         Int
+  site        String
   description String
-  content     String
   published   Boolean @default(false)
   user_id     Int
   user        User    @relation(fields: [user_id], references: [id])

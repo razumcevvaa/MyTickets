@@ -5,9 +5,9 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName"/>
+    <lkNavCreatEvent v-model="compName" />
     <component :is="comp"></component>
-    <button class="main-button color" type="submit">
+    <button class="main-button color" @click="saveEvent" type="submit">
       Cохранить
     </button>
   </div>
@@ -39,6 +39,26 @@ useHead({
 watchEffect(() => {
   comp.value = compObj[compName.value]
 })
+
+const saveEvent = async () => {
+  const event = { ...eventsStore.newEvent }
+  event.date_close = event.dateClose
+  delete event.dateClose
+  event.date_open = event.dateOpen
+  delete event.dateOpen
+  event.date_end = event.dateEnd
+  delete event.dateEnd
+  event.date_event = event.dateEvent
+  delete event.dateEvent
+  event.photo = 'Ogbuda.jpg'
+  event.price = '100$'
+  // event.user_id = 1
+
+  console.log(event)
+  const data = $fetch('/api/event', {
+    method: 'POST', body: event
+  })
+}
 
 </script>
 
@@ -95,6 +115,7 @@ h1 {
     transform: translate(0, 10px) rotate(-45deg);
   }
 }
+
 .main-button {
   margin-left: 50px;
 }

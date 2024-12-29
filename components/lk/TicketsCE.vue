@@ -6,16 +6,16 @@
         <button @click="create = !create" class="underline">Создать</button>
       </div>
       <div class="input_date">
-        <LkComboBox />
+        <LkComboBox/>
       </div>
     </div>
     <LkSalesScheme v-if="create" />
   </div>
-  {{ categories }}
+  <!-- {{ categories }} -->
 </template>
 
 <script setup lang="ts">
-const categories: Ref<Category[]> = ref([])
+// const categories: Ref<Category[]> = ref([])
 const create = ref(false)
 
 </script>

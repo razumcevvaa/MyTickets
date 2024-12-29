@@ -8,6 +8,8 @@
     <input class="form-block-input" type="text" name="text-name" id="text-name" v-model="currentCategory.name" placeholder="Например: Standart">
     <label for="text-desc">Описание для категории</label>
     <input class="form-block-input" type="text" name="text-desc" id="text-desc" v-model="currentCategory.description" placeholder="Что входит в возможности билета">
+    <label for="price">Цена</label>
+    <!-- <input class="form-block-input" type="number" name="price" id="price" v-model="eventsStore.newEvent.price"> -->
   </form>
   <button @click="addCategory()" class="main-button transparent">Добавить</button>
   </div>
@@ -28,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+// const eventsStore = useEvent()
 interface Category {
   name: string,
   description: string
