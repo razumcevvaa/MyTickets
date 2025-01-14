@@ -30,7 +30,7 @@ model Event {
   title       String
   format      String
   city        String
-  price       String
+  price       Int
   date_event  DateTime
   date_close  DateTime
   date_open   DateTime

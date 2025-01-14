@@ -24,7 +24,7 @@ type Event = {
     title: string,
     city?: string,
     format: string,
-    price: string,
+    price: number,
     dateEvent: Date,
     dateClose: Date,
     dateOpen: Date,
