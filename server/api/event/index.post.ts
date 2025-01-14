@@ -1,4 +1,3 @@
-import { connect } from "http2"
 import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
@@ -9,9 +8,6 @@ export default defineEventHandler(async (event) => {
     const event = await prisma.event.create({
       data: {
         ...data,
-        user: {
-          connect: { id: user_id }
-        }
       }
     })
     return { event, ok: true }

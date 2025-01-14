@@ -47,9 +47,9 @@ const model = defineModel('')
 
 watchEffect(() => {
   if (value.value) {
-    model.value = `${value.value} T${time.value}`
+    model.value = `${value.value}T${time.value}`
   }
-  // console.log(`${value.value} T${time.value}`)
+  console.log(`${value.value}T${time.value}`)
 })
 
 

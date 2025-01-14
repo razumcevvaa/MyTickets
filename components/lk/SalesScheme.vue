@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-const eventsStore = useEvent()
+const eventsStore = useEvents()
 interface Category {
   name: string,
   description: string
