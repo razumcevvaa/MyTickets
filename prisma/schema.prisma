@@ -34,22 +34,17 @@ model Event {
   date_close   DateTime
   date_open    DateTime
   date_end     DateTime
-  // location     Location[]
   age          Int
   site         String
   description  String
   published    Boolean       @default(false)
   user_id      Int
+  address    String
+  place      String
+  refinement  String
   user         User          @relation(fields: [user_id], references: [id])
   ticket_types Ticket_type[]
 }
-
-// model Location {
-//   address    String
-//   place      String
-//   refinement  String
-//   event       Event  @relation(fields: [event_id], references: [id])
-// }
 
 model Ticket_type {
   id          Int    @id @default(autoincrement())

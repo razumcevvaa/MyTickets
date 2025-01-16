@@ -39,7 +39,7 @@
         </div>
         <div class="form-block">
           <label class="form-block-label" for="avg_visitors">Количество посетителей:</label>
-          <input v-model.number="userStore.regUser.avg_visitors" class="form-block-input" type="number" name="avg_visitors"
+          <input v-model.number="userStore.regUser.avgVisitors" class="form-block-input" type="number" name="avg_visitors"
             placeholder="Ваших мероприятий">
         </div>
       </div>

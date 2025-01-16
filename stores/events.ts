@@ -13,16 +13,12 @@ type Event = {
     dateOpen: Date,
     dateEnd: Date,
     site: string,
-    location: Location,
-    isHovered?: boolean,
-    age?: number,
-    description?: string,
-}
-
-interface Location {
     address: string;
     place: string;
     refinement: string;
+    isHovered?: boolean,
+    age?: number,
+    description?: string,
 }
 
 export const useEvents = defineStore('events', () => {
