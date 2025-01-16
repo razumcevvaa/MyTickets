@@ -2,7 +2,7 @@
   <footer class="border-r">
     <div class="footer-box">
       <div class="footer-class">   
-        <div class="for-desktop"><img src="/logo.png" alt="tickets"></div>
+        <div class="for-desktop"><img src="/logo.png" alt="tickets"/></div>
         <div class="box-footer-item">
           <NuxtLink class="hover-text-d" to="/">Возможности</NuxtLink>
           <NuxtLink class="hover-text-d" to="/">Стоимость</NuxtLink>
@@ -13,9 +13,9 @@
       <div class="footer-class">
         <span>Оплата</span>
         <div class="payment-item">
-          <img src="/masterc.png" alt="mastercard">
-          <img src="/mir.png" alt="mir">
-          <img src="/visa.png" alt="visa">
+          <img src="/masterc.png" alt="mastercard"/>
+          <img src="/mir.png" alt="mir"/>
+          <img src="/visa.png" alt="visa"/>
           <img src="/spb.png" alt="spb">
           <img src="/sberpay.png" alt="sberpay">
           <img src="/halva.png" alt="halva">

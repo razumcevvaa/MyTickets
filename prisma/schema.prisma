@@ -11,47 +11,54 @@ datasource db {
 }
 
 model User {
-  id            Int     @id @default(autoincrement())
-  email         String  @unique
-  name          String
-  login         String  @unique
-  pass          String
-  city          String
-  event_type    String
-  token         String  @unique @default(uuid())
-  avg_visitors  Int?
-  events        Event[]
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  name         String
+  login        String  @unique
+  pass         String
+  city         String
+  event_type   String
+  token        String  @unique @default(uuid())
+  avg_visitors Int?
+  events       Event[]
 }
 
 model Event {
-  id            Int     @id @default(autoincrement())
-  photo         String
-  title         String
-  format        String
-  city          String
-  price         Int
-  date_event    DateTime
-  date_close    DateTime
-  date_open     DateTime
-  date_end      DateTime
-  location      String
-  age           Int
-  site          String
-  description   String
-  published     Boolean @default(false)
-  user_id       Int
-  user          User    @relation(fields: [user_id], references: [id])
-  ticket_types  Ticket_type[]
+  id           Int           @id @default(autoincrement())
+  photo        String
+  title        String
+  format       String
+  city         String
+  price        Int
+  date_event   DateTime
+  date_close   DateTime
+  date_open    DateTime
+  date_end     DateTime
+  // location     Location[]
+  age          Int
+  site         String
+  description  String
+  published    Boolean       @default(false)
+  user_id      Int
+  user         User          @relation(fields: [user_id], references: [id])
+  ticket_types Ticket_type[]
 }
 
+// model Location {
+//   address    String
+//   place      String
+//   refinement  String
+//   event       Event  @relation(fields: [event_id], references: [id])
+// }
+
 model Ticket_type {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   name        String
   price       Int
   description String
   event_id    Int
   count       Int
-  event       Event    @relation(fields: [event_id], references: [id])
+  event       Event  @relation(fields: [event_id], references: [id])
 }
 
 // eval "$(fnm env --use-on-cd --shell bash)"

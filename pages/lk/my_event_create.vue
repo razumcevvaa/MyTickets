@@ -5,7 +5,7 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName" />
+    <lkNavCreatEvent v-model="compName"/>
     <component :is="comp"></component>
     <button class="main-button color" @click="saveEvent" type="submit">
       Cохранить

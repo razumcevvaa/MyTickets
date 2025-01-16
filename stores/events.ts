@@ -1,24 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-// export interface Event {
-//     id: number;
-//     photo: string;
-//     title: string;
-//     city?: string,
-//     format: string;
-//     price: string;
-//     dateEvent: Date;
-//     dateClose: String;
-//     dateOpen: String;
-//     dateEnd: String;
-//     location: string;
-//     isHovered?: boolean;
-//     age?: number,
-//     description?: string,
-// }
-
-type Event = { 
+type Event = {
     id: number,
     photo: string,
     title: string,
@@ -29,15 +12,22 @@ type Event = {
     dateClose: Date,
     dateOpen: Date,
     dateEnd: Date,
-    site:string,
-    location: string,
+    site: string,
+    location: Location,
     isHovered?: boolean,
     age?: number,
     description?: string,
 }
+
+interface Location {
+    address: string;
+    place: string;
+    refinement: string;
+}
+
 export const useEvents = defineStore('events', () => {
     const events = ref<Event[]>([
-       
+
     ])
     const newEvent = ref({} as Event)
     const showModal = ref(false)

@@ -25,9 +25,6 @@ import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import { z } from 'zod'
 const eventsStore = useEvents()
-watchEffect(() => {
-  // console.log(date1.value)
-})
 
 const formSchema = toTypedSchema(z.object({
   dob: z
