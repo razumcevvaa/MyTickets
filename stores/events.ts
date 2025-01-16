@@ -22,9 +22,8 @@ type Event = {
 }
 
 export const useEvents = defineStore('events', () => {
-    const events = ref<Event[]>([
-
-    ])
+    const events = ref<Event[]>([])
+    const ticketTypes = ref([])
     const newEvent = ref({} as Event)
     const showModal = ref(false)
     const selectedEvent = ref(null as null | Event)
@@ -32,5 +31,14 @@ export const useEvents = defineStore('events', () => {
         selectedEvent.value = event
         showModal.value = true
     }
+    const create = async () => {
+        const data = await $fetch('/api/event', { method: 'POST', body: {event:newEvent.value, ticket_types:ticketTypes.value} })
+        // if (data.ok) {
+        
+        // } else {
+        
+        // }
+      }
+    
     return { events, showModal, selectedEvent, showModalForEvent, newEvent }
 })
