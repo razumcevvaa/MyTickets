@@ -18,7 +18,7 @@
         <div class="form-block">
           <label class="form-block-label" for="password">Пароль<span>*</span></label>
           <div style="position: relative">
-            <input v-model.trim="userStore.regUser.password" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
+            <input v-model.trim="userStore.regUser.pass" :type="showPassword ? 'text' : 'password'" class="form-block-input psw-inp"
               name="password" placeholder="Придумайте себе пароль" required autocomplete="off">
             <span class="fa-fw" @click="showPassword = !showPassword"><img
                 :src="showPassword ? '/open-eye.png' : '/close-eye.png'" alt="">
@@ -39,7 +39,7 @@
         </div>
         <div class="form-block">
           <label class="form-block-label" for="avg_visitors">Количество посетителей:</label>
-          <input v-model.number="userStore.regUser.avgVisitors" class="form-block-input" type="number" name="avg_visitors"
+          <input v-model.number="userStore.regUser.avg_visitors" class="form-block-input" type="number" name="avg_visitors"
             placeholder="Ваших мероприятий">
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="container-display">
     <h1>PASSTICKETS</h1>
-    <p>Добро пожаловать{{ userStore.regUser.name }}</p>
+    <p>Добро пожаловать{{ userStore.user?.name }}</p>
   </div>
 </template>
 

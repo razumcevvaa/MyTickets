@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import md5 from 'md5'
 
 interface regData {
   ok: boolean;
@@ -7,7 +8,7 @@ interface regData {
   massage: string;
 }
 
-type User = {
+interface User {
   id: number,
   email: string,
   name: string,
@@ -15,7 +16,11 @@ type User = {
   city: string,
   event_type: string,
   token: string,
-  avgVisitors?: number,
+  avg_visitors: number|null,
+}
+
+interface RegUser extends User {
+  pass: string,
 }
 
 export const useUser = defineStore('user', () => {
@@ -36,9 +41,11 @@ export const useUser = defineStore('user', () => {
       return 'Проверьте логин либо пароль'
     }
   }
-//!проверить
-  const regIn = async (email: string, pass: string, name: string, login: string, city: string, event_type: string, avg_visitors: number) => {
-    const data = await $fetch<regData>('/api/auth/reg', { method: 'POST', body: { email, pass, name, login, city, event_type, avg_visitors } })
+
+  const regUser = ref({} as RegUser)
+  const regIn = async () => {
+    regUser.value.pass=md5(regUser.value.pass)
+    const data = await $fetch<regData>('/api/auth/reg', { method: 'POST', body: regUser.value })
     if (data.ok) {
       user.value = data.user
       localStorage.user = JSON.stringify(data.user)
@@ -59,6 +66,5 @@ export const useUser = defineStore('user', () => {
       }
     }
   }
-  const regUser = ref({} as User)
   return { user, logIn, logOut, autoLogin, regUser, regIn }
 })
