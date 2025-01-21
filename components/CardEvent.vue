@@ -1,28 +1,31 @@
 <template>
-  <div class="event-card border-r" @mouseenter="event.isHovered = true"
-    @mouseleave="event.isHovered = false" @click="eventsStore.showModalForEvent(event)">
-    <button v-if="event.isHovered" class="btn-buy">Купить</button>
-    <img :class="{ 'dimmed': event.isHovered }" :src="event.photo" alt="Event Photo" class="event-photo" />
+  <div class="event-card border-r" @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false" @click="eventsStore.showModalForEvent(event)">
+    <button v-if="isHovered" class="btn-buy">Купить</button>
+    <img :class="{ 'dimmed': isHovered }" :src="event.photo" alt="Event Photo" class="event-photo" />
     <h2 class="title-event">{{ event.title }}</h2>
     <div class="box-price">
       <p class="format-event">{{ event.format }}</p>
       <div class="event-price"> от {{ event.price }} ₽</div>
     </div>
     <div class="border-top-box">
-      <p class="event-date place-date-text">{{ formatDate(event.dateEvent)}}</p>
-      <!-- ! добавить время через запятую -->
-      <p class="place-date-text">{{ event.location }}</p>
+      <p class="event-date place-date-text">{{ formatDate(event.date_event)}}</p>
+      <p class="place-date-text">{{ event.address }}</p>
+      <p class="place-date-text">{{ event.place }}</p>
+      <p class="place-date-text">{{ event.refinement }}</p>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import {useEvents, type Event} from '~/stores/events'
-defineProps<{event: Event}>()
 const eventsStore = useEvents()
+defineProps<{event: Event}>()
+const isHovered = ref(false)
 
-// !ошибки
-function formatDate(date) {
+function formatDate(dateStr:string) {
+  const date = new Date(dateStr)
   const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  // @ts-ignore
   return new Intl.DateTimeFormat('ru-RU', options).format(date)
 }
 

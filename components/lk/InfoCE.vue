@@ -15,7 +15,7 @@
       <input v-model="eventsStore.newEvent.refinement" class="form-block-input"  type="text" id="refinement" placeholder="Вход, метро, зал, этаж и т.п.">
       <label for="poster">Афиша<span>*</span></label>
       <p>Рекомендуем вертикальное изображение не менее 640x1290</p>
-      <!-- <input v-model="eventsStore.newEvent.photo" class="form-block-input poster"  type="file" id="poster" accept="image/png, image/jpeg"> -->
+      <input class="form-block-input poster" ref="file" type="file" id="poster" accept="image/png, image/jpeg">
       <!-- сделать вывод картинки загруженной -->
     </div>
   </div>
@@ -23,6 +23,15 @@
 
 <script setup lang="ts">
 const eventsStore = useEvents()
+const file = ref(null)
+
+onMounted(()=>{
+  const fileref = file.value as never as HTMLInputElement
+  fileref.onchange = ()=>{
+    if (fileref?.files) eventsStore.newEvent.photo_file = fileref.files[0]
+  }
+})
+
 </script>
 
 <style scoped>

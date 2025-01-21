@@ -1,30 +1,46 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-type Event = {
+interface Category {
+    name: string,
+    description: string,
+    count: number,
+    price: number
+}
+
+export type Event = {
     id: number,
     photo: string,
+    photo_file?: File,
     title: string,
-    city?: string,
     format: string,
+    city?: string,
     price: number,
-    dateEvent: Date,
-    dateClose: Date,
-    dateOpen: Date,
-    dateEnd: Date,
+    date_event: string,
+    date_close: string,
+    date_open: string,
+    date_end: string,
     site: string,
+    description?: string,
     address: string;
     place: string;
     refinement: string;
-    isHovered?: boolean,
+    user_id:number,
     age?: number,
-    description?: string,
+    ticket_types: Category[]
 }
 
 export const useEvents = defineStore('events', () => {
     const events = ref<Event[]>([])
     const ticketTypes = ref([])
-    const newEvent = ref({} as Event)
+    const newEvent = ref({
+        ticket_types:[{
+            name: '',
+            description: '',
+            count: 0,
+            price: 0
+          }]
+    } as Event)
     const showModal = ref(false)
     const selectedEvent = ref(null as null | Event)
     function showModalForEvent(event: Event) {

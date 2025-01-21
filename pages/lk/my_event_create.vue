@@ -5,11 +5,12 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName"/>
+    <lkNavCreatEvent v-model="compName" />
     <component :is="comp"></component>
     <button class="main-button color" @click="saveEvent" type="submit">
       Cохранить
     </button>
+    <p>{{ error }}</p>
   </div>
   {{ eventsStore.newEvent }}
 </template>
@@ -20,7 +21,9 @@ import LkDateCE from '~/components/lk/DateCE.vue'
 import LkTicketsCE from '~/components/lk/TicketsCE.vue'
 import LkInfoCE from '~/components/lk/InfoCE.vue'
 
+const error = ref('')
 const eventsStore = useEvents()
+const userStore = useUser()
 const compName = ref('LkBasicCE')
 const comp = shallowRef(LkBasicCE)
 const compObj = {
@@ -41,23 +44,31 @@ watchEffect(() => {
 })
 
 const saveEvent = async () => {
-  const event = { ...eventsStore.newEvent }
-  event.date_close = event.dateClose
-  delete event.dateClose
-  event.date_open = event.dateOpen
-  delete event.dateOpen
-  event.date_end = event.dateEnd
-  delete event.dateEnd
-  event.date_event = event.dateEvent
-  delete event.dateEvent
-  event.photo = 'Ogbuda.jpg'
-  event.price = '100$'
-  // event.user_id = 1
+  error.value =  '' 
 
+  if (!eventsStore.newEvent.address) {
+    error.value =  'нет адреса' 
+    compName.value = 'LkInfoCE'
+  }
+  if (error.value) {
+    return
+  }
+
+  const event = { ...eventsStore.newEvent }
+  const file = event.photo_file
+  delete event.photo_file
+  event.ticket_types = event.ticket_types.filter(el => el.price)
+  if (userStore.user?.id) event.user_id = userStore.user.id
+  const fD = new FormData()
+  fD.append('event', JSON.stringify(event))
+  // @ts-ignore
+  fD.append('img', file)
   console.log(event)
-  const data = $fetch('/api/event', {
-    method: 'POST', body: event
+  const data = await $fetch('/api/event', {
+    method: 'POST',
+    body: fD
   })
+
 }
 
 </script>

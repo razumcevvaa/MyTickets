@@ -8,22 +8,22 @@
             <div>
               <label for="text-name">Название категории</label>
               <input class="form-block-input" type="text" name="text-name" id="text-name"
-                v-model="currentCategory[i - 1].name" placeholder="Например: Standart">
+                v-model="eventsStore.newEvent.ticket_types[i - 1].name" placeholder="Например: Standart">
             </div>
             <div>
               <label for="text-desc">Описание для категории</label>
               <input class="form-block-input" type="text" name="text-desc" id="text-desc"
-                v-model="currentCategory[i - 1].description" placeholder="Что входит в возможности билета">
+                v-model="eventsStore.newEvent.ticket_types[i - 1].description" placeholder="Что входит в возможности билета">
             </div>
             <div class="text-center">
               <label for="price">Цена</label>
               <input class="form-block-input mini" type="number" name="price" id="price" min="1"
-                v-model="currentCategory[i - 1].price">
+                v-model="eventsStore.newEvent.ticket_types[i - 1].price">
             </div>
             <div class="text-center">
               <label for="count">Количество</label>
               <input class="form-block-input mini" type="number" name="count" id="count" min="1"
-                v-model="currentCategory[i - 1].count">
+                v-model="eventsStore.newEvent.ticket_types[i - 1].count">
             </div>
             <button class="cross" @click="deleteCateg(i - 1)"></button>
           </div>
@@ -33,27 +33,14 @@
       <!-- добавить категории с прошлого мероприятия кнопка -->
     </div>
   </div>
-  <!-- {{ categories }} -->
 </template>
 
 <script setup lang="ts">
 const eventsStore = useEvents()
-interface Category {
-  name: string,
-  description: string,
-  count: number,
-  price: number
-}
-const currentCategory = ref<Category[]>([{
-  name: '',
-  description: '',
-  count: 0,
-  price: 0
-}])
 const num = ref(1)
 
 const addCategory = () => {
-  currentCategory.value.push({
+  eventsStore.newEvent.ticket_types.push({
     name: '',
     description: '',
     count: 0,
@@ -62,8 +49,8 @@ const addCategory = () => {
   num.value++
 }
 const deleteCateg = (index: number) => {
-  if (index >= 0 && index < currentCategory.value.length) {
-    currentCategory.value.splice(index, 1)
+  if (index >= 0 && index < eventsStore.newEvent.ticket_types.length) {
+    eventsStore.newEvent.ticket_types.splice(index, 1)
   }
   num.value--
 }

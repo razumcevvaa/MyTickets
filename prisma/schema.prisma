@@ -29,12 +29,11 @@ model Event {
   title        String
   format       String
   city         String
-  price        Int
   date_event   DateTime
   date_close   DateTime
   date_open    DateTime
   date_end     DateTime
-  age          Int
+  age          String
   site         String
   description  String
   published    Boolean       @default(false)

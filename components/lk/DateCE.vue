@@ -2,18 +2,18 @@
   <div class="layout-row">
     <div class="input_date">
       <form class="space-y-8" @submit="onSubmit">
-        <LkCalendarC v-model="eventsStore.newEvent.dateOpen" label="Дата открытия дверей"
+        <LkCalendarC v-model="eventsStore.newEvent.date_open" label="Дата открытия дверей"
           description="С этого момента начинает работать сканирование билетов нашим приложением." />
-        {{ eventsStore.newEvent.dateOpen }}
-        <LkCalendarC v-model="eventsStore.newEvent.dateClose" label="Дата закрытия регистрации"
+        {{ eventsStore.newEvent.date_open }}
+        <LkCalendarC v-model="eventsStore.newEvent.date_close" label="Дата закрытия регистрации"
         description="С этого момента покупатели не смогут забронировать и приобрести билет." />
-        {{ eventsStore.newEvent.dateClose }}
-        <LkCalendarC v-model="eventsStore.newEvent.dateEvent" label="Дата начала события"
+        {{ eventsStore.newEvent.date_close }}
+        <LkCalendarC v-model="eventsStore.newEvent.date_event" label="Дата начала события"
         description="Фигурирует во всех публичных материалах как дата и время события." />
-        {{ eventsStore.newEvent.dateEvent }}
-        <LkCalendarC v-model="eventsStore.newEvent.dateEnd" label="Дата окончания события"
+        {{ eventsStore.newEvent.date_event }}
+        <LkCalendarC v-model="eventsStore.newEvent.date_end" label="Дата окончания события"
         description="Если дата и время не известны заранее, то укажите приблизительное значение." />
-        {{ eventsStore.newEvent.dateEnd }}
+        {{ eventsStore.newEvent.date_end }}
       </form>
     </div>
   </div>
