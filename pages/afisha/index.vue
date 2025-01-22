@@ -3,7 +3,6 @@
   <div class="box-event">
     <CardEvent  v-for="event in data.events" :event="event" :key="event.id"/>
   </div>
-
   <EventModal/>
 </template>
 

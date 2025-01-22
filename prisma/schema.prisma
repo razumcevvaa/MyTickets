@@ -34,13 +34,13 @@ model Event {
   date_open    DateTime
   date_end     DateTime
   age          String
-  site         String
-  description  String
+  site         String?
+  description  String?
   published    Boolean       @default(false)
   user_id      Int
-  address    String
-  place      String
-  refinement  String
+  address      String
+  place        String
+  refinement    String?
   user         User          @relation(fields: [user_id], references: [id])
   ticket_types Ticket_type[]
 }
@@ -49,7 +49,7 @@ model Ticket_type {
   id          Int    @id @default(autoincrement())
   name        String
   price       Int
-  description String
+  description String?
   count       Int
   event_id    Int
   event       Event  @relation(fields: [event_id], references: [id])

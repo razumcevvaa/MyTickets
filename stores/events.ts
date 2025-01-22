@@ -48,7 +48,10 @@ export const useEvents = defineStore('events', () => {
         showModal.value = true
     }
     const create = async () => {
-        const data = await $fetch('/api/event', { method: 'POST', body: {event:newEvent.value, ticket_types:ticketTypes.value} })
+        const data = await $fetch('/api/event', { 
+            method: 'POST', 
+            body: {event:newEvent.value, ticket_types:ticketTypes.value} 
+        })
         // if (data.ok) {
         
         // } else {

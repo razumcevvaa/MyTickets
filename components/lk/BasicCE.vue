@@ -2,13 +2,13 @@
   <div class="layout-row">
     <div class="flex">
       <div>
-        <label for="text">Название</label>
-        <input class="form-block-input" type="text" id="text" name="text" v-model="eventsStore.newEvent.title" required>
+        <label for="text">Название<span>*</span></label>
+        <input class="form-block-input" type="text" id="text" name="text" v-model="eventsStore.newEvent.title" required placeholder="Введите название мероприятия">
       </div>
       <div>
-        <label for="event-type">Выберите тип мероприятия:</label>
+        <label for="event-type">Выберите тип мероприятия:<span>*</span></label>
         <select class="form-block-input" name="event-type" id="event-type" v-model="eventsStore.newEvent.format" required>
-          <option :value="undefined">--Выберите тип мероприятия--</option>
+          <option :value="undefined">--Выберите формат мероприятия--</option>
           <option value="concert">Концерт</option>
           <option value="party">Вечеринка</option>
           <option value="festival">Фестиваль</option>
@@ -19,9 +19,9 @@
     </div>
     <div class="flex">
       <div>
-        <label for="city">Город</label>
+        <label for="city">Город<span>*</span></label>
         <select class="form-block-input" name="city" id="city" v-model="eventsStore.newEvent.city" required>
-          <option :value="undefined">--Выберите--</option>
+          <option :value="undefined">--Выберите город--</option>
           <option value="Sochi">Сочи</option>
           <option value="Moscow">Москва</option>
           <option value="Saint-Peter">Cанкт-Петербург</option>
@@ -29,9 +29,9 @@
         </select>
       </div>
       <div>
-        <label for="age">Возрастное ограничение</label>
+        <label for="age">Возрастное ограничение<span>*</span></label>
         <select class="form-block-input" name="age" id="age" v-model="eventsStore.newEvent.age" required>
-          <option :value="undefined">--Выберите--</option>
+          <option :value="undefined">--Выберите возрастное ограничение--</option>
           <option value="0">0+</option>
           <option value="6">6+</option>
           <option value="14">14+</option>
@@ -49,6 +49,10 @@ const eventsStore = useEvents()
 </script>
 
 <style scoped>
+span {
+  color:red;
+}
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;

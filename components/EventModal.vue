@@ -8,8 +8,9 @@
         <h1>{{ eventsStore.selectedEvent.title }}</h1>
         <div class="event-info">
           <!-- <p class="event-date place-date-text">{{ formatDate(eventsStore.selectedEvent.date) }}</p> -->
+          <p class="event-date place-date-text">{{ formatDate(eventsStore.selectedEvent.date_event)}}</p>
           <span class="event-info__name-block">
-            <p class="place-date-text-modal">{{ eventsStore.selectedEvent.location }}</p>
+            <p class="place-date-text-modal">{{ eventsStore.selectedEvent.place }}</p>
             <span class="age">{{ eventsStore.selectedEvent.age }}+</span>
           </span>
         </div>
@@ -28,9 +29,9 @@
           </form> -->
         </div>
         <div class="bottom_area">
-          <h2>{{ eventsStore.selectedEvent.location }}</h2>
-          <!-- <div class="adress"></div>
-          <div class="for-map"></div> -->
+          <h2>{{ eventsStore.selectedEvent.address}}</h2>
+          <h2>{{ eventsStore.selectedEvent.refinement}}</h2>
+          <!-- <div class="for-map"></div> -->
         </div>
       </div>
     </div>
@@ -51,6 +52,13 @@ watch(() => eventsStore.showModal, () => {
     document.body.style.overflow = ''
   }
 })
+
+function formatDate(dateStr:string) {
+  const date = new Date(dateStr)
+  const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  // @ts-ignore
+  return new Intl.DateTimeFormat('ru-RU', options).format(date)
+}
 
 </script>
 

@@ -28,49 +28,15 @@ function formatDate(dateStr:string) {
   // @ts-ignore
   return new Intl.DateTimeFormat('ru-RU', options).format(date)
 }
-
-// import axios from 'axios';
-
-// export default {
-//   name: 'EventCard',
-//   setup() {
-//     const event = ref({}); // Хранит информацию о событии
-//     const apiURL = 'https://example.com/api/events/1'; // Замените на ваш URL API
-
-//     const fetchEventData = async () => {
-//       try {
-//         const response = await axios.get(apiURL);
-//         event.value = response.data; // Присваиваем данные события
-//       } catch (error) {
-//         console.error('Ошибка при получении данных:', error);
-//       }
-//     };
-
-//     onMounted(() => {
-//       fetchEventData(); // Получаем данные при монтировании компонента
-//     });
-
-//     return {
-//       event,
-//       formattedDate,
-//     };
-//   },
-// };
 // фото через накст пейдж чтобы они делали размер авто
 </script>
+
 <style scoped>
 .event-card {
   position: relative;
   cursor: pointer;
   max-width: 300px;
   padding: 15px;
-  /* -webkit-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.58);
--moz-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.58);
-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.58); */
-
-  /* -webkit-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.39);
--moz-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.39);
-box-shadow: 0px 0px 21px -1px rgba(186, 185, 255, 0.39); */
 }
 
 .title-event {

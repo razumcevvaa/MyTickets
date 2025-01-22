@@ -31,7 +31,7 @@
     </div>
     <div class="group">
       <div>
-        <h3 class="padd-5 uppercase">{{ userStore.regUser.name }}</h3>
+        <h3 class="padd-5 uppercase">{{ userStore.user?.name  }}</h3>
       </div>
       <NuxtLink class="n-link flex box-link" :class="route.path == '/lk/in_development' ? 'activeTab' : ''"
         to="/lk/in_development"><img src="/seting.png" alt="icon">Настройки</NuxtLink>

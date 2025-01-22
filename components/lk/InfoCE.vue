@@ -63,7 +63,5 @@ textarea{
 label{
   font-size: 17px;
 }
-.poster {
-  background-color: aqua;
-}
+
 </style>

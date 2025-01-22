@@ -7,12 +7,13 @@
     </div>
     <lkNavCreatEvent v-model="compName" />
     <component :is="comp"></component>
+    <p class="error">{{ error }}</p>
     <button class="main-button color" @click="saveEvent" type="submit">
       Cохранить
     </button>
-    <p>{{ error }}</p>
   </div>
-  {{ eventsStore.newEvent }}
+  <!-- {{ eventsStore.newEvent }} -->
+    <!-- при перезгрузке заполнить все поля -->
 </template>
 
 <script setup lang="ts">
@@ -45,10 +46,37 @@ watchEffect(() => {
 
 const saveEvent = async () => {
   error.value =  '' 
-
+  if (!eventsStore.newEvent.title) {
+    error.value =  'Введите название мероприятия' 
+    compName.value = 'LkBasicCE'
+  }
+  if (!eventsStore.newEvent.city) {
+    error.value =  'Введите город' 
+    compName.value = 'LkBasicCE'
+  }
+  if (!eventsStore.newEvent.format) {
+    error.value =  'Введите формат мероприятия' 
+    compName.value = 'LkBasicCE'
+  }
+  if (!eventsStore.newEvent.age) {
+    error.value =  'Введите возрастное ограничение' 
+    compName.value = 'LkBasicCE'
+  }
   if (!eventsStore.newEvent.address) {
-    error.value =  'нет адреса' 
+    error.value =  'Введите адрес' 
     compName.value = 'LkInfoCE'
+  }
+  if (!eventsStore.newEvent.place) {
+    error.value =  'Введите место проведения' 
+    compName.value = 'LkInfoCE'
+  }
+  if (!eventsStore.newEvent.photo) {
+    error.value =  'Загрузите афишу' 
+    compName.value = 'LkInfoCE'
+  }
+  if (!eventsStore.newEvent.date_close ||!eventsStore.newEvent.date_end ||!eventsStore.newEvent.date_event||!eventsStore.newEvent.date_open ) {
+    error.value =  'Заполните все поля с датами' 
+    compName.value = 'LkDateCE'
   }
   if (error.value) {
     return
@@ -129,5 +157,10 @@ h1 {
 
 .main-button {
   margin-left: 50px;
+}
+.error {
+  color: red;
+  padding-left: 50px;
+  font-size: 17px;
 }
 </style>
