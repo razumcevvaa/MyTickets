@@ -2,7 +2,7 @@
   <div>
     <div class="control-toolbar">
       <NuxtLink class="btn-c" to="/lk/my_event_create">Добавить</NuxtLink>
-      <NuxtLink class="btn-c" to="/lk/my_event_create">Архив</NuxtLink>
+      <NuxtLink class="btn-c" to="/lk/archive">Архив</NuxtLink>
     </div>
     <div class="sorting-control">
       <label class="text-lg" for="city">Город:</label>
@@ -20,7 +20,7 @@
     <h1 class="text-center text-4xl uppercase">Все мероприятия</h1>
     <div class="all-event">
       <NuxtLink @mouseenter="hoveredEvent = event" @mouseleave="hoveredEvent = null" v-for="event in data?.events"
-        :event="event" :key="event.id" to="/" class="event"><img :src="'/' + event.photo"
+        :event="event" :key="event.id" :to="`/lk/my_event_edit?id=${event.id}`" class="event"><img :src="'/' + event.photo"
         :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
         <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
       </NuxtLink>
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 const {data} = await useFetch('/api/event')
 const hoveredEvent = ref(null as null | Event)
+
 
 definePageMeta({
   layout: 'lk',
@@ -61,25 +62,9 @@ useHead({
   height: 300px;
 }
 
-.e-create {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #3a3a3a;
-}
-
 .sorting-control {
   padding: 3px 50px;
   margin-bottom: 20px;
-}
-
-.btn-c {
-  padding: 5px 20px;
-  background-color: #bab9ff;
-  font-size: 18px;
-  border-radius: 20px;
-  color: black;
 }
 
 .text-lg {
@@ -100,22 +85,6 @@ input {
   position: relative;
 }
 
-.btn-buy {
-  color: black;
-  padding: 10px 30px;
-  border-radius: 20px;
-  position: absolute;
-  top: 150px;
-  left: 160px;
-  font-size: 20px;
-  text-transform: uppercase;
-  font-family: 'TT Norms Pro Black';
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  background-color: #bab9ff;
-  z-index: 100;
-  border: none;
-}
 
 span {
   background-color: #bab9ff;

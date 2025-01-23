@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="control-toolbar">
-      <h1>Создание мероприятия
+      <h1>Редактирование мероприятия
         <div class="arrow-8"></div>
       </h1>
     </div>
     <lkNavCreatEvent v-model="compName" />
     <component :is="comp"></component>
     <p class="error">{{ error }}</p>
-    <button class="main-button color" @click="saveEvent" type="submit">
-      Cохранить
+    <button class="main-button color" @click="updateEvent" type="submit">
+      Сохранить изменения
     </button>
   </div>
   <!-- {{ eventsStore.newEvent }} -->
@@ -44,44 +44,9 @@ watchEffect(() => {
   comp.value = compObj[compName.value]
 })
 
-const saveEvent = async () => {
-  error.value =  '' 
-  if (!eventsStore.newEvent.title) {
-    error.value =  'Введите название мероприятия' 
-    compName.value = 'LkBasicCE'
-  }
-  if (!eventsStore.newEvent.city) {
-    error.value =  'Введите город' 
-    compName.value = 'LkBasicCE'
-  }
-  if (!eventsStore.newEvent.format) {
-    error.value =  'Введите формат мероприятия' 
-    compName.value = 'LkBasicCE'
-  }
-  if (!eventsStore.newEvent.age) {
-    error.value =  'Введите возрастное ограничение' 
-    compName.value = 'LkBasicCE'
-  }
-  if (!eventsStore.newEvent.address) {
-    error.value =  'Введите адрес' 
-    compName.value = 'LkInfoCE'
-  }
-  if (!eventsStore.newEvent.place) {
-    error.value =  'Введите место проведения' 
-    compName.value = 'LkInfoCE'
-  }
-  if (!eventsStore.newEvent.photo) {
-    error.value =  'Загрузите афишу' 
-    compName.value = 'LkInfoCE'
-  }
-  if (!eventsStore.newEvent.date_close ||!eventsStore.newEvent.date_end ||!eventsStore.newEvent.date_event||!eventsStore.newEvent.date_open ) {
-    error.value =  'Заполните все поля с датами' 
-    compName.value = 'LkDateCE'
-  }
-  if (error.value) {
-    return
-  }
-  
+// const response = await $fetch(`/api/event/${event?.id}`)
+
+const updateEvent = async () => {
   const event = { ...eventsStore.newEvent }
   const file = event.photo_file
   delete event.photo_file
@@ -92,11 +57,10 @@ const saveEvent = async () => {
   // @ts-ignore
   fD.append('img', file)
   console.log(event)
-  const data = await $fetch('/api/event', {
-    method: 'POST',
+  const data = await $fetch(`/api/event${event.id}`, {
+    method: 'PUT',
     body: fD
   })
-
 }
 
 </script>
