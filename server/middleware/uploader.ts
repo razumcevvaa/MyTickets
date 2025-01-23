@@ -3,7 +3,7 @@ import path from 'path'
 import sharp from 'sharp'
 
 export default defineEventHandler(async (event) => {
-  if (event.method === 'POST') {
+  if (event.method === 'POST' || event.method === 'PUT') {
     const contentType = getRequestHeader(event, "content-type")
     if (contentType?.includes('multipart/form-data;')) await useFiles(event)
   }
@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
 
 const useFiles = async (event: any) => {
   const { req } = event
-  if (req.method === 'POST') {
+  if (req.method === 'POST' || event.method === 'PUT') {
     return new Promise((resolve) => {
       const files = [] as any
       const fields = {} as any

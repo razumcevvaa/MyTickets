@@ -70,7 +70,7 @@ const saveEvent = async () => {
     error.value =  'Введите место проведения' 
     compName.value = 'LkInfoCE'
   }
-  if (!eventsStore.newEvent.photo) {
+  if (!eventsStore.newEvent.photo_file) {
     error.value =  'Загрузите афишу' 
     compName.value = 'LkInfoCE'
   }
@@ -96,6 +96,8 @@ const saveEvent = async () => {
     method: 'POST',
     body: fD
   })
+
+  navigateTo('/lk')
 
 }
 

@@ -1,13 +1,14 @@
 import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
-  const data = await readBody(event)
+  const data = JSON.parse(event.context.fields.event)
   const id = data.id
   delete data.id
+  delete data.ticket_types
   try {
     const updatedEvent = await prisma.event.update({
       where: {
-        id: data.id
+        id
       },
       data: {
         ...data

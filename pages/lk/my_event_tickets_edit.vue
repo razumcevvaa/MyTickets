@@ -26,13 +26,13 @@ const route = useRoute()
 
 
 const eventsStore = useEvents()
-const data = await $fetch('/api/event/'+route.query.id)
-eventsStore.newEvent = data?.event
+const data = await $fetch('/api/event/tickets/'+route.query.id)
+eventsStore.newEvent.ticket_types = data?.ticket_types
 
 const error = ref('')
 const userStore = useUser()
-const compName = ref('LkBasicCE')
-const comp = shallowRef(LkBasicCE)
+const compName = ref('LkTicketsCE')
+const comp = shallowRef(LkTicketsCE)
 const compObj = {
   LkBasicCE, LkDateCE, LkTicketsCE, LkInfoCE
 } as Record<string, any>
@@ -53,18 +53,10 @@ watchEffect(() => {
 
 const updateEvent = async () => {
   const event = { ...eventsStore.newEvent }
-  const file = event.photo_file
-  delete event.photo_file
   event.ticket_types = event.ticket_types.filter(el => el.price)
-  if (userStore.user?.id) event.user_id = userStore.user.id
-  const fD = new FormData()
-  fD.append('event', JSON.stringify(event))
-  // @ts-ignore
-  fD.append('img', file)
-  console.log(event)
-  const data = await $fetch(`/api/event`, {
+  const data = await $fetch('/api/event/tickets/'+route.query.id, {
     method: 'PUT',
-    body: fD
+    body: {tt:event.ticket_types}
   })
 }
 

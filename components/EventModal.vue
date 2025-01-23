@@ -20,7 +20,7 @@
             <p class="description-text">
               {{ eventsStore.selectedEvent.description }}
             </p>
-            <a href="/" class="buy-tickets">Купить от {{ eventsStore.selectedEvent.price }}₽</a>
+            <a href="/" class="buy-tickets">Купить от {{ eventsStore.selectedEvent.ticket_types?.sort((a,b)=>a.price-b.price)[0]?.price }}₽</a>
           </div>
           <!-- <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
             <label for="ticket-quantity">Количество билетов:</label>

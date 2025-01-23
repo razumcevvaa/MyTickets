@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 const eventsStore = useEvents()
-const num = ref(1)
+const num = ref(eventsStore.newEvent.ticket_types?.length?eventsStore.newEvent.ticket_types?.length:1)
 
 const addCategory = () => {
   eventsStore.newEvent.ticket_types.push({

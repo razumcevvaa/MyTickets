@@ -7,7 +7,10 @@ export default defineEventHandler(async (event) => {
       where:{
         date_end: {
           gt:now
-        }
+        },
+      },
+      include:{
+        ticket_types:true
       }
     })
     return {events, ok:true}

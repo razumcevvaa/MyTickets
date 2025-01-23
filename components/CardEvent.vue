@@ -6,7 +6,7 @@
     <h2 class="title-event">{{ event.title }}</h2>
     <div class="box-price">
       <p class="format-event">{{ event.format }}</p>
-      <div class="event-price"> от {{ event.price }} ₽</div>
+      <div class="event-price"> от {{ event.ticket_types?.sort((a,b)=>a.price-b.price)[0]?.price }} ₽</div>
     </div>
     <div class="border-top-box">
       <p class="event-date place-date-text">{{ formatDate(event.date_event)}}</p>

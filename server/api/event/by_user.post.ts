@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
         date_end: {
           gt:now
         },
-        user_id:data.id
+        user_id:data.user_id
       }
     })
     return {events, ok:true}

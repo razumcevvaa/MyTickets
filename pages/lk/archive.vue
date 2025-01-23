@@ -13,8 +13,12 @@
 </template>
 
 <script setup lang="ts">
-const {data} = await useFetch('/api/event')
-const hoveredEvent = ref(null as null | Event)
+const userStore = useUser()
+const {data} = await useFetch('/api/event/past', {
+  method:'POST',
+  body:{user_id:userStore.user?.id}
+})
+const hoveredEvent = ref(null as any)
 
 const pastEvents = computed(() => {
   if (!data.value || !data.value.events) return []
@@ -22,8 +26,8 @@ const pastEvents = computed(() => {
     const endDate = new Date(event.date_end)
     const currentDate = new Date()
     return endDate < currentDate
-  });
-});
+  })
+})
 
 definePageMeta({
   layout: 'lk',
