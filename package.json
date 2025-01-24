@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
     "@pinia/nuxt": "^0.5.5",
+    "@popperjs/core": "^2.11.8",
     "@prisma/nuxt": "^0.0.35",
     "@vee-validate/zod": "^4.14.7",
     "busboy": "^1.6.0",
@@ -27,6 +28,7 @@
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "v-calendar": "^3.1.2",
     "vee-validate": "^4.14.7",
     "vue": "latest",
     "vue-router": "latest",

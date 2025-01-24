@@ -81,7 +81,6 @@ const saveEvent = async () => {
   if (error.value) {
     return
   }
-  
   const event = { ...eventsStore.newEvent }
   const file = event.photo_file
   delete event.photo_file
@@ -96,9 +95,7 @@ const saveEvent = async () => {
     method: 'POST',
     body: fD
   })
-
-  navigateTo('/lk')
-
+  navigateTo('/lk/my_events')
 }
 
 </script>

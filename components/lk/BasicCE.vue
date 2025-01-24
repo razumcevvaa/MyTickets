@@ -9,11 +9,11 @@
         <label for="event-type">Выберите тип мероприятия:<span>*</span></label>
         <select class="form-block-input" name="event-type" id="event-type" v-model="eventsStore.newEvent.format" required>
           <option :value="undefined">--Выберите формат мероприятия--</option>
-          <option value="concert">Концерт</option>
-          <option value="party">Вечеринка</option>
-          <option value="festival">Фестиваль</option>
-          <option value="conference">Конференция</option>
-          <option value="tournament">Турнир</option>
+          <option value="Концерт">Концерт</option>
+          <option value="Вечеринка">Вечеринка</option>
+          <option value="Фестиваль">Фестиваль</option>
+          <option value="Конференция">Конференция</option>
+          <option value="Турнир">Турнир</option>
         </select>
       </div>
     </div>

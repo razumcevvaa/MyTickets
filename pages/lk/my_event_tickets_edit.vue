@@ -5,8 +5,8 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName" />
-    <component :is="comp"></component>
+    <LkNavEditEvent/>
+    <LkTicketsCE/>
     <p class="error">{{ error }}</p>
     <button class="main-button color" @click="updateEvent" type="submit">
       Сохранить изменения
@@ -17,13 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import LkBasicCE from '~~/components/lk/BasicCE.vue'
-import LkDateCE from '~/components/lk/DateCE.vue'
-import LkTicketsCE from '~/components/lk/TicketsCE.vue'
-import LkInfoCE from '~/components/lk/InfoCE.vue'
-
 const route = useRoute()
-
 
 const eventsStore = useEvents()
 const data = await $fetch('/api/event/tickets/'+route.query.id)
@@ -31,11 +25,6 @@ eventsStore.newEvent.ticket_types = data?.ticket_types
 
 const error = ref('')
 const userStore = useUser()
-const compName = ref('LkTicketsCE')
-const comp = shallowRef(LkTicketsCE)
-const compObj = {
-  LkBasicCE, LkDateCE, LkTicketsCE, LkInfoCE
-} as Record<string, any>
 
 definePageMeta({
   layout: 'lk',
@@ -46,10 +35,6 @@ useHead({
     class: 'padd-lk-2'
   }
 })
-watchEffect(() => {
-  comp.value = compObj[compName.value]
-})
-
 
 const updateEvent = async () => {
   const event = { ...eventsStore.newEvent }
@@ -58,6 +43,7 @@ const updateEvent = async () => {
     method: 'PUT',
     body: {tt:event.ticket_types}
   })
+  
 }
 
 </script>

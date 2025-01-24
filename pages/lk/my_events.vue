@@ -24,11 +24,11 @@
         :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
         <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
       </NuxtLink>
-      <NuxtLink @mouseenter="hoveredEvent = event" @mouseleave="hoveredEvent = null" v-for="event in data?.events"
+      <!-- <NuxtLink @mouseenter="hoveredEvent = event" @mouseleave="hoveredEvent = null" v-for="event in data?.events"
         :event="event" :key="event.id" :to="`/lk/my_event_tickets_edit?id=${event.id}`" class="event"><img :src="'/' + event.photo"
         :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
-        <button v-if="hoveredEvent == event" class="btn-buy">Редактировать Price</button>
-      </NuxtLink>
+        <button v-if="hoveredEvent == event" class="btn-buy">Редактировать цены</button>
+      </NuxtLink> -->
       <NuxtLink to="/lk/my_event_create" class="event e-create border-r"><span class="text-7xl">+</span></NuxtLink>
     </div>
   </div>
@@ -41,7 +41,6 @@ const {data} = await useFetch('/api/event/by_user',{
   body: {user_id:userStore.user?.id}
 })
 const hoveredEvent = ref(null as any)
-
 
 definePageMeta({
   layout: 'lk',

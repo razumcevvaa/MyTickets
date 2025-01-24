@@ -5,7 +5,7 @@
         <div class="arrow-8"></div>
       </h1>
     </div>
-    <lkNavCreatEvent v-model="compName" />
+    <lkNavEditEvent v-model="compName"/>
     <component :is="comp"></component>
     <p class="error">{{ error }}</p>
     <button class="main-button color" @click="updateEvent" type="submit">
@@ -23,7 +23,6 @@ import LkTicketsCE from '~/components/lk/TicketsCE.vue'
 import LkInfoCE from '~/components/lk/InfoCE.vue'
 
 const route = useRoute()
-
 
 const eventsStore = useEvents()
 const data = await $fetch('/api/event/'+route.query.id)
@@ -66,6 +65,7 @@ const updateEvent = async () => {
     method: 'PUT',
     body: fD
   })
+  navigateTo('/lk/my_events')
 }
 
 </script>

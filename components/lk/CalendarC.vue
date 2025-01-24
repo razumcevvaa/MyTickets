@@ -20,7 +20,7 @@ import { useForm } from 'vee-validate'
 import { computed, h, ref } from 'vue'
 import { z } from 'zod'
 defineProps(['label', 'description'])
-const df = new DateFormatter('ru-US', {
+const df = new DateFormatter('ru-RU', {
   dateStyle: 'long',
 })
 
@@ -74,7 +74,7 @@ watchEffect(() => {
           </PopoverTrigger>
           <PopoverContent class="w-auto p-0">
             <Calendar class="myCalendar" v-model:placeholder="placeholder" v-model="value"
-              calendar-label="Date of birth" initial-focus :min-value="new CalendarDate(1900, 1, 1)"
+             initial-focus :min-value="new CalendarDate(2024, 1, 1)"
               @update:model-value="(v) => {
                 if (v) {
                   setFieldValue('dob', v.toString())
@@ -94,6 +94,7 @@ watchEffect(() => {
 </template>
 
 <style scoped>
+
 button {
   border-radius: 20px;
   padding: 20px 25px;

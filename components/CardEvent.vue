@@ -12,7 +12,6 @@
       <p class="event-date place-date-text">{{ formatDate(event.date_event)}}</p>
       <p class="place-date-text">{{ event.address }}</p>
       <p class="place-date-text">{{ event.place }}</p>
-      <p class="place-date-text">{{ event.refinement }}</p>
     </div>
   </div>
 </template>
