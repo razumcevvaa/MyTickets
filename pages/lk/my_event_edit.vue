@@ -49,7 +49,6 @@ watchEffect(() => {
   comp.value = compObj[compName.value]
 })
 
-
 const updateEvent = async () => {
   const event = { ...eventsStore.newEvent }
   const file = event.photo_file

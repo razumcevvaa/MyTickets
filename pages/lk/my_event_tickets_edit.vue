@@ -20,11 +20,10 @@
 const route = useRoute()
 
 const eventsStore = useEvents()
-const data = await $fetch('/api/event/tickets/'+route.query.id)
+const data = await $fetch('/api/event/tickets')
 eventsStore.newEvent.ticket_types = data?.ticket_types
 
 const error = ref('')
-const userStore = useUser()
 
 definePageMeta({
   layout: 'lk',
@@ -43,7 +42,7 @@ const updateEvent = async () => {
     method: 'PUT',
     body: {tt:event.ticket_types}
   })
-  
+  navigateTo('/lk/my_events')
 }
 
 </script>

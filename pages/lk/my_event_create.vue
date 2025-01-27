@@ -90,7 +90,6 @@ const saveEvent = async () => {
   fD.append('event', JSON.stringify(event))
   // @ts-ignore
   fD.append('img', file)
-  console.log(event)
   const data = await $fetch('/api/event', {
     method: 'POST',
     body: fD

@@ -41,15 +41,27 @@ const value = computed({
   set: val => val,
 })
 
-const time = ref('')
+const time = ref('14:00')
 const model = defineModel()
 
 watchEffect(() => {
   if (value.value && time.value) {
      model.value = `${value.value}T${time.value}`
   }
-  console.log(model.value)
 })
+
+// const route = useRoute()
+// const data = await $fetch('/api/event/'+route.query.id)
+// eventsStore.newEvent = data?.event
+
+// const initialDate = new Date('2025-12-01T14:00')
+// const initialDateString = initialDate.toISOString().split('T')[0]
+// const initialTimeString = initialDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+// if (!values.dob) {
+//   setFieldValue('dob', initialDateString)
+  // time.value = initialTimeString
+// }
+
 
 </script>
 

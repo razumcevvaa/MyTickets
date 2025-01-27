@@ -2,7 +2,7 @@
   <div class="nav-create">
     <Button @click="model = 'LkBasicCE'">Основное</Button>
     <Button @click="model = 'LkDateCE'">Дата</Button>
-    <!-- <NuxtLink :to="`/lk/my_event_tickets_edit?id=${data?.events}`">lll</NuxtLink> -->
+    <NuxtLink :to="`/lk/my_event_tickets_edit?id=${data?.events}`">lll</NuxtLink>
     <Button @click="model = 'LkInfoCE'">Инфо</Button>
   </div>
 </template>
@@ -12,10 +12,11 @@ const model = defineModel()
 model.value = 'LkBasicCE'
 
 const userStore = useUser()
-// const {data} = await useFetch('/api/event/by_user',{
-//   method:'POST',
-//   body: {user_id:userStore.user?.id}
-// })
+const {data} = await useFetch('/api/event/by_user',{
+  method:'POST',
+  body: {user_id:userStore.user?.id}
+})
+
 </script>
 
 <style scoped>

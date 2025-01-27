@@ -13,7 +13,8 @@
             <div>
               <label for="text-desc">Описание для категории</label>
               <input class="form-block-input" type="text" name="text-desc" id="text-desc"
-                v-model="eventsStore.newEvent.ticket_types[i - 1].description" placeholder="Что входит в возможности билета">
+                v-model="eventsStore.newEvent.ticket_types[i - 1].description"
+                placeholder="Что входит в возможности билета">
             </div>
             <div class="text-center">
               <label for="price">Цена</label>
@@ -37,7 +38,8 @@
 
 <script setup lang="ts">
 const eventsStore = useEvents()
-const num = ref(eventsStore.newEvent.ticket_types?.length?eventsStore.newEvent.ticket_types?.length:1)
+const num = ref(eventsStore.newEvent.ticket_types?.length ? eventsStore.newEvent.ticket_types?.length : 1)
+
 
 const addCategory = () => {
   eventsStore.newEvent.ticket_types.push({
