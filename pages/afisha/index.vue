@@ -7,8 +7,6 @@
 </template>
 
 <script setup>
-// import {useEvents} from '~/stores/events'
-// const eventsStore = useEvents()
 const {data} = await useFetch('/api/event')
 
 definePageMeta({

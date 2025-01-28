@@ -1,5 +1,4 @@
 <template>
-
   <teleport to="body">
     <div v-if="eventsStore.selectedEvent && eventsStore.showModal" class="modal-mask"
       @click.self="eventsStore.showModal = false">
@@ -7,8 +6,7 @@
         <div class="modal-close" @click="eventsStore.showModal = false"><span></span></div>
         <h1>{{ eventsStore.selectedEvent.title }}</h1>
         <div class="event-info">
-          <!-- <p class="event-date place-date-text">{{ formatDate(eventsStore.selectedEvent.date) }}</p> -->
-          <p class="event-date place-date-text">{{ formatDate(eventsStore.selectedEvent.date_event)}}</p>
+          <p class="event-date place-date-text">{{ formatDate(eventsStore.selectedEvent.date_event) }}</p>
           <span class="event-info__name-block">
             <p class="place-date-text-modal">{{ eventsStore.selectedEvent.place }}</p>
             <span class="age">{{ eventsStore.selectedEvent.age }}+</span>
@@ -20,31 +18,32 @@
             <p class="description-text">
               {{ eventsStore.selectedEvent.description }}
             </p>
-            <a href="/" class="buy-tickets">Купить от {{ eventsStore.selectedEvent.ticket_types?.sort((a,b)=>a.price-b.price)[0]?.price }}₽</a>
+            <Button @click="showTicketTypes = true" class="buy-tickets">Купить от {{
+              eventsStore.selectedEvent.ticket_types?.sort((a, b) => a.price - b.price)[0]?.price }}₽</Button>
           </div>
-          <!-- <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
-            <label for="ticket-quantity">Количество билетов:</label>
-            <input type="number" id="ticket-quantity" v-model.number="ticketQuantity" min="1" required />
-            <button type="submit">Купить билеты</button>
-          </form> -->
         </div>
         <div class="bottom_area">
-          <h2>{{ eventsStore.selectedEvent.address}}</h2>
-          <h2>{{ eventsStore.selectedEvent.refinement}}</h2>
+          <h2>{{ eventsStore.selectedEvent.address }}</h2>
+          <h2>{{ eventsStore.selectedEvent.refinement }}</h2>
           <!-- <div class="for-map"></div> -->
+        </div>
+      </div>
+      <div v-if="showTicketTypes" class="modal-mask" @click.self="showTicketTypes = false">
+        <div class="modal-content-tickets">
+          <div class="modal-close" @click="showTicketTypes = false"><span></span></div>
+          <TicketTypeBuy/>
         </div>
       </div>
     </div>
   </teleport>
-
 </template>
 
 <script setup lang="ts">
 import { watch } from 'vue';
 import { useEvents } from '~/stores/events'
 
+const showTicketTypes = ref(false)
 const eventsStore = useEvents()
-
 watch(() => eventsStore.showModal, () => {
   if (eventsStore.showModal) {
     document.body.style.overflow = 'hidden'
@@ -53,7 +52,7 @@ watch(() => eventsStore.showModal, () => {
   }
 })
 
-function formatDate(dateStr:string) {
+function formatDate(dateStr: string) {
   const date = new Date(dateStr)
   const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
   // @ts-ignore
@@ -80,8 +79,19 @@ function formatDate(dateStr:string) {
 }
 
 .modal-content {
-  min-width: 600px;
+  min-width: 700px;
   max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #3a3a3a;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  position: relative;
+}
+.modal-content-tickets{
+  min-width: 850px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px;
   background-color: #3a3a3a;

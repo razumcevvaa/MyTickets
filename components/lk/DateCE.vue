@@ -4,16 +4,12 @@
       <form class="space-y-8" @submit="onSubmit">
         <LkCalendarC v-model="eventsStore.newEvent.date_open" label="Дата открытия дверей"
           description="С этого момента начинает работать сканирование билетов нашим приложением." />
-        {{ eventsStore.newEvent.date_open }}
         <LkCalendarC v-model="eventsStore.newEvent.date_close" label="Дата закрытия регистрации"
         description="С этого момента покупатели не смогут забронировать и приобрести билет." />
-        {{ eventsStore.newEvent.date_close }}
         <LkCalendarC v-model="eventsStore.newEvent.date_event" label="Дата начала события"
         description="Фигурирует во всех публичных материалах как дата и время события." />
-        {{ eventsStore.newEvent.date_event }}
         <LkCalendarC v-model="eventsStore.newEvent.date_end" label="Дата окончания события"
         description="Если дата и время не известны заранее, то укажите приблизительное значение." />
-        {{ eventsStore.newEvent.date_end }}
       </form>
     </div>
   </div>

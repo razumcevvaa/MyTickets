@@ -1,6 +1,6 @@
 <template>
   <div class="box-top border-r">
-    <h2 class="uppercase">Топ 1 сегодня</h2>
+    <h2 class="uppercase">Топ сегодня</h2>
     <div class="top-event">
       <div class="top1"><img class="afisha-top" src="/newY.jpg" alt="top"></div>
       <div class="top2"><img class="afisha-top" src="/code.jpg" alt="top"></div>

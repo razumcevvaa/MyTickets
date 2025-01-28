@@ -26,6 +26,7 @@ const route = useRoute()
 
 const eventsStore = useEvents()
 const data = await $fetch('/api/event/'+route.query.id)
+// @ts-ignore
 eventsStore.newEvent = data?.event
 
 const error = ref('')
@@ -58,7 +59,6 @@ const updateEvent = async () => {
   event.date_event = (new Date(event.date_event)).toISOString()
   event.date_close = (new Date(event.date_close)).toISOString()
   event.date_end = (new Date(event.date_end)).toISOString()
-  
   if (userStore.user?.id) event.user_id = userStore.user.id
   const fD = new FormData()
   fD.append('event', JSON.stringify(event))

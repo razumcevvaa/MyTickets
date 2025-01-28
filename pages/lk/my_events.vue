@@ -4,7 +4,7 @@
       <NuxtLink class="btn-c" to="/lk/my_event_create">Добавить</NuxtLink>
       <NuxtLink class="btn-c" to="/lk/archive">Архив</NuxtLink>
     </div>
-    <div class="sorting-control">
+    <!-- <div class="sorting-control">
       <label class="text-lg" for="city">Город:</label>
       <select class="text-lg" id="city" required>
         <option value="">Все</option>
@@ -16,7 +16,7 @@
       <select class="text-lg" id="date" required>
         <option value="">Все</option>
       </select>
-    </div>
+    </div> -->
     <h1 class="text-center text-4xl uppercase">Все мероприятия</h1>
     <div class="all-event">
       <NuxtLink @mouseenter="hoveredEvent = event" @mouseleave="hoveredEvent = null" v-for="event in data?.events"
@@ -70,10 +70,10 @@ useHead({
   height: 300px;
 }
 
-.sorting-control {
+/* .sorting-control {
   padding: 3px 50px;
   margin-bottom: 20px;
-}
+} */
 
 .text-lg {
   padding: 3px;
