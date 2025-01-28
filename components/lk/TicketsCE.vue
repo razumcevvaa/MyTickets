@@ -26,7 +26,7 @@
               <input class="form-block-input mini" type="number" name="count" id="count" min="1"
                 v-model="eventsStore.newEvent.ticket_types[i - 1].count">
             </div>
-            <button class="cross" @click="deleteCateg(i - 1)"></button>
+            <button v-if="num>1" class="cross" @click="deleteCateg(i - 1)"></button>
           </div>
         </template>
       </div>
@@ -50,8 +50,14 @@ const addCategory = () => {
   })
   num.value++
 }
-const deleteCateg = (index: number) => {
+const deleteCateg = async (index: number) => {
   if (index >= 0 && index < eventsStore.newEvent.ticket_types.length) {
+    if (eventsStore.newEvent.ticket_types[index]?.id) {
+      const data = await $fetch('/api/event/tickets/'+eventsStore.newEvent.ticket_types[index]?.id, {
+        method: 'DELETE',
+        body: { event_id: eventsStore.newEvent.id}
+      })
+    }
     eventsStore.newEvent.ticket_types.splice(index, 1)
   }
   num.value--

@@ -50,19 +50,16 @@ watchEffect(() => {
   }
 })
 
-// const route = useRoute()
-// const data = await $fetch('/api/event/'+route.query.id)
-// eventsStore.newEvent = data?.event
-
-// const initialDate = new Date('2025-12-01T14:00')
-// const initialDateString = initialDate.toISOString().split('T')[0]
-// const initialTimeString = initialDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
-// if (!values.dob) {
-//   setFieldValue('dob', initialDateString)
-  // time.value = initialTimeString
-// }
-
-
+onMounted(()=>{
+  if (model.value) {
+    //@ts-ignore
+    const initialDate = new Date(model.value)
+    const initialDateString = initialDate.toISOString().split('T')[0]
+    const initialTimeString = initialDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+    setFieldValue('dob', initialDateString)
+    time.value = initialTimeString
+  }
+  })
 </script>
 
 <template>

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 interface Category {
+    id?: number,
     name: string,
     description: string,
     count: number,

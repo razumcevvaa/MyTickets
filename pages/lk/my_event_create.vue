@@ -70,6 +70,10 @@ const saveEvent = async () => {
     error.value =  'Введите место проведения' 
     compName.value = 'LkInfoCE'
   }
+  if (!eventsStore.newEvent.ticket_types.filter(el => el.price).length) {
+    error.value =  'добавьте хотя бы один тип билетов с ценой' 
+    compName.value = 'LkTicketsCE'
+  }
   if (!eventsStore.newEvent.photo_file) {
     error.value =  'Загрузите афишу' 
     compName.value = 'LkInfoCE'
@@ -83,6 +87,10 @@ const saveEvent = async () => {
   }
   const event = { ...eventsStore.newEvent }
   const file = event.photo_file
+  event.date_open = (new Date(event.date_open)).toISOString()
+  event.date_event = (new Date(event.date_event)).toISOString()
+  event.date_close = (new Date(event.date_close)).toISOString()
+  event.date_end = (new Date(event.date_end)).toISOString()
   delete event.photo_file
   event.ticket_types = event.ticket_types.filter(el => el.price)
   if (userStore.user?.id) event.user_id = userStore.user.id

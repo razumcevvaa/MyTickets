@@ -20,8 +20,8 @@
 const route = useRoute()
 
 const eventsStore = useEvents()
-const data = await $fetch('/api/event/tickets')
-eventsStore.newEvent.ticket_types = data?.ticket_types
+// const data = await $fetch('/api/event/tickets/'+route.query.id)
+// eventsStore.newEvent.ticket_types = data?.ticket_types
 
 const error = ref('')
 

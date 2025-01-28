@@ -54,6 +54,11 @@ const updateEvent = async () => {
   const file = event.photo_file
   delete event.photo_file
   event.ticket_types = event.ticket_types.filter(el => el.price)
+  event.date_open = (new Date(event.date_open)).toISOString()
+  event.date_event = (new Date(event.date_event)).toISOString()
+  event.date_close = (new Date(event.date_close)).toISOString()
+  event.date_end = (new Date(event.date_end)).toISOString()
+  
   if (userStore.user?.id) event.user_id = userStore.user.id
   const fD = new FormData()
   fD.append('event', JSON.stringify(event))
