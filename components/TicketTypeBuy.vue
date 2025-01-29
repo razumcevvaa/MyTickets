@@ -1,24 +1,31 @@
 <template>
   <div class="box">
     <p>купить билет</p>
-    <template v-for="i of num" :key="i" class="box-sheme">
+    <template v-for="(ticketType, i) of num" :key="i" class="box-sheme">
       <div class="box-item">
         <div class="ticket">
           <div>
-            <h2>{{ eventsStore.selectedEvent?.ticket_types[i - 1].name }}</h2>
+            <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].name }}</h2>
             <p class="desc-ticket">
-              {{ eventsStore.selectedEvent?.ticket_types[i - 1].description }}
+              {{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].description }}
             </p>
+            <p>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].count }}</p>
           </div>
           <div class="flex">
-            <h2>{{ eventsStore.selectedEvent?.ticket_types[i - 1].price }}₽</h2>
-            <Button class="buy">+</Button>
+            <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].price }}₽</h2>
+            <div class="count-tickets">
+              <Button v-if="ticketCounts[i] > 0" class="buy" @click="decreaseTicket(i)">-</Button>
+              <span class="ticket-count">{{ ticketCounts[i] }}</span>
+              <Button @click="increaseTicket(i)" class="buy">+</Button>
+            </div>
           </div>
+          <span>{{ error }}</span>
         </div>
         <!-- <h2>
           {{ eventsStore.selectedEvent?.ticket_types[i - 1].count }}
         </h2> -->
       </div>
+      <!-- <p class="total-price">Сумма покупки: {{ totalPrice }} руб.</p> -->
     </template>
     <!-- <div>Количество билетов {{  }}</div> -->
     <!-- <div>К оплате {{ eventsStore.selectedEvent?.ticket_types[i - 1].count*eventsStore.selectedEvent?.ticket_types[i - 1].price  }}</div> -->
@@ -35,6 +42,37 @@
 import { useEvents } from '~/stores/events'
 const eventsStore = useEvents()
 const num = ref(eventsStore.selectedEvent?.ticket_types?.length ? eventsStore.selectedEvent.ticket_types?.length : 1)
+const error = ref('')
+
+const ticketCounts: Record<number, number> = reactive({})
+
+if (eventsStore.selectedEvent?.ticket_types) {
+  eventsStore.selectedEvent.ticket_types.forEach((_, i) => {
+    ticketCounts[i] = 0
+  })
+}
+const increaseTicket = (i: number) => {
+  const ticketType = eventsStore.selectedEvent?.ticket_types[i]
+  if (ticketType && ticketCounts[i] < ticketType.count) {
+    ticketCounts[i]++
+  } else {
+    error.value = 'Билетов больше нет'
+  }
+}
+
+const decreaseTicket = (i: number) => {
+  if (ticketCounts[i] > 0) {
+    ticketCounts[i]--
+  }
+};
+
+// const increaseTickets = () => {
+//   tickets.value++
+// }
+
+// const decreaseTickets = () => {
+//   if (tickets.value > 0) tickets.value--
+// }
 
 </script>
 
@@ -55,19 +93,33 @@ const num = ref(eventsStore.selectedEvent?.ticket_types?.length ? eventsStore.se
   border: 1px solid rgb(167, 167, 167);
   width: 100%;
 }
-.desc-ticket{
+
+.desc-ticket {
   font-size: 14px;
   text-transform: capitalize;
   width: 50px;
 }
+
+.count-tickets {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 p {
   text-transform: uppercase;
 }
-.buy{
+
+.buy {
   color: black;
-  font-size: 20px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
 }
-.flex{
+
+.flex {
   align-items: center;
   gap: 50px;
 }
