@@ -28,7 +28,7 @@
           <!-- <div class="for-map"></div> -->
         </div>
       </div>
-      <div v-if="showTicketTypes" class="modal-mask" @click.self="showTicketTypes = false">
+      <div v-if="showTicketTypes" class="modal-mask modal-mask2" @click.self="showTicketTypes = false">
         <div class="modal-content-tickets">
           <div class="modal-close" @click="showTicketTypes = false"><span></span></div>
           <TicketTypeBuy/>
@@ -76,6 +76,9 @@ function formatDate(dateStr: string) {
   transition: opacity .3s ease;
   overflow-y: scroll;
   overflow-x: auto;
+}
+.modal-mask2 {
+  background-color: transparent;
 }
 
 .modal-content {

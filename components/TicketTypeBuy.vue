@@ -1,50 +1,49 @@
 <template>
   <div class="box">
     <p>купить билет</p>
-    <template v-for="(ticketType, i) of num" :key="i" class="box-sheme">
-      <div class="box-item">
-        <div class="ticket">
-          <div>
-            <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].name }}</h2>
-            <p class="desc-ticket">
-              {{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].description }}
-            </p>
-            <p>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].count }}</p>
-          </div>
-          <div class="flex">
-            <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].price }}₽</h2>
-            <div class="count-tickets">
-              <Button v-if="ticketCounts[i] > 0" class="buy" @click="decreaseTicket(i)">-</Button>
-              <span class="ticket-count">{{ ticketCounts[i] }}</span>
-              <Button @click="increaseTicket(i)" class="buy">+</Button>
+    <div>
+      <template v-for="(ticketType, i) of num" :key="i" class="box-sheme">
+        <div class="box-item">
+          <div class="ticket">
+            <div>
+              <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].name }}</h2>
+              <p class="desc-ticket">
+                {{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].description }}
+              </p>
+              <p v-if="eventsStore.selectedEvent?.ticket_types[ticketType - 1].count && eventsStore.selectedEvent?.ticket_types[ticketType - 1].count <= 10"
+                class="countLast">
+                Последние {{
+                  eventsStore.selectedEvent?.ticket_types[ticketType - 1].count }} билетов</p>
+            </div>
+            <div class="flex">
+              <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].price }}₽</h2>
+              <div class="count-tickets">
+                <Button v-if="ticketCounts[i] > 0" class="buy" @click="decreaseTicket(i)">-</Button>
+                <span class="ticket-count">{{ ticketCounts[i] }}</span>
+                <Button @click="increaseTicket(i)" class="buy">+</Button>
+              </div>
             </div>
           </div>
-          <span>{{ error }}</span>
         </div>
-        <!-- <h2>
-          {{ eventsStore.selectedEvent?.ticket_types[i - 1].count }}
-        </h2> -->
+      </template>
+    </div>
+    <div class="position-bottom" v-if="Payment">
+      <div>
+        <p>Количество билетов {{ totalCount }} шт.</p>
+        <p class="total-price">К оплате: {{ totalPrice }} ₽</p>
       </div>
-      <!-- <p class="total-price">Сумма покупки: {{ totalPrice }} руб.</p> -->
-    </template>
-    <!-- <div>Количество билетов {{  }}</div> -->
-    <!-- <div>К оплате {{ eventsStore.selectedEvent?.ticket_types[i - 1].count*eventsStore.selectedEvent?.ticket_types[i - 1].price  }}</div> -->
-    <Button>Оплатить</Button>
+      <Button>Оплатить</Button>
+    </div>
   </div>
-  <!-- <form class="buy-ticket-form" @submit.prevent="purchaseTicket">
-            <label for="ticket-quantity">Количество билетов:</label>
-            <input type="number" id="ticket-quantity" v-model.number="ticketQuantity" min="1" required />
-            <button type="submit">Купить билеты</button>
-          </form> -->
 </template>
 
 <script setup lang="ts">
 import { useEvents } from '~/stores/events'
 const eventsStore = useEvents()
 const num = ref(eventsStore.selectedEvent?.ticket_types?.length ? eventsStore.selectedEvent.ticket_types?.length : 1)
-const error = ref('')
-
-const ticketCounts: Record<number, number> = reactive({})
+const ticketCounts: Record<number, number> = reactive([])
+const totalCount = ref()
+const Payment = ref(false)
 
 if (eventsStore.selectedEvent?.ticket_types) {
   eventsStore.selectedEvent.ticket_types.forEach((_, i) => {
@@ -55,28 +54,48 @@ const increaseTicket = (i: number) => {
   const ticketType = eventsStore.selectedEvent?.ticket_types[i]
   if (ticketType && ticketCounts[i] < ticketType.count) {
     ticketCounts[i]++
-  } else {
-    error.value = 'Билетов больше нет'
+    totalCount.value = Object.values(ticketCounts).reduce(
+      (sum, count) => sum + count, 0
+    )
+    Payment.value = true
   }
+  return
 }
+
+const totalPrice = computed(() => {
+  let sum = 0
+  Object.keys(ticketCounts).forEach((key) => {
+    const i = Number(key)
+    const ticketType = eventsStore.selectedEvent!.ticket_types![i]
+    sum += ticketType.price * ticketCounts[i]
+  })
+  return sum
+})
 
 const decreaseTicket = (i: number) => {
   if (ticketCounts[i] > 0) {
     ticketCounts[i]--
+    totalCount.value = Object.values(ticketCounts).reduce(
+      (sum, count) => sum + count, 0
+    )
+    Payment.value = false
   }
-};
+  return
+}
 
-// const increaseTickets = () => {
-//   tickets.value++
-// }
+// const payForTickets = async () => {
 
-// const decreaseTickets = () => {
-//   if (tickets.value > 0) tickets.value--
 // }
 
 </script>
 
 <style scoped>
+.box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .box-item {
   margin: 20px 0;
   display: flex;
@@ -106,6 +125,12 @@ const decreaseTicket = (i: number) => {
   align-items: center;
 }
 
+.countLast {
+  font-size: 12px;
+  color: rgb(255, 56, 56);
+  font-family: 'TT Norms Pro Black';
+}
+
 p {
   text-transform: uppercase;
 }
@@ -122,5 +147,15 @@ p {
 .flex {
   align-items: center;
   gap: 50px;
+}
+
+.position-bottom {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
 }
 </style>

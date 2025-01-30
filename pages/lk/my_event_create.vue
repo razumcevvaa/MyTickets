@@ -11,6 +11,7 @@
     <button class="main-button color" @click="saveEvent" type="submit">
       Cохранить
     </button>
+    <NuxtLink class="cancel" to="/lk/my_events">Отменить</NuxtLink>
   </div>
   <!-- {{ eventsStore.newEvent }} -->
   <!-- при перезгрузке заполнить все поля -->

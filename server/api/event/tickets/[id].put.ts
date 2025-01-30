@@ -25,7 +25,6 @@ export default defineEventHandler(async (event) => {
               event_id:+id
             }
           })
-
         }
       }
       return {ok:true}

@@ -10,6 +10,7 @@
     <button class="main-button color" @click="updateEvent" type="submit">
       Сохранить изменения
     </button>
+    <NuxtLink class="cancel" to="/lk/my_events">Отменить</NuxtLink>
   </div>
   <!-- {{ eventsStore.newEvent }} -->
   <!-- при перезгрузке заполнить все поля -->
@@ -18,8 +19,6 @@
 <script setup lang="ts">
 const route = useRoute()
 const eventsStore = useEvents()
-// const data = await $fetch('/api/event/tickets/'+route.query.id)
-// eventsStore.newEvent.ticket_types = data?.ticket_types
 
 const error = ref('')
 
