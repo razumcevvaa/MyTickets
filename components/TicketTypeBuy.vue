@@ -78,7 +78,7 @@ const decreaseTicket = (i: number) => {
     totalCount.value = Object.values(ticketCounts).reduce(
       (sum, count) => sum + count, 0
     )
-    Payment.value = false
+    if (totalCount.value == 0) Payment.value = false
   }
   return
 }
@@ -123,6 +123,7 @@ const decreaseTicket = (i: number) => {
   display: flex;
   gap: 10px;
   align-items: center;
+  width: 100px;
 }
 
 .countLast {

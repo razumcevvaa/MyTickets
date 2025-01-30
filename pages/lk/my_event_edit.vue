@@ -14,7 +14,7 @@
     <NuxtLink class="cancel" to="/lk/my_events">Отменить</NuxtLink>
   </div>
   <!-- {{ eventsStore.newEvent }} -->
-    <!-- при перезгрузке заполнить все поля -->
+  <!-- при перезгрузке заполнить все поля -->
 </template>
 
 <script setup lang="ts">

@@ -51,6 +51,7 @@ model Ticket_type {
   price       Int
   description String?
   count       Int
+  count_purchased       Int @default(0)
   event_id    Int
   event       Event  @relation(fields: [event_id], references: [id])
 }
