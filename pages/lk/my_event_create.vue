@@ -22,9 +22,11 @@ import LkBasicCE from '~~/components/lk/BasicCE.vue'
 import LkDateCE from '~/components/lk/DateCE.vue'
 import LkTicketsCE from '~/components/lk/TicketsCE.vue'
 import LkInfoCE from '~/components/lk/InfoCE.vue'
+import type { Event } from '@/stores/events'
 
 const error = ref('')
 const eventsStore = useEvents()
+eventsStore.newEvent = {} as Event
 const userStore = useUser()
 const compName = ref('LkBasicCE')
 const comp = shallowRef(LkBasicCE)
