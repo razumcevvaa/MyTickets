@@ -10,10 +10,9 @@
               <p class="desc-ticket">
                 {{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].description }}
               </p>
-              <p v-if="eventsStore.selectedEvent?.ticket_types[ticketType - 1].count && eventsStore.selectedEvent?.ticket_types[ticketType - 1].count <= 10"
+              <p v-if="ticketTotalCounts[i] <= 10"
                 class="countLast">
-                Последние {{
-                  eventsStore.selectedEvent?.ticket_types[ticketType - 1].count }} билетов</p>
+                Последние {{ ticketTotalCounts[i] }} билетов</p>
             </div>
             <div class="flex">
               <h2>{{ eventsStore.selectedEvent?.ticket_types[ticketType - 1].price }}₽</h2>
@@ -41,20 +40,24 @@
 import { useEvents } from '~/stores/events'
 const eventsStore = useEvents()
 const num = ref(eventsStore.selectedEvent?.ticket_types?.length ? eventsStore.selectedEvent.ticket_types?.length : 1)
-const ticketCounts: Record<number, number> = reactive([])
+const ticketCounts = ref([] as number[])
+const ticketTotalCounts = ref([] as number[])
 const totalCount = ref()
 const Payment = ref(false)
 
 if (eventsStore.selectedEvent?.ticket_types) {
   eventsStore.selectedEvent.ticket_types.forEach((_, i) => {
-    ticketCounts[i] = 0
+    ticketCounts.value[i] = 0
+    // @ts-ignore
+    ticketTotalCounts.value[i] = eventsStore.selectedEvent.ticket_types[i].count - eventsStore.selectedEvent.ticket_types[i].count_purchased
   })
 }
+
 const increaseTicket = (i: number) => {
   const ticketType = eventsStore.selectedEvent?.ticket_types[i]
-  if (ticketType && ticketCounts[i] < ticketType.count) {
-    ticketCounts[i]++
-    totalCount.value = Object.values(ticketCounts).reduce(
+  if (ticketType && ticketCounts.value[i] < ticketTotalCounts.value[i]) {
+    ticketCounts.value[i]++
+    totalCount.value = ticketCounts.value.reduce(
       (sum, count) => sum + count, 0
     )
     Payment.value = true
@@ -64,18 +67,17 @@ const increaseTicket = (i: number) => {
 
 const totalPrice = computed(() => {
   let sum = 0
-  Object.keys(ticketCounts).forEach((key) => {
-    const i = Number(key)
+  for (let i=0;i<ticketCounts.value.length; i++) {
     const ticketType = eventsStore.selectedEvent!.ticket_types![i]
-    sum += ticketType.price * ticketCounts[i]
-  })
+    sum += ticketType.price * ticketCounts.value[i]
+  }
   return sum
 })
 
 const decreaseTicket = (i: number) => {
-  if (ticketCounts[i] > 0) {
-    ticketCounts[i]--
-    totalCount.value = Object.values(ticketCounts).reduce(
+  if (ticketCounts.value[i] > 0) {
+    ticketCounts.value[i]--
+    totalCount.value = ticketCounts.value.reduce(
       (sum, count) => sum + count, 0
     )
     if (totalCount.value == 0) Payment.value = false
@@ -84,11 +86,29 @@ const decreaseTicket = (i: number) => {
 }
 
 const payForTickets = async () => {
-  const data = await $fetch('/api/payment/purchase', {
-    method: 'POST',
-    body: { ticketTypes: eventsStore.selectedEvent?.ticket_types }
-  })
-  // eventsStore.selectedEvent?.ticket_types[].count - count_purchased
+  if (eventsStore.selectedEvent && eventsStore.selectedEvent.ticket_types) {
+
+    const ticketTypes = [...eventsStore.selectedEvent.ticket_types]
+    for (let i=0;i<ticketCounts.value.length; i++) {
+      ticketTypes[i].count_purchased = ticketCounts.value[i]
+    }
+    
+    ticketTypes.map(el=>el.count_purchased)
+
+    const data = await $fetch('/api/payment/purchase', {
+      method: 'POST',
+      body: { ticketTypes }
+    })
+    
+    if (data.ok) {
+      for (let i=0;i<ticketCounts.value.length; i++) {
+        if (eventsStore.selectedEvent) {
+          eventsStore.selectedEvent.ticket_types[i].count = eventsStore.selectedEvent.ticket_types[i].count - ticketCounts.value[i]
+        }
+      }  
+    }
+  }
+  
 }
 
 </script>

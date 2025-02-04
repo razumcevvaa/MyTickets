@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     await prisma.ticket_type.update({
       data: {
         count_purchased: {
-          increment: el.count
+          increment: el.count_purchased
         },
       },
       where: {
