@@ -29,10 +29,10 @@
     </div>
     <div class="position-bottom" v-if="Payment">
       <div>
-        <p>Количество билетов {{ totalCount }} шт.</p>
-        <p class="total-price">К оплате: {{ totalPrice }} ₽</p>
+        <p>Количество билетов: <span class="price">{{ totalCount }} шт.</span></p>
+        <p class="total-price">К оплате: <span class="price">{{ totalPrice }} ₽</span></p>
       </div>
-      <Button>Оплатить</Button>
+      <Button class="btn-c" @click="payForTickets">Оплатить</Button>
     </div>
   </div>
 </template>
@@ -83,9 +83,13 @@ const decreaseTicket = (i: number) => {
   return
 }
 
-// const payForTickets = async () => {
-
-// }
+const payForTickets = async () => {
+  const data = await $fetch('/api/payment/purchase', {
+    method: 'POST',
+    body: { ticketTypes: eventsStore.selectedEvent?.ticket_types }
+  })
+  // eventsStore.selectedEvent?.ticket_types[].count - count_purchased
+}
 
 </script>
 
@@ -123,6 +127,7 @@ const decreaseTicket = (i: number) => {
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: right;
   width: 100px;
 }
 
@@ -158,5 +163,13 @@ p {
   display: flex;
   justify-content: space-between;
   align-self: center;
+}
+
+.price {
+  font-family: 'TT Norms Pro Black';
+}
+
+.btn-c {
+  text-transform: uppercase;
 }
 </style>

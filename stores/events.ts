@@ -6,7 +6,8 @@ interface Category {
     name: string,
     description: string,
     count: number,
-    price: number
+    price: number,
+    count_purchased?: number,
 }
 
 export type Event = {
@@ -26,7 +27,7 @@ export type Event = {
     address: string;
     place: string;
     refinement: string;
-    user_id:number,
+    user_id: number,
     age?: number,
     ticket_types: Category[]
 }
@@ -35,12 +36,12 @@ export const useEvents = defineStore('events', () => {
     const events = ref<Event[]>([])
     const ticketTypes = ref([])
     const newEvent = ref({
-        ticket_types:[{
+        ticket_types: [{
             name: '',
             description: '',
             count: 0,
             price: 0
-          }]
+        }]
     } as Event)
     const showModal = ref(false)
     const selectedEvent = ref(null as null | Event)
@@ -49,16 +50,16 @@ export const useEvents = defineStore('events', () => {
         showModal.value = true
     }
     const create = async () => {
-        const data = await $fetch('/api/event', { 
-            method: 'POST', 
-            body: {event:newEvent.value, ticket_types:ticketTypes.value} 
+        const data = await $fetch('/api/event', {
+            method: 'POST',
+            body: { event: newEvent.value, ticket_types: ticketTypes.value }
         })
         // if (data.ok) {
-        
+
         // } else {
-        
+
         // }
-      }
-    
+    }
+
     return { events, showModal, selectedEvent, showModalForEvent, newEvent }
 })

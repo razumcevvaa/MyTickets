@@ -10,10 +10,9 @@ export default defineEventHandler(async (event) => {
         },
       },
       where: {
-        id:el.id
+        id: el.id
       }
     })
-
   }
-  return {ok:true}
+  return { ok: true }
 })
