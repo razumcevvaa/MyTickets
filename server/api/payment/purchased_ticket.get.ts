@@ -12,14 +12,17 @@ export default defineEventHandler(async (event) => {
           event: true
         }
       })
-      if (!purchasedTicket) {
+      if (purchasedTicket.length === 0) {
         console.log(`Билет с ID ${id} не найден.`)
         return { ticket: null, ok: false }
       }
       return { purchasedTicket, ok: true }
     } catch (e) {
-      console.log(e)
-      return { purchasedTicket: [], ok: false }
+      console.error(`Произошла ошибка при поиске билетов для события с ID ${id}:`, e)
+      return { tickets: [], ok: false }
     }
+  } else {
+    console.warn("Параметр 'id' не был предоставлен.")
+    return { tickets: [], ok: false }
   }
 })
