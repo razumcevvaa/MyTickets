@@ -108,7 +108,6 @@ const payForTickets = async () => {
       }  
     }
   }
-  
 }
 
 </script>

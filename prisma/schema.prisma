@@ -24,36 +24,49 @@ model User {
 }
 
 model Event {
-  id           Int           @id @default(autoincrement())
-  photo        String
-  title        String
-  format       String
-  city         String
-  date_event   DateTime
-  date_close   DateTime
-  date_open    DateTime
-  date_end     DateTime
-  age          String
-  site         String?
-  description  String?
-  published    Boolean       @default(false)
-  user_id      Int
-  address      String
-  place        String
-  refinement    String?
-  user         User          @relation(fields: [user_id], references: [id])
-  ticket_types Ticket_type[]
+  id               Int               @id @default(autoincrement())
+  photo            String
+  title            String
+  format           String
+  city             String
+  date_event       DateTime
+  date_close       DateTime
+  date_open        DateTime
+  date_end         DateTime
+  age              String
+  site             String?
+  description      String?
+  published        Boolean           @default(false)
+  user_id          Int
+  address          String
+  place            String
+  refinement       String?
+  user             User              @relation(fields: [user_id], references: [id])
+  ticket_types     Ticket_type[]
+  purchased_ticket PurchasedTicket[]
 }
 
 model Ticket_type {
-  id          Int    @id @default(autoincrement())
-  name        String
-  price       Int
-  description String?
-  count       Int
-  count_purchased       Int @default(0)
-  event_id    Int
-  event       Event  @relation(fields: [event_id], references: [id])
+  id              Int               @id @default(autoincrement())
+  name            String
+  price           Int
+  description     String?
+  count           Int
+  count_purchased Int               @default(0)
+  event_id        Int
+  event           Event             @relation(fields: [event_id], references: [id])
+  // PurchasedTicket PurchasedTicket[]
+}
+
+model PurchasedTicket {
+  id             Int         @id @unique
+  event_id       Int
+  // ticket_type_id Int
+  date_purshase  DateTime    @default(now())
+  // ticket_type    Ticket_type @relation(fields: [ticket_type_id], references: [id])
+  event          Event       @relation(fields: [event_id], references: [id])
+
+  @@index([date_purshase])
 }
 
 // eval "$(fnm env --use-on-cd --shell bash)"

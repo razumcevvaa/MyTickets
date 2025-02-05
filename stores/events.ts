@@ -54,11 +54,6 @@ export const useEvents = defineStore('events', () => {
             method: 'POST',
             body: { event: newEvent.value, ticket_types: ticketTypes.value }
         })
-        // if (data.ok) {
-
-        // } else {
-
-        // }
     }
 
     return { events, showModal, selectedEvent, showModalForEvent, newEvent }
