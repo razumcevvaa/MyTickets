@@ -26,15 +26,16 @@ import type { Event } from '@/stores/events'
 
 const error = ref('')
 const eventsStore = useEvents()
-// onMounted(() => {
-//   if (eventsStore.newEvent) {
-//     eventsStore.newEvent = {} as Event
-//   }
-// })
 
-// eventsStore.newEvent = {} as Event
-// eventsStore.newEvent.ticket_types = []
-// как сдлать чтобы автоматически был ожин тип билета
+eventsStore.newEvent = {
+  ticket_types: [{
+    name: '',
+    description: '',
+    count: 0,
+    price: 0
+  }]
+} as Event
+
 const userStore = useUser()
 const compName = ref('LkBasicCE')
 const comp = shallowRef(LkBasicCE)

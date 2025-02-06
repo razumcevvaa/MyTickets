@@ -44,6 +44,7 @@
   color: #bab9ff;
   font-family: 'TT Norms Pro Black';
   font-weight: 200;
+  line-height: 60px;
   font-style: normal;
   text-transform: uppercase;
 }

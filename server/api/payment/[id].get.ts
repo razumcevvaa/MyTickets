@@ -4,25 +4,21 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
   if (id) {
     try {
-      const purchasedTicket = await prisma.purchasedTicket.findMany({
+      const ticket = await prisma.purchasedTicket.findUnique({
         where: {
-          event_id: +id,
+          id: id,
         },
         include: {
           event: true
         }
       })
-      if (purchasedTicket.length === 0) {
-        console.log(`Билет с ID ${id} не найден.`)
-        return { ticket: null, ok: false }
-      }
-      return { purchasedTicket, ok: true }
+      return { ticket, ok: true }
     } catch (e) {
       console.error(`Произошла ошибка при поиске билетов для события с ID ${id}:`, e)
-      return { tickets: [], ok: false }
+      return { ticket: null, ok: false }
     }
   } else {
     console.warn("Параметр 'id' не был предоставлен.")
-    return { tickets: [], ok: false }
+    return { ticket: null, ok: false }
   }
 })

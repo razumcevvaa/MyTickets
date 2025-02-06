@@ -23,7 +23,7 @@
         :event="event" :key="event.id" :to="`/lk/my_event_edit?id=${event.id}`" class="event"><img :src="'/' + event.photo"
         :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
         <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
-        <div class="flex">
+        <div class="flex-i">
           <p>{{ event.title }}</p>
           <p>{{ formatDate(event.date_event) }}</p>
         </div>
@@ -99,9 +99,12 @@ input {
   position: relative;
 }
 
-.flex {
+.flex-i {
+  display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 span {

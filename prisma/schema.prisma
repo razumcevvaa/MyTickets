@@ -55,15 +55,15 @@ model Ticket_type {
   count_purchased Int               @default(0)
   event_id        Int
   event           Event             @relation(fields: [event_id], references: [id])
-  // PurchasedTicket PurchasedTicket[]
+  PurchasedTicket PurchasedTicket[]
 }
 
 model PurchasedTicket {
-  id             Int         @id @unique
+  id             String      @id @unique @default(uuid())
   event_id       Int
-  // ticket_type_id Int
+  ticket_type_id Int         
   date_purshase  DateTime    @default(now())
-  // ticket_type    Ticket_type @relation(fields: [ticket_type_id], references: [id])
+  ticket_type    Ticket_type @relation(fields: [ticket_type_id], references: [id])
   event          Event       @relation(fields: [event_id], references: [id])
 
   @@index([date_purshase])

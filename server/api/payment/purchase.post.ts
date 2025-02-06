@@ -18,12 +18,12 @@ export default defineEventHandler(async (event) => {
       for (let i = 0; i < el.count_purchased; i++) {
         const purchasedTicket = await prisma.purchasedTicket.create({
           data: {
-            id: el.id,
+            ticket_type_id: el.id,
             event_id: el.event_id,
-            date_purshase:el.date_purshase,
           },
         })
         purchasedTickets.push(purchasedTicket)
+      // asink функция без await передаст на формирование билетов 
       }
     }
     return { ok: true }
