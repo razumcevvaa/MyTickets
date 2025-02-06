@@ -50,6 +50,7 @@ const addCategory = () => {
   })
   num.value++
 }
+
 const deleteCateg = async (index: number) => {
   if (index >= 0 && index < eventsStore.newEvent.ticket_types.length) {
     if (eventsStore.newEvent.ticket_types[index]?.id) {

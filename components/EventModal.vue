@@ -70,7 +70,7 @@ function formatDate(dateStr: string) {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0,0,0, 0.5);
   display: flex;
   justify-content: center;
   transition: opacity .3s ease;

@@ -23,6 +23,10 @@
         :event="event" :key="event.id" :to="`/lk/my_event_edit?id=${event.id}`" class="event"><img :src="'/' + event.photo"
         :class="{ 'dimmed': hoveredEvent == event }" alt="Event Photo" class="event border-r">
         <button v-if="hoveredEvent == event" class="btn-buy">Редактировать</button>
+        <div class="flex">
+          <p>{{ event.title }}</p>
+          <p>{{ formatDate(event.date_event) }}</p>
+        </div>
       </NuxtLink>
       <NuxtLink to="/lk/my_event_create" class="event e-create border-r"><span class="text-7xl">+</span></NuxtLink>
     </div>
@@ -46,6 +50,13 @@ useHead({
     class: 'padd-lk-2'
   }
 })
+
+function formatDate(dateStr:string) {
+  const date = new Date(dateStr)
+  const options = { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+  // @ts-ignore
+  return new Intl.DateTimeFormat('ru-RU', options).format(date)
+}
 </script>
 
 <style scoped>
@@ -88,6 +99,10 @@ input {
   position: relative;
 }
 
+.flex {
+  gap: 10px;
+  align-items: center;
+}
 
 span {
   background-color: #bab9ff;

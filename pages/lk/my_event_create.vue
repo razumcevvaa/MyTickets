@@ -26,7 +26,15 @@ import type { Event } from '@/stores/events'
 
 const error = ref('')
 const eventsStore = useEvents()
-eventsStore.newEvent = {} as Event
+// onMounted(() => {
+//   if (eventsStore.newEvent) {
+//     eventsStore.newEvent = {} as Event
+//   }
+// })
+
+// eventsStore.newEvent = {} as Event
+// eventsStore.newEvent.ticket_types = []
+// как сдлать чтобы автоматически был ожин тип билета
 const userStore = useUser()
 const compName = ref('LkBasicCE')
 const comp = shallowRef(LkBasicCE)
@@ -48,41 +56,41 @@ watchEffect(() => {
 })
 
 const saveEvent = async () => {
-  error.value =  '' 
+  error.value = ''
   if (!eventsStore.newEvent.title) {
-    error.value =  'Введите название мероприятия' 
+    error.value = 'Введите название мероприятия'
     compName.value = 'LkBasicCE'
   }
   if (!eventsStore.newEvent.city) {
-    error.value =  'Введите город' 
+    error.value = 'Введите город'
     compName.value = 'LkBasicCE'
   }
   if (!eventsStore.newEvent.format) {
-    error.value =  'Введите формат мероприятия' 
+    error.value = 'Введите формат мероприятия'
     compName.value = 'LkBasicCE'
   }
   if (!eventsStore.newEvent.age) {
-    error.value =  'Введите возрастное ограничение' 
+    error.value = 'Введите возрастное ограничение'
     compName.value = 'LkBasicCE'
   }
   if (!eventsStore.newEvent.address) {
-    error.value =  'Введите адрес' 
+    error.value = 'Введите адрес'
     compName.value = 'LkInfoCE'
   }
   if (!eventsStore.newEvent.place) {
-    error.value =  'Введите место проведения' 
+    error.value = 'Введите место проведения'
     compName.value = 'LkInfoCE'
   }
   if (!eventsStore.newEvent.ticket_types.filter(el => el.price).length) {
-    error.value =  'добавьте хотя бы один тип билетов с ценой' 
+    error.value = 'добавьте хотя бы один тип билетов с ценой'
     compName.value = 'LkTicketsCE'
   }
   if (!eventsStore.newEvent.photo_file) {
-    error.value =  'Загрузите афишу' 
+    error.value = 'Загрузите афишу'
     compName.value = 'LkInfoCE'
   }
-  if (!eventsStore.newEvent.date_close ||!eventsStore.newEvent.date_end ||!eventsStore.newEvent.date_event||!eventsStore.newEvent.date_open ) {
-    error.value =  'Заполните все поля с датами' 
+  if (!eventsStore.newEvent.date_close || !eventsStore.newEvent.date_end || !eventsStore.newEvent.date_event || !eventsStore.newEvent.date_open) {
+    error.value = 'Заполните все поля с датами'
     compName.value = 'LkDateCE'
   }
   if (error.value) {
@@ -167,6 +175,7 @@ h1 {
 .main-button {
   margin-left: 50px;
 }
+
 .error {
   color: red;
   padding-left: 50px;
