@@ -21,26 +21,6 @@ const route = useRoute()
 
 const { data } = await useFetch<{ ticket: null | any, ok: boolean }>(`/api/payment/${route.params.id}`)
 
-// const PDFDocument = require('pdfkit')
-// const doc = new PDFDocument()
-// doc.fontSize(25).text('Here is some vector graphics...', 100, 80)
-
-// doc
-//   .text('And here is some wrapped text...', 100, 450)
-//   .font('Times-Roman', 13)
-//   .moveDown()
-//   .text('lorem', {
-//     width: 412,
-//     align: 'justify',
-//     indent: 30,
-//     columns: 2,
-//     height: 300,
-//     ellipsis: true
-//   })
-
-// doc.end()
-
-
 </script>
 
 <style scoped lang="scss"></style>
