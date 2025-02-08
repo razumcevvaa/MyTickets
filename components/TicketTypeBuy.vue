@@ -107,6 +107,8 @@ const payForTickets = async () => {
         }
       }  
     }
+    // const id = data.id
+    // navigateTo(`/ticket_check${id}`)
   }
 }
 
