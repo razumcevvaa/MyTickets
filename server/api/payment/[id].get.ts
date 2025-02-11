@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
     // Ищем билет в базе данных
     const ticket = await prisma.purchasedTicket.findUnique({
       where: {
-        id: id,
+        id,
       },
       include: {
         event: true,

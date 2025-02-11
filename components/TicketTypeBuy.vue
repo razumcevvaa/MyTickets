@@ -105,9 +105,7 @@ const payForTickets = async () => {
         if (eventsStore.selectedEvent) {
           eventsStore.selectedEvent.ticket_types[i].count = eventsStore.selectedEvent.ticket_types[i].count - ticketCounts.value[i]
         }
-        // const route = useRoute()
-        // const orderId = route.params?.id
-        // await navigateTo(`/ticket_check/${orderId}`)
+        navigateTo(`/ticket_check/${data.purchasedTickets[0].id}`)
       }  
     }
   }

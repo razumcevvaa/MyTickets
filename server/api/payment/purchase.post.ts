@@ -2,6 +2,7 @@ import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
   try {
+    const purchasedTickets = []
     const data = await readBody(event)
     for (let el of data.ticketTypes) {
       await prisma.ticket_type.update({
@@ -14,7 +15,6 @@ export default defineEventHandler(async (event) => {
           id: el.id
         }
       })
-      const purchasedTickets = []
       for (let i = 0; i < el.count_purchased; i++) {
         const purchasedTicket = await prisma.purchasedTicket.create({
           data: {
@@ -26,9 +26,9 @@ export default defineEventHandler(async (event) => {
       // asink функция без await передаст на формирование билетов 
       }
     }
-    return { ok: true }
+    return { purchasedTickets, ok: true }
   } catch (e) {
     console.log(e)
-    return { purchasedTicket: null, ok: false }
+    return { purchasedTickets: [], ok: false }
   }
 })

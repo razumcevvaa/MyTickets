@@ -13,6 +13,7 @@
     <ul>
       <li v-for="tic in data.ticket" :key="tic.id">
         {{ tic.name }} - {{ tic.count }} шт.
+        <!-- <a :href="`/ticket-download/${tic.id}.pdf`"></a> -->
       </li>
     </ul>
   </div>
@@ -30,7 +31,7 @@
 const route = useRoute()
 const orderId = ref(route.params.id)
 
-const { data } = await useFetch<{ ticket: null | any, ok: boolean }>(`/api/payment/${orderId}`)
+const { data } = await useFetch<{ ticket: null | any, ok: boolean }>(`/api/payment/${orderId.value}`)
 
 if (!orderId.value) {
   console.error('ID заказа не передан.')
