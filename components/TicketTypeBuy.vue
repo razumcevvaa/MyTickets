@@ -140,7 +140,7 @@ const payForTickets = async () => {
 .desc-ticket {
   font-size: 14px;
   text-transform: capitalize;
-  width: 50px;
+  min-width: 50px;
 }
 
 .count-tickets {

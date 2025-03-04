@@ -13,8 +13,8 @@
     <ul>
       <li v-for="tic in data.ticket" :key="tic.id">
         {{ tic.name }} - {{ tic.count }} шт.
-        <!-- <a :href="`/ticket-download/${tic.id}.pdf`"></a> -->
       </li>
+      <a :href="`/tickets/${tic.id}.pdf`">скачать билет</a>
     </ul>
   </div>
     <h2>Информация о билете</h2>
@@ -28,10 +28,14 @@
 </template>
 
 <script setup lang="ts">
+import { Ticket } from 'lucide-vue-next';
+
 const route = useRoute()
 const orderId = ref(route.params.id)
 
+// const {data} =await useFetch(`/api/event/tickets/generate/$(orderId.value)`)
 const { data } = await useFetch<{ ticket: null | any, ok: boolean }>(`/api/payment/${orderId.value}`)
+// const { data: ticketsData } = await useFetch(`/api/event/tickets/generate${orderId.value}`)
 
 if (!orderId.value) {
   console.error('ID заказа не передан.')
